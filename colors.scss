@@ -1,0 +1,44 @@
+$base-bg-color: #ffffff;
+$main-title-color: #666666;
+$nav-text-color: #051040;
+
+$primary-color-dark: rgb(0, 55, 53); //003735
+$secondary-color: #309020;
+$highlight-color-light: #9dc660;
+$secondary-highlight-color-light: #ddd660;
+
+
+// Dark bg section (bg image is dark or checkerboard contrast like)
+$dark-bg-title-color: #ffffff;
+$dark-bg-text-color: #ffffff;
+$dark-bg-color: #444444;
+
+// Light bg section: light image, white pastel filter, .etc)
+$light-bg-title-color: #7da660;
+$light-bg-text-color: #003735;
+$light-bg-color: rgb(244, 240, 236);
+
+$light-bg-link-color: #7da660;
+$light-bg-text-highlight-color: #d9b060;
+
+$light-bg-time-text-color: #309020;
+$light-bg-date-text-color: #309020;
+
+// Contact colors for light background
+$light-bg-contact-border-color: #207020;
+$light-bg-contact-text-color: #000000;
+
+
+
+
+$light-image-overlay-color: rgba(255,255,255, 0.5);
+$dark-image-overlay-color: rgba(0,0,0, 0.5);
+$logo-placeholder-color: #309020;
+
+
+:root {
+    --mutable-bg-color: #{$base-bg-color};
+}
+
+// Todo implement hue shift: maybe with https://sass-lang.com/documentation/modules/color/
+// The advantage is a lot of different looks can be tried out from 1 basic color palette
