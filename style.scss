@@ -4,42 +4,13 @@
 body {
     font-family: "raleway-regular", arial;
     line-height: 1;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     font-weight: bold;
-    letter-spacing: 2px;
     text-align: center;
-    text-decoration: none;
-    list-style: none;
-}
-
-header nav
-{
-    top: 0px;
-    left: 0px;
-    position: relative;
-    width: 100%;
-    z-index: 999999;
-}
-
-header nav ul li a
-{
-    display: block;
-    width: 100%;
-    padding: 10px;
-    color: #555555;
-    font-family: "raleway-regular", arial, sans-serif;
-    font-size: 20px;
-    border-top: 1px solid #777777;
-    background: #ffffff;
-}
-
-li {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
     text-decoration: none;
     list-style: none;
 }
