@@ -25,6 +25,18 @@ $nav-initial-horizontal-links-margin-base: $navbar-menu-item-spacing;
     --nav-links-horizontal-margin-base: #{$nav-initial-horizontal-links-margin-base};
 }
 
+header {
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    z-index: 9999999;
+    width: 100%;
+}
+
 /*Todo menu items should have same base height as bar -> without margin -> more easy to click*/
 
 
@@ -32,7 +44,7 @@ $nav-initial-horizontal-links-margin-base: $navbar-menu-item-spacing;
     margin: 0;
     /*height: $navbar-height;
     height: auto;*/
-    width: 100%;
+    width: inherit;
     z-index: 999999;
     background: $navbar-bg-color;
     color: $navbar-fg-link-color;
@@ -42,6 +54,8 @@ $nav-initial-horizontal-links-margin-base: $navbar-menu-item-spacing;
     font-size: $nav-text-font-size;
     letter-spacing: 2px;
 }
+
+
 
 .navbar > * {
     margin-right: var(--nav-horizontal-margin-base);
@@ -248,6 +262,20 @@ li {
     :root {
         --nav-horizontal-margin-base: 0;
         --nav-links-horizontal-margin-base: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sections-strip {
+        position: relative;
+    }
+
+    header {
+        position: relative;
     }
 
     .navbar > * {

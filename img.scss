@@ -1,10 +1,10 @@
 $main-image-main-title-color: rgb(255,255,255);
 $main-image-secondary-title-color: rgb(235,220,45);
+$section-strip-base-padding-lr: 0px;
+$section-item-base-padding-lr: 20px;
 
 
-
-
-.main-image-holder{
+/*.main-image-holder{
     width: 100%;
     height: auto;
     position: relative;
@@ -12,15 +12,34 @@ $main-image-secondary-title-color: rgb(235,220,45);
     left: 0;
     z-index: -9999;
     text-align: center;
-    /*display: block;
-    display: flex;*/
     padding-top: 100px;
     padding-bottom: 100px;
     display: flex;
+}*/
+
+
+.main-image-holder {
+    height: 700px !important;
 }
-.main-image {
+
+.img-section {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: -9999;
+    text-align: center;
+    display: flex;
+}
+.img-section {
+    color: white;
+    font-size: 2em;
+}
+
+.section-img {
     width: inherit;
-    height: 100%;
+    height: auto;
     position: absolute;
     top: 0;
     left: 0;
@@ -28,6 +47,14 @@ $main-image-secondary-title-color: rgb(235,220,45);
     object-fit: cover;
 }
 
+.main-image {
+    height: 100%;
+}
+
+
+.text-left {
+    text-align: left;
+}
 
 .center-content-holder {
     width: 100%;
@@ -49,19 +76,22 @@ $main-image-secondary-title-color: rgb(235,220,45);
     align-items: center;
     justify-content: center;
     text-align: center;
+    vertical-align: middle;
 }
 
-.center-content-holder > div h1 {
+.ovly-title {
     font-size: 60px;
     color: $main-image-main-title-color;
     text-shadow: 2px 2px 15px black;
     display: inline;
+    margin: 10px;
+}
+
+.center-content-holder > div h1 {
+    color: $main-image-main-title-color;
 }
 .center-content-holder > div h2 {
     color: $main-image-secondary-title-color;
-    text-shadow: 2px 2px 15px black;
-    font-size: 3em;
-    display: inline;
 }
 
 .center-content .navbutton {
@@ -81,16 +111,28 @@ $main-image-secondary-title-color: rgb(235,220,45);
     color: white !important;
 }
 
+.center-content > * {
+    margin: 0;
+    padding: 10px;
+}
+
 
 .sections-strip {
-    width: 100%;
+    /*width: 100% !important;*/
+    padding: 0;
+    padding-left: $section-strip-base-padding-lr;
+    padding-right: $section-strip-base-padding-lr;
     position: absolute;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
-    padding: 0;
     margin: 0;
+}
+
+.sections-strip section {
+   /*padding-left: $section-item-base-padding-lr;
+    padding-right: $section-item-base-padding-lr;*/
 }
 
 .page-section {
@@ -106,8 +148,16 @@ $main-image-secondary-title-color: rgb(235,220,45);
     color: rgb(80, 200, 60)
 }
 
+.sections-strip section {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+}
+
 .img-book-section {
-    width: auto;
+    width: auto !important;
     margin: 60px;
     justify-content: center;
     align-items: center;
@@ -126,11 +176,19 @@ $main-image-secondary-title-color: rgb(235,220,45);
     max-width: 1200px;
 }
 
-.left-pane{
+.section-content {
+    text-align: left;
+}
+
+.page-section {
+    /*max-width: 1200px;*/
+}
+
+.left-pane {
     grid-column: 1;
     grid-row: 1;
 }
-.right-pane{
+.right-pane {
     grid-column: 2;
     grid-row: 1;
     align-items: center;
@@ -159,12 +217,41 @@ $main-image-secondary-title-color: rgb(235,220,45);
 }
 
 
+.preview-section-holder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.preview-section-holder article {
+    width: 400px;
+    padding: 20px;
+}
+.preview-section-holder article img {
+    width: 100%;
+    object-fit: cover;
+}
+
+
 @media only screen and (max-width : 700px) {
-    .main-image {
+    /*.main-image {
         position: relative;
     }
     section {
         position: relative;
+    }*/
+
+}
+
+
+@media only screen and (max-width : 1000px) {
+    .right-pane {
+        grid-column: 1;
+        grid-row: 2;
+        margin-left: 0;
     }
 
 }
