@@ -29,8 +29,6 @@
     left: 0;
     text-align: center;
     display: flex;
-}
-.img-section {
     color: white;
     font-size: 2em;
 }
@@ -88,16 +86,19 @@
     margin: 10px;
 }
 
+
 .center-content-holder > div h1 {
     color: $main-image-main-title-color;
 }
 .center-content-holder > div h2 {
     color: $main-image-secondary-title-color;
 }
-
 .center-content > * {
     margin: 0;
-    padding: 10px;
+    margin-top: 0.3em;
+}
+.center-content > button {
+    margin-top: 1.5em;
 }
 
 

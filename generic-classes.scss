@@ -26,3 +26,18 @@ $hover-transition-time: 1.0s;
     filter: invert(100%);
     @extend .transition-all;
 }
+
+
+
+.thin-h {
+    height: 1.05em;
+}
+.medium-h {
+    height: 1.5em;
+}
+.big-h {
+    height: 2.3em;
+}
+.large-h {
+    height: 4em;
+}
