@@ -1,15 +1,2 @@
 @import '../fonts/fonts.scss';
-
-
-html, body {
-    width: 100%;
-    font-family: "raleway-regular", arial;
-    line-height: 1;
-    margin: 0;
-    padding: 0;
-}
-
-.hidden {
-    display: none;
-}
-
+@import './base-layout.scss';

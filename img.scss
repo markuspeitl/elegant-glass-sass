@@ -2,6 +2,7 @@
 @import './colors.scss';
 @import './font-vars.scss';
 @import './generic-classes.scss';
+@import './base-layout.scss';
 
 /*.main-image-holder{
     width: 100%;
@@ -17,13 +18,17 @@
 }*/
 
 
-.main-image-holder {
-    height: 700px !important;
-}
+/*
+$main-stack-section-h-size: 700px;
+$stack-section-default-h-size: auto;
+*/
 
-.img-section {
+$main-stack-section-h-size: 70vh;
+$stack-section-default-h-size: 70vh;
+
+.stacked-section {
     width: 100%;
-    height: auto;
+    height: $stack-section-default-h-size;
     position: relative;
     top: 0;
     left: 0;
@@ -31,20 +36,32 @@
     display: flex;
     color: white;
     font-size: 2em;
-}
-.img-section img {
-    z-index: -9999;
+
+    & .section-background {
+        width: inherit;
+        height: $stack-section-default-h-size;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: inherit;
+        object-fit: cover;
+        z-index: -9999;
+    }
 }
 
-.section-img {
-    width: inherit;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: inherit;
-    object-fit: cover;
+
+
+.main-image-holder {
+    @extend .stacked-section;
+    height: $main-stack-section-h-size !important;
+
+    & .section-background {
+        height: $main-stack-section-h-size !important;
+    }
 }
+
+
+
 
 .main-image {
     height: 100%;

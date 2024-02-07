@@ -1,9 +1,14 @@
+@import '../fonts/fonts.scss';
+
+$font-family-set: "raleway-regular",arial Helvetica, "georgia";
+$general-font-family: $font-family-set;
+
 $nav-text-weight: bolder;
 /* current raleway font-face is limited to font weight of 400*/
-$nav-text-font: "raleway-regular", arial, sans-serif;
+$nav-text-font: $general-font-family;
 $nav-text-font-weight: 400;
 $nav-icon-boldness: 400;
 $nav-button-text-boldness: 800;
 
 
-$buttons-font-family: "raleway-regular", Helvetica, arial, "georgia"
+$buttons-font-family: $general-font-family;

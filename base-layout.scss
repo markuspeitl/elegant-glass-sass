@@ -1,0 +1,10 @@
+@import './font-vars.scss';
+
+html, body {
+    width: 100%;
+    font-family: $general-font-family;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
