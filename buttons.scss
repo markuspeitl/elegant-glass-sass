@@ -1,0 +1,78 @@
+@import './spacings.scss';
+@import './colors.scss';
+@import './font-vars.scss';
+@import './generic-classes.scss';
+
+
+$ovl-button-bg-color: rgb(0,0,0);
+$ovl-button-fg-color: white;
+$ovl-button-default-bg-opacity: 0.3;
+$ovl-button-hover-bg-opacity: 0.8;
+
+$ovl-button-border: 0.1em solid $ovl-button-fg-color;
+$ovl-button-height: $nav-item-horizontal-height * 0.7;
+
+$button-content-spacing: 1em;
+$button-default-padding-l: $button-content-spacing + 0.4em;
+$button-default-padding-r: $button-content-spacing + 0.2em;
+
+
+.richbutton {
+    @extend .cleanbox;
+    /*padding: 20px;*/
+    height: $nav-item-horizontal-height;
+    padding-left: $button-default-padding-l;
+    padding-right: $button-default-padding-r;
+    font-size: $buttons-font-size;
+    font-weight: $nav-button-text-boldness;
+    font-family: $buttons-font-family;
+    letter-spacing: $buttons-letter-spacing;
+}
+
+.navbutton {
+    @extend .richbutton;
+    background-color: $nav-button-bg-color;
+    color: $nav-text-color;
+
+    &:hover {
+        background-color: $nav-text-color;
+        color: $nav-button-bg-color;
+
+        @extend .transition-all;
+    }
+}
+
+.icon {
+    color: inherit;
+    font-weight: $nav-icon-boldness;
+}
+
+
+.bt-content {
+    @extend .centerflex, .cleanbox;
+    background: none;
+
+    & > span:not(:first-child) {
+        margin-left: $button-content-spacing;
+    }
+}
+
+/* -------- background image overlay call to action button*/
+
+.img-ovl-button {
+    @extend .richbutton;
+    border: $ovl-button-border;
+    height: $ovl-button-height;
+    background-color: rgba($ovl-button-bg-color, $ovl-button-default-bg-opacity);
+    color: $ovl-button-fg-color;
+
+    &:hover {
+        color: $ovl-button-bg-color;
+        background-color: rgba($ovl-button-fg-color, $ovl-button-hover-bg-opacity);
+        border: none;
+        @extend .transition-all;
+    }
+
+}
+
+/* Note: a low z-index on any ancestor can break :hover and :active events in all descendants*/

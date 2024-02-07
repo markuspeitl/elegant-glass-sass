@@ -1,0 +1,31 @@
+$navbar-height: 5em;
+$navbar-children-spacing: 0.8em;
+$navbar-menu-item-spacing: 1.2em;
+$nav-text-font-size: 20px;
+$nav-logo-font-size: 20px;
+/*$nav-buttons-font-size: 0.8em;*/
+
+$nav-item-horizontal-height: 90px;
+$nav-item-vertical-width: $nav-item-horizontal-height;
+$nav-initial-horizontal-margin-base: $navbar-children-spacing;
+$nav-initial-horizontal-links-margin-base: $navbar-menu-item-spacing;
+
+$section-strip-base-padding-lr: 0px;
+$section-item-base-padding-lr: 20px;
+
+
+:root {
+    --nav-horizontal-margin-base: #{$nav-initial-horizontal-margin-base};
+    --nav-links-horizontal-margin-base: #{$nav-initial-horizontal-links-margin-base};
+}
+
+@media only screen and (max-width : 700px) {
+
+    :root {
+        --nav-horizontal-margin-base: 0;
+        --nav-links-horizontal-margin-base: 0;
+    }
+}
+
+$buttons-font-size: 0.8em;
+$buttons-letter-spacing: 2px;

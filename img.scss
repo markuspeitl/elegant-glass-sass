@@ -1,8 +1,7 @@
-$main-image-main-title-color: rgb(255,255,255);
-$main-image-secondary-title-color: rgb(235,220,45);
-$section-strip-base-padding-lr: 0px;
-$section-item-base-padding-lr: 20px;
-
+@import './spacings.scss';
+@import './colors.scss';
+@import './font-vars.scss';
+@import './generic-classes.scss';
 
 /*.main-image-holder{
     width: 100%;
@@ -28,13 +27,15 @@ $section-item-base-padding-lr: 20px;
     position: relative;
     top: 0;
     left: 0;
-    z-index: -9999;
     text-align: center;
     display: flex;
 }
 .img-section {
     color: white;
     font-size: 2em;
+}
+.img-section img {
+    z-index: -9999;
 }
 
 .section-img {
@@ -94,23 +95,6 @@ $section-item-base-padding-lr: 20px;
     color: $main-image-secondary-title-color;
 }
 
-.center-content .navbutton {
-    background: rgba(0,0,0,0.2) !important;
-    border: 2.5px solid white;
-    padding: 0px 10px 0px 10px;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    /*box-shadow: inset, 0px 0px 3px black;*/
-}
-
-.center-content .navbutton * {
-    color: white;
-}
-.center-content .navbutton .icon {
-    color: white !important;
-}
-
 .center-content > * {
     margin: 0;
     padding: 10px;
@@ -135,13 +119,13 @@ $section-item-base-padding-lr: 20px;
     padding-right: $section-item-base-padding-lr;*/
 }
 
-.page-section {
+.content-section {
     /*padding: 60px;*/
     line-height: 1.5;
     font-size: 20px;
 }
 
-.page-section h1 {
+.content-section h1 {
     /*font-family: dom;*/
     font-family: noto, Georgia, 'Times New Roman', Times, serif;
     font-weight: 300;

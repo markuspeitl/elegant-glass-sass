@@ -42,3 +42,15 @@ $logo-placeholder-color: #309020;
 
 // Todo implement hue shift: maybe with https://sass-lang.com/documentation/modules/color/
 // The advantage is a lot of different looks can be tried out from 1 basic color palette
+
+
+/*New temp*/
+/*$navbar-bg-color: rgb(0, 65, 63);*/
+$navbar-bg-color: linear-gradient(to bottom right, rgba(15, 95, 73, 0.95), rgba(0, 65, 63, 0.6));
+$navbar-fg-link-color: #ffffff;
+$nav-text-color: #ffffff;
+$nav-button-bg-color: rgba(255,255,255, 0.2);
+
+
+$main-image-main-title-color: rgb(255,255,255);
+$main-image-secondary-title-color: rgb(235,220,45);

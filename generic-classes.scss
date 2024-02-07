@@ -1,0 +1,28 @@
+.centerflex {
+    display: flex;
+    flex-direction: row;
+    vertical-align:middle;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cleanbox {
+    border: 0;
+    background: none
+}
+
+
+/*Events*/
+
+$hover-transition-time: 1.0s;
+
+.transition-all {
+    transition: all $hover-transition-time;
+    -webkit-transition: all $hover-transition-time linear;
+    -ms-transition: all $hover-transition-time linear;
+}
+.invert-hover:hover {
+    filter: invert(100%);
+    @extend .transition-all;
+}
