@@ -25,27 +25,29 @@ $stack-section-default-h-size: auto;
 
 $main-stack-section-h-size: 70vh;
 $stack-section-default-h-size: 70vh;
+$stack-section-font-size: 2rem;
+$stack-section-font-color: white;
 
 .stacked-section {
     width: 100%;
-    height: $stack-section-default-h-size;
     position: relative;
     top: 0;
     left: 0;
     text-align: center;
     display: flex;
-    color: white;
-    font-size: 2em;
+    height: $stack-section-default-h-size;
+    color: $stack-section-font-color;
+    font-size: $stack-section-font-size;
 
     & .section-background {
         width: inherit;
-        height: $stack-section-default-h-size;
         position: absolute;
         top: 0;
         left: 0;
         z-index: inherit;
         object-fit: cover;
         z-index: -9999;
+        height: $stack-section-default-h-size;
     }
 }
 
@@ -112,10 +114,10 @@ $stack-section-default-h-size: 70vh;
 }
 .center-content > * {
     margin: 0;
-    margin-top: 0.3em;
+    margin-top: 0.3rem;
 }
 .center-content > button {
-    margin-top: 1.5em;
+    margin-top: 1.5rem;
 }
 
 
