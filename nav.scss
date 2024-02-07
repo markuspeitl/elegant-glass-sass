@@ -2,18 +2,31 @@ $navbar-height: 5em;
 $navbar-children-spacing: 0.8em;
 $navbar-menu-item-spacing: 1.2em;
 
-$navbar-bg-color: rgb(0, 65, 63);
+/*$navbar-bg-color: rgb(0, 65, 63);*/
+$navbar-bg-color: linear-gradient(to bottom right, rgba(15, 95, 73, 0.95), rgba(0, 65, 63, 0.6));
 $navbar-fg-link-color: #cccccc;
 $nav-text-color: #cccccc;
 $nav-text-weight: bolder;
 /* current raleway font-face is limited to font weight of 400*/
 $nav-text-font: "raleway-regular", arial, sans-serif;
 $nav-text-font-weight: 400;
+$nav-text-font-size: 20px;
 $nav-logo-font-size: 20px;
 $nav-icon-boldness: 500;
 $nav-button-bg-color: rgba(255,255,255, 0.2);
-$nav-item-horizontal-height: 100px;
+$nav-item-horizontal-height: 90px;
 $nav-item-vertical-width: $nav-item-horizontal-height;
+
+$nav-initial-horizontal-margin-base: $navbar-children-spacing;
+$nav-initial-horizontal-links-margin-base: $navbar-menu-item-spacing;
+
+:root {
+    --nav-horizontal-margin-base: #{$nav-initial-horizontal-margin-base};
+    --nav-links-horizontal-margin-base: #{$nav-initial-horizontal-links-margin-base};
+}
+
+/*Todo menu items should have same base height as bar -> without margin -> more easy to click*/
+
 
 .navbar {
     margin: 0;
@@ -26,12 +39,12 @@ $nav-item-vertical-width: $nav-item-horizontal-height;
     
     font-family: $nav-text-font;
     font-weight: $nav-text-font-weight;
-    font-size: $nav-logo-font-size;
+    font-size: $nav-text-font-size;
     letter-spacing: 2px;
 }
 
 .navbar > * {
-    margin-right: $navbar-children-spacing;
+    margin-right: var(--nav-horizontal-margin-base);
     height: $nav-item-horizontal-height;
 }
 .navbar:last-child {
@@ -44,7 +57,7 @@ nav {
 }
 nav ul > * {
     list-style: none;
-    margin-right: $navbar-menu-item-spacing;
+    margin-right: var(--nav-links-horizontal-margin-base);
 }
 
 
@@ -53,8 +66,8 @@ nav ul > * {
 .plainlink {
     text-decoration: none;
     list-style: none;
-    margin: 0;
-    padding: 0;
+    /*margin: 0;
+    padding: 0;*/
     border: 0;
     outline: 0;
     color: $nav-text-color;
@@ -89,7 +102,7 @@ nav ul > * {
 }*/
 
 .headvisual .logo-holder {
-    margin-left: $navbar-children-spacing;
+    margin-left: var(--nav-horizontal-margin-base);
 }
 
 
@@ -131,7 +144,7 @@ nav ul > * {
 }
 
 .headaction > *:not(:first-child) {
-    margin-left: $navbar-menu-item-spacing
+    margin-left: var(--nav-horizontal-margin-base);
 }
 
 
@@ -153,7 +166,7 @@ nav ul > * {
 
 .bt-content {
     @extend .centerflex, .cleanbutton;
-    display: flex;
+    /*display: flex;*/
 }
 
 .navbutton .icon {
@@ -175,7 +188,7 @@ ul {
 
 
 /*navbar links*/
-nav ul li a
+nav a
 {
     /*display: inline-block;
     width: auto;*/
@@ -193,19 +206,126 @@ nav ul li a
 .subnav {
     display: none;
 }
-.expandable_nav_url:hover ~ .subnav {
+
+
+li {
+    position: relative;
+}
+/*.expandable_nav_url:hover ~ .subnav {*/
+.expandable_nav_url:hover ~ .subnav, .subnav:hover {
     display: flex;
     flex-direction: column;
+    /*position: relative;*/
+    /*top: $navbar-height;*/
     position: absolute;
-    top: $navbar-height;
+    top: $nav-text-font-size;
+    left: 0;
+    padding: 20px;
+    background: $navbar-bg-color;
+}
+
+.subnav li {
+    padding: 10px;
+    margin: 0;
+}
+
+.subnav .nav_url {
+    padding: 0px;
+}
+
+.subnav ul {
+    padding: 0px;
+    margin: 0;
 }
 
 
+/*.expandable_nav_url li*/
 
 
-@media only screen and (max-width : 800px) {
-    
+
+@media only screen and (max-width : 700px) {
+
+    :root {
+        --nav-horizontal-margin-base: 0;
+        --nav-links-horizontal-margin-base: 0;
+    }
+
     .navbar > * {
+        width: 100%;
+        height: auto;
+    }
+
+    ul {
+        text-align: center;
+        flex-direction: column;
+        /*where does this 40px padding come from ???*/
+        padding-left: 0;
+    }
+
+    ul li, a{
+        display: block;
+        width: 100%;
+    }
+
+    nav {
+        margin-top: 2px !important;
+        margin-bottom: 10px !important;
+    }
+
+    nav li {
+        padding-top: 13px;
+        padding-bottom: 13px;
+        /*border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        box-shadow: 0px 0px 3px white;*/
+    }
+
+    nav li:nth-child(odd){
+        background: rgba(255,255,255, 0.2);
+    }
+
+
+    .headaction .navbutton {
+        width: 45%;
+        margin-left: 0;
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    .headaction > *:nth-child(1){
+        margin-right: auto;
+    }
+    .headaction > *:nth-child(2){
+        margin-left: auto;
+    }
+
+
+    .leftalignflex, .rightalignflex, .centerflex{
+        margin: 0;
+    }
+
+    .centerflex {
+        justify-content: left;
+        /*padding-left: 0;*/
+        text-align: center;
+    }
+
+    .bt-content {
+        width: auto;
+        flex-direction: column;
+    }
+
+    .burger {
+        display: none;
+    }
+    .logo-holder {
+        width: 100%;
+        padding: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 35px;
+    }
+    
+    /*.navbar > * {
         margin-right: 0;
         height: auto;
         text-align: center;
@@ -238,7 +358,7 @@ nav ul li a
     nav ul li a{
         display: block;
         width: 100%;
-    }
+    }*/
 
 
 }
