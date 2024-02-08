@@ -1,4 +1,16 @@
-page-section {
+.page-section {
     position: relative;
     display: flex;
+}
+
+
+.quote-box {
+    font-weight: $quote-box-font-weight;
+    font-family: $quote-box-font-family;
+    font-size: $quote-box-font-size;
+}
+
+.quote-box cite p {
+    margin-top: 10px;
+    margin-bottom: 0px;
 }

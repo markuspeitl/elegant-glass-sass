@@ -4,7 +4,7 @@
 @import './generic-classes.scss';
 
 header {
-    font-weight: bold;
+    font-weight: $nav-header-default-font-weight;
     text-align: center;
     text-decoration: none;
     list-style: none;
@@ -13,6 +13,9 @@ header {
     position: fixed;
     z-index: 9999999;
     width: 100%;
+    font-family: $nav-header-default-font-family;
+    font-weight: $nav-header-default-font-weight;
+    font-size: $nav-header-default-font-size;
 }
 
 /*Todo menu items should have same base height as bar -> without margin -> more easy to click*/
@@ -27,11 +30,7 @@ header {
     height: auto;*/
     width: inherit;
     z-index: 999999;
-    
-    
-    font-family: $nav-text-font;
-    font-weight: $nav-text-font-weight;
-    font-size: $nav-text-font-size;
+
     letter-spacing: 2px;
 
     background: $navbar-bg-color;

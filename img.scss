@@ -146,13 +146,25 @@ $stack-section-font-color: white;
     /*padding: 60px;*/
     line-height: 1.5;
     font-size: 20px;
+    font-weight: $content-section-body-font-weight;
+    font-family: $content-section-body-font-family;
+    font-size: $content-section-body-font-size;
+    color: $content-section-text-color
 }
 
 .content-section h1 {
     /*font-family: dom;*/
-    font-family: noto, Georgia, 'Times New Roman', Times, serif;
-    font-weight: 300;
-    color: rgb(80, 200, 60)
+    font-family: $content-section-title-font-family !important;
+    font-weight: $content-section-title-font-weight !important;
+    font-size: $content-section-title-font-size;
+    color: $content-section-title-color;
+}
+
+.content-section .quote {
+    font-family: $content-section-quote-font-family;
+    font-weight: $content-section-quote-font-weight;
+    font-size: $content-section-quote-font-size;
+    color: $content-section-quote-color;
 }
 
 .sections-strip section {

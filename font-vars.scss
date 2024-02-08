@@ -1,14 +1,60 @@
-@import '../fonts/fonts.scss';
+@import './fonts.scss';
 
-$font-family-set: "raleway-regular",arial Helvetica, "georgia";
+$font-family-set: "raleway", arial, Helvetica, "georgia";
+//$font-family-set: "montserrat";
+
 $general-font-family: $font-family-set;
+$general-font-weight: 800;
 
-$nav-text-weight: bolder;
-/* current raleway font-face is limited to font weight of 400*/
+
+$regular-font-weight: 400;
+$normal-bold-font-weight: 600;
+$emphasised-font-weight: 800;
+
+$esoteric-font-family: 'dancing-script';
+$read-text-font-family: 'arial';
+$titles-font-family: 'raleway';
+$control-font-family: 'arial';
+/*$quote-font-family: 'raleway';*/
+$quote-font-family: 'dom';
+$quote-font-style: 'italic';
+
+
+/*$nav-text-weight: bolder;
 $nav-text-font: $general-font-family;
 $nav-text-font-weight: 400;
 $nav-icon-boldness: 400;
-$nav-button-text-boldness: 800;
+$nav-button-text-boldness: 800;*/
 
-
+$buttons-font-weight: $normal-bold-font-weight;
 $buttons-font-family: $general-font-family;
+$icons-weight-thickness: $emphasised-font-weight;
+
+
+$nav-header-default-font-weight: $normal-bold-font-weight;
+$nav-header-default-font-family: $general-font-family;
+$nav-header-default-font-size: 20px;
+
+/*$content-section-title-font-weight: $emphasised-font-weight;
+$content-section-title-font-family: $general-font-family;*/
+$content-section-title-font-weight: $normal-bold-font-weight;
+$content-section-title-font-family: 'rokkitt'; /*$esoteric-font-family*/
+$content-section-title-font-size: 2.7rem;
+
+$content-section-body-font-weight: $regular-font-weight;
+$content-section-body-font-family: 'raleway';
+$content-section-body-font-size: 1.2rem;
+
+$content-section-quote-font-weight: $regular-font-weight * 1.2;
+$content-section-quote-font-family: $content-section-body-font-family;
+$content-section-quote-font-size: $content-section-body-font-size * 1.2;
+
+$quote-box-font-weight: $regular-font-weight;
+$quote-box-font-family: $quote-font-family;
+$quote-box-font-size: $content-section-body-font-size * 1.5;
+
+button {
+    font-family: $buttons-font-family;
+    font-weight: $buttons-font-weight;
+}
+
