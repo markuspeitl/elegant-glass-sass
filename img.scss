@@ -101,13 +101,21 @@ $stack-section-font-color: white;
 }
 
 .ovly-title {
-    font-size: 60px;
+    font-weight: $main-title-font-weight;
+    font-family: $main-title-font-family;
+    font-size: $main-title-font-size;
+    letter-spacing: $main-title-letter-spacing;
     color: $main-image-main-title-color;
-    text-shadow: 2px 2px 15px black;
+    text-shadow: $text-glass-backdrop;
     display: inline;
-    margin: 10px;
+    margin: 13px;
 }
 
+.ovly-title ~ h2 {
+    font-weight: $main-title-secondary-font-weight;
+    font-family: $main-title-secondary-font-family;
+    font-size: $main-title-secondary-font-size;
+}
 
 .center-content-holder > div h1 {
     color: $main-image-main-title-color;
@@ -158,6 +166,7 @@ $stack-section-font-color: white;
     font-weight: $content-section-title-font-weight !important;
     font-size: $content-section-title-font-size;
     color: $content-section-title-color;
+    letter-spacing: $content-section-title-letter-space;
 }
 
 .content-section .quote {
