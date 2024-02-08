@@ -1,9 +1,19 @@
 @import './font-vars.scss';
 
+$root-line-height: 1.0;
+$root-font-size: 1.0;
+
+:root, html, body {
+    width: 100%;
+    font-size: $root-font-size;
+    font-family: $general-font-family;
+    line-height: $root-line-height;
+    margin: 0;
+    padding: 0;
+}
+
 html, body {
     width: 100%;
-    font-family: $general-font-family;
-    line-height: 1;
     margin: 0;
     padding: 0;
 }

@@ -26,7 +26,9 @@ $stack-section-default-h-size: auto;
 $main-stack-section-h-size: 70vh;
 $stack-section-default-h-size: 70vh;
 $stack-section-font-size: 2rem;
+$main-stack-section-font-size: 2.8rem;
 $stack-section-font-color: white;
+
 
 .stacked-section {
     width: 100%;
@@ -56,6 +58,7 @@ $stack-section-font-color: white;
 .main-image-holder {
     @extend .stacked-section;
     height: $main-stack-section-h-size !important;
+    font-size: $main-stack-section-font-size;
 
     & .section-background {
         height: $main-stack-section-h-size !important;
