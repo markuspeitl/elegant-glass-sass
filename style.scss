@@ -1,3 +1,11 @@
-@import './fonts.scss';
-@import './base-layout.scss';
-@import './content.scss';
+@import 'font-vars';
+@import 'colors';
+@import 'spacings';
+
+@import 'nav';
+@import 'img';
+@import 'icons';
+@import 'buttons';
+
+@import 'base-layout';
+@import 'content';

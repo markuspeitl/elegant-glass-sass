@@ -10,9 +10,25 @@
     font-weight: $quote-box-font-weight;
     font-family: $quote-box-font-family;
     font-size: $quote-box-font-size;
+    line-height: 2.5rem;
+    
+    /*& cite {
+        line-height: 2.5rem;
+    }*/
+    
+    &  cite::before {
+        content: '"';
+    }
+    &  cite::after {
+        content: '"';
+    }
+    & .from-ref {
+        font: {
+            weight: $quote-from-ref-weight;
+            family: $quote-from-ref-family;
+            size: $quote-from-ref-size;
+        }
+        margin-top: 5rem;
+    }
 }
 
-.quote-box cite p {
-    margin-top: 10px;
-    margin-bottom: 0px;
-}

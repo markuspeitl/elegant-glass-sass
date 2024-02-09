@@ -13,8 +13,8 @@ $button-content-spacing: 1rem;
 $button-default-padding-l: $button-content-spacing + 0.4rem;
 $button-default-padding-r: $button-content-spacing + 0.2rem;
 
-
-.richbutton {
+/*sass elements with % are not emitted in css, but can be used for extending */
+%richbutton {
     @extend .cleanbox;
     /*padding: 20px;*/
     /*height: $nav-item-horizontal-height;*/
@@ -27,7 +27,7 @@ $button-default-padding-r: $button-content-spacing + 0.2rem;
 }
 
 .dark-button {
-    @extend .richbutton;
+    @extend %richbutton;
     background-color: rgba($ovl-button-bg-color, $ovl-button-default-bg-opacity);
     color: $ovl-button-fg-color;
 
@@ -39,7 +39,7 @@ $button-default-padding-r: $button-content-spacing + 0.2rem;
 }
 
 .light-button {
-    @extend .richbutton;
+    @extend %richbutton;
     background-color: $nav-button-bg-color;
     color: $nav-text-color;
 
