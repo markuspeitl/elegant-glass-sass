@@ -1,4 +1,4 @@
-@import './fonts.scss';
+@use "sass:map";
 
 $font-family-set: "alef", arial, Helvetica, "georgia";
 //$font-family-set: "montserrat";
@@ -12,8 +12,10 @@ $regular-font-weight: 400;
 $normal-bold-font-weight: 600;
 $emphasised-font-weight: 800;
 
+
 $esoteric-font-family: 'dancing-script';
 $esoteric-font-family: 'milonga';
+
 
 $read-text-font-family:  'alef','arial';
 $titles-font-family: 'raleway';
@@ -54,22 +56,40 @@ Musik des Feuers um die Kraft die in dir steckt zu rufen.
 */
 
 /*roboto, open-sans!, lato, inter, raleway, quicksand, hind-siliguri, mulish, m-plus-rounded-1c, source-sans-3, abeezee, amaranth, alef*/
-/*roboto, mulish*/
+/*mulish@300,400, lato@300, josefin-sans@200,300, roboto@300*/
 $content-section-body-font-weight: $regular-font-weight;
 $content-section-body-font-family: 'mulish';// $read-text-font-family;
 $content-section-body-font-size: 1.3rem;
+
+
+
 
 $content-section-quote-font-weight: $regular-font-weight * 1.2;
 $content-section-quote-font-family: $content-section-body-font-family;
 $content-section-quote-font-size: $content-section-body-font-size * 1.2;
 
+
+$font-weights: ("regular": 400, "medium": 500, "bold": 700);
+
+
+$quote-box-font: (
+    weight: $regular-font-weight,
+    family: $quote-font-family,
+    size: $content-section-body-font-size * 1.5,
+);
+
 $quote-box-font-weight: $regular-font-weight;
 $quote-box-font-family: $quote-font-family;
 $quote-box-font-size: $content-section-body-font-size * 1.5;
+
 $quote-from-ref-weight: $normal-bold-font-weight;
 $quote-from-ref-family: 'gabriela';
 $quote-from-ref-size: $quote-box-font-size * 0.7;
 
+
+//font: italic small-caps bold 12px/30px Georgia, serif; https://www.w3schools.com/cssref/pr_font_font.php
+
+//@include font-vars('quote-from-ref');
 
 $main-title-font-weight: $regular-font-weight;
 $main-title-font-family: 'stix-two-text' ,'gabriela' ,'crimson-pro', $base-font-family;
@@ -90,8 +110,38 @@ $logo-title-size: 35px;
 $nav-menu-font-weight: $normal-bold-font-weight;
 
 
+$root-line-height: 1.2 !default;
+$root-font-size: 1rem !default;
+
+
+// not necessary -> inbuit behaviour
+/*@function get_or_null($map, $key) {
+    @if (map-has-key($map, $key)) {
+        @return map.get($map, $key);
+    }
+    @return null;
+}*/
+
+$read-text-font: (
+    weight: $regular-font-weight,
+    family: $base-font-family,
+    size: 1rem,
+);
+
+@mixin apply-font-set($text-font-map) {
+    font-weight: map.get($text-font-map, "weight");
+    font-family: map.get($text-font-map, "family");
+    font-size: map.get($text-font-map, "size");
+}
+
+
+$button-font-set: (
+    weight: $buttons-font-weight,
+    family: $buttons-font-family,
+    size: 1rem,
+);
+
 
 button {
-    font-family: $buttons-font-family;
-    font-weight: $buttons-font-weight;
+    @include apply-font-set($button-font-set);
 }

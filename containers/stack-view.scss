@@ -1,0 +1,87 @@
+@use '../vars';
+
+$stack-section-default-h-size: 70vh;
+$stack-section-font-size: 2rem;
+$stack-section-font-color: white;
+
+.stacked-section {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: flex;
+    height: $stack-section-default-h-size;
+    color: $stack-section-font-color;
+    font-size: $stack-section-font-size;
+
+    & .section-background {
+        width: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: inherit;
+        object-fit: cover;
+        z-index: -9999;
+        height: $stack-section-default-h-size;
+    }
+
+    & .stack-bg {
+
+    }
+}
+
+.stack-overlay {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+
+    & > div {
+        z-index: 0;
+        /*position: relative;*/
+        /*background: rgba(50,50,50, 0.2);*/
+        background: linear-gradient(to bottom, rgba(50,50,50, 0.3), rgba(50,50,50, 0.04));
+        /*box-shadow: 10px 8px 10px 5px rgb(50,50,50);*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    & .title {
+        font-weight: vars.$main-title-font-weight;
+        font-family: vars.$main-title-font-family;
+        font-size: vars.$main-title-font-size;
+        letter-spacing: vars.$main-title-letter-spacing;
+        color: vars.$main-image-main-title-color;
+        text-shadow: vars.$text-glass-backdrop;
+        display: inline;
+        margin: 13px;
+    }
+
+    & .title ~ h2 {
+        font-weight: vars.$main-title-secondary-font-weight;
+        font-family: vars.$main-title-secondary-font-family;
+        font-size: vars.$main-title-secondary-font-size;
+    }
+
+    & h1 {
+        color: vars.$main-image-main-title-color;
+    }
+    & h2 {
+        color: vars.$main-image-secondary-title-color;
+    }
+    & .center-content > * {
+        margin: 0;
+        margin-top: 0.3rem;
+    }
+    & button {
+        margin-top: 1.5rem;
+    }
+    
+}

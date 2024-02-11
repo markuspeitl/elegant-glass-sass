@@ -65,3 +65,14 @@ $content-section-quote-color: rgb(6, 6, 100);
 $content-section-text-color: black;
 
 $text-glass-backdrop: 2px 2px 15px black;
+
+
+
+$dark-theme: true !default;
+$primary-color: #f8bbd0 !default;
+$accent-color: #6a1b9a !default;
+
+@if $dark-theme {
+  $primary-color: darken($primary-color, 60%);
+  $accent-color: lighten($accent-color, 60%);
+}

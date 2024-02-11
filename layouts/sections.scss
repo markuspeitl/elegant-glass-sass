@@ -1,0 +1,62 @@
+@use '../vars';
+
+
+$frame-padding-lr: vars.$section-strip-base-padding-lr !default;
+//$section-titles-family: vars.$content-section-title-font-family !default;
+
+.sections-strip {
+    /*width: 100% !important;*/
+    padding: 0;
+    padding-left: $frame-padding-lr;
+    padding-right: $frame-padding-lr;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    /*padding: 60px;*/
+    line-height: 1.5;
+    font-size: 20px;
+    font-weight: vars.$content-section-body-font-weight;
+    font-family: vars.$content-section-body-font-family;
+    font-size: vars.$content-section-body-font-size;
+    color: vars.$content-section-text-color;
+
+    section {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+        display: flex;
+        margin: 0;
+       /*padding-left: $section-item-base-padding-lr;
+        padding-right: $section-item-base-padding-lr;*/
+
+        text-align: left;
+
+        /*.section-content {
+            text-align: left;
+        }*/
+    }
+
+    h1 {
+        /*font-family: dom;*/
+        font-family: vars.$content-section-title-font-family !important;
+        font-weight: vars.$content-section-title-font-weight !important;
+        font-size: vars.$content-section-title-font-size;
+        color: vars.$content-section-title-color;
+        letter-spacing: vars.$content-section-title-letter-space;
+    }
+    
+    .quote {
+        font-family: vars.$content-section-quote-font-family;
+        font-weight: vars.$content-section-quote-font-weight;
+        font-size: vars.$content-section-quote-font-size;
+        color: vars.$content-section-quote-color;
+    }
+}
+
+
+

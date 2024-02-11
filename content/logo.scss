@@ -1,0 +1,57 @@
+@use '../vars';
+@use '../reactive';
+
+//$small-screen-break: vars.$small-screen-break !default;
+$family: vars.$logo-title-family !default;
+$weight: 400 !default;
+$size: vars.$nav-logo-font-size !default;
+
+.navbar:hover .logo-holder {
+    opacity: 0;
+
+    @include reactive.lin-transition();
+}
+
+.logo-holder {
+    margin-left: var(--nav-horizontal-margin-base);
+}
+.logo-holder img {
+    /*position: fixed;*/
+    position: absolute;
+    top: 60px;
+    left: -30px;
+    opacity: 0.87;
+}
+.logo-holder img:hover {
+    @include reactive.lin-transition(1.4s opacity);
+    opacity: 0.7;
+}
+.logo-holder {
+    font-size: vars.$nav-logo-font-size;
+    height: auto;
+    width: auto;
+    font-family: $family;
+        font-weight: $weight;
+        font-size: $size;
+    
+}
+.logo-url {
+    height: 100%;
+}
+
+@media only screen and (max-width : vars.$small-screen-break) {
+    .logo-holder {
+        width: 100% !important;
+        padding: 30px;
+    }
+    .logo-holder img {
+        width: 100% !important;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        opacity: 0.18;
+        &:hover {
+            opacity: 0.0;
+        }
+    }
+}

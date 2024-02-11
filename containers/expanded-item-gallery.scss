@@ -1,0 +1,46 @@
+@use 'sass:list';
+
+//$aspect-ratio: 16 9;
+//$aspect-ratio: 16 / 9;
+$aspect-ratio: list.slash(16, 9);
+$selectable-items: 3;
+$select-items-gap: 10px;
+
+
+.expanded-item-gallery {
+    
+    margin {
+        top: 20px;
+        bottom: 20px;
+    }
+    
+    .expanded {
+        width: 100%;
+        aspect-ratio: $aspect-ratio;
+        //height: 100vw * 9 / 16;
+        margin-bottom: 3%;
+    }
+}
+
+//https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids
+
+@mixin even-grid($item-w, $item-h, $cols, $gap){
+    display: grid;
+    //compat
+    grid-gap: $select-items-gap;
+
+    gap: $select-items-gap;
+    //grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat($cols, $item-w);
+    grid-auto-rows: $item-h;
+}
+
+.select-items-grid {
+
+    $item-width: 30%;
+    $items-cnt: 3;
+    $free-space: 100% - $item-width * $items-cnt;
+    $gap-space: calc($free-space / ($items-cnt - 1));
+
+    @include even-grid($item-width, null, $items-cnt, $gap-space);
+}

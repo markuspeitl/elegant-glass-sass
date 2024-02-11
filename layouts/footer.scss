@@ -1,0 +1,33 @@
+@use '../vars';
+@use '../containers/stack-view';
+
+footer {
+    background: red;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .grid-left {
+
+    }
+    .grid-center {
+        
+    }
+    .grid-right {
+        
+    }
+    .grid-bottom {
+        
+    }
+
+    //Todo do not do this with that (use stack-view instead and just put the grid in the foreground)
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+}

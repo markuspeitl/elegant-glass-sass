@@ -1,0 +1,16 @@
+@mixin space-between-children($spacing: 0.1rem, $orientation: horizontal){
+    & > *:not(:last-child) {
+        @if ($orientation == horizontal or $orientation == h){
+            margin-right: $spacing;
+        }
+        @if ($orientation == vertical or $orientation == v){
+            margin-top: $spacing;
+        }
+    }
+}
+
+@mixin screen-layout-break($width-break: $default-screen-break){
+    @media only screen and (max-width: $width-break) {
+        @content;
+    }
+}

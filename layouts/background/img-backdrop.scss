@@ -1,0 +1,21 @@
+
+.sections-strip::before{
+    content: '';
+    background-image: url('../img/path-experiments-thin-2.svg');
+    /*background-color: linear-gradient(to bottom right, rgba(15, 95, 73, 0.95), rgba(0, 65, 63, 1.0));*/
+    /*-webkit-mask: url('../img/path-experiments.svg') repeat;
+    mask: url('../img/path-experiments.svg') repeat;*/
+    /*background-image: url('../img/path-experiments.svg');*/
+
+    opacity: 0.02;
+    filter: blur(0px) hue-rotate(10deg) saturate(0) brightness(95%);
+    background-size: 300%;
+
+    width: 100%;
+    height: 100%;
+
+    position:absolute;
+    top:0px;
+    left:0px;
+    z-index: -9999;
+}

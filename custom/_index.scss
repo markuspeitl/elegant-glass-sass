@@ -1,0 +1,21 @@
+/*
+$main-stack-section-h-size: 700px;
+$stack-section-default-h-size: auto;
+*/
+$main-stack-section-h-size: 70vh;
+$main-stack-section-font-size: 2.8rem;
+
+.main-image-holder {
+    @extend .stacked-section;
+    height: $main-stack-section-h-size !important;
+    font-size: $main-stack-section-font-size;
+
+    & .section-background {
+        height: $main-stack-section-h-size !important;
+    }
+
+    .main-image {
+        height: 100%;
+    }
+}
+

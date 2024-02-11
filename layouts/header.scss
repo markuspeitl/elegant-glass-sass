@@ -1,0 +1,23 @@
+@use '../vars';
+@use '../layouts/helpers';
+//for clean-container
+@use 'frame' as frame;
+
+
+header {
+    font-weight: vars.$nav-header-default-font-weight;
+    font-family: vars.$nav-header-default-font-family;
+    font-size: vars.$nav-header-default-font-size;
+
+    @extend %clean-container;
+    text-align: center;
+
+    position: fixed;
+    z-index: 9999999;
+}
+
+@include helpers.screen-layout-break(vars.$small-screen-break) {
+    header {
+        position: relative;
+    }
+}

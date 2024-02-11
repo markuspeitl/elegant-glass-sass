@@ -1,0 +1,49 @@
+@use '../reactive';
+
+$default-screen-break: 700px !default;
+
+/* General*/
+.centerflex {
+    display: flex;
+    flex-direction: row;
+    vertical-align:middle;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.plainlink {
+    text-decoration: none;
+    list-style: none;
+    /*margin: 0;
+    padding: 0;*/
+    border: 0;
+    outline: 0;
+}
+
+.leftalignflex {
+    @extend .centerflex;
+    margin-right: auto;
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+}
+
+.ophover:hover {
+    @include reactive.lin-transition(1.5s opacity);
+    opacity: 0.5;
+}
+
+
+
+@media only screen and (max-width : $default-screen-break) {
+    .leftalignflex, .rightalignflex, .centerflex{
+        margin: 0;
+    }
+
+    .centerflex {
+        justify-content: left;
+        /*padding-left: 0;*/
+        text-align: center;
+    }
+}

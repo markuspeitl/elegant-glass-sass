@@ -1,11 +1,11 @@
-@import 'font-vars';
-@import 'colors';
-@import 'spacings';
+@forward 'fonts';
+$material-symbols-font-path: '/img/icons/material-symbols/';
+@forward '../img/icons/material-symbols/index.scss';
 
-@import 'nav';
-@import 'img';
-@import 'icons';
-@import 'buttons';
+@forward 'vars';
+@forward 'layouts';
+@forward 'reactive';
 
-@import 'base-layout';
-@import 'content';
+@forward 'containers';
+@forward 'content';
+@forward 'controls';

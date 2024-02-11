@@ -1,0 +1,153 @@
+@use '../vars';
+@use '../reactive';
+@use '../layouts/helpers';
+@use '../shared';
+
+$ovl-button-default-bg-opacity: 0.3;
+$ovl-button-hover-bg-opacity: 0.8;
+$ovl-button-border: 0.1rem solid vars.$ovl-button-fg-color;
+
+$ovl-button-height: vars.$nav-item-horizontal-height * 0.7;
+
+$button-content-spacing: 1rem;
+$button-default-padding-l: $button-content-spacing + 0.4rem;
+$button-default-padding-r: $button-content-spacing + 0.2rem;
+
+%clearbox {
+    border: 0;
+    background: none
+}
+
+/*sass elements with % are not emitted in css, but can be used for extending */
+%richbutton {
+    @extend %clearbox;
+    /*padding: 20px;*/
+    /*height: vars.$nav-item-horizontal-height;*/
+    padding-left: $button-default-padding-l;
+    padding-right: $button-default-padding-r;
+    font-size: vars.$buttons-font-size;
+    font-weight: vars.$buttons-font-weight;
+    font-family: vars.$buttons-font-family;
+    letter-spacing: vars.$buttons-letter-spacing;
+
+    &:hover {
+        @include reactive.lin-transition(1.5s);
+    }
+}
+
+.dark-button {
+    @extend %richbutton;
+    background-color: rgba(vars.$ovl-button-bg-color, $ovl-button-default-bg-opacity);
+    color: vars.$ovl-button-fg-color;
+
+    &:hover {
+        background-color: rgba(vars.$ovl-button-fg-color, $ovl-button-hover-bg-opacity);
+        color: vars.$ovl-button-bg-color;
+    }
+}
+
+.light-button {
+    @extend %richbutton;
+    background-color: vars.$nav-button-bg-color;
+    color: vars.$nav-text-color;
+
+    &:hover {
+        color: vars.$ovl-button-bg-color;
+        background-color: rgba(vars.$ovl-button-fg-color, $ovl-button-hover-bg-opacity);
+    }
+}
+
+.navbutton {
+    @extend .light-button;
+    height: vars.$nav-item-horizontal-height;
+}
+
+.icon {
+    color: inherit;
+    font-weight: vars.$icons-weight-thickness;
+}
+
+
+.bt-content {
+    @extend .centerflex, %clearbox;
+    background: none;
+
+    & > span:not(:first-child) {
+        margin-left: $button-content-spacing;
+    }
+}
+
+/* -------- background image overlay call to action button*/
+
+
+
+
+
+
+.img-ovl-button {
+    @extend .dark-button;
+    border: $ovl-button-border;
+    height: $ovl-button-height;
+
+    &:hover {
+        border: none;
+    }
+}
+
+
+
+
+
+// -------------- Button bar (example: top right in navigation to highlight a set of actions)
+
+$button-highlight-bg-color: hsl(161, 48%, 59%) !default;
+$bt-transition-time: vars.$transition-time 1.0s !default;
+//$nav-text-color: white;
+
+//Currently horizontal -> todo dynamic direction
+.button-bar {
+    & button {
+        width: auto;
+        padding-top: 15px;
+        padding-bottom: 5px;
+        background-color: $button-highlight-bg-color;
+        color: vars.$nav-text-color;
+        @include reactive.lin-transition($bt-transition-time, 'background-color');
+    }
+}
+
+@include helpers.screen-layout-break(vars.$small-screen-break) {
+    .button-bar {
+        & button {
+            width: 45%;
+            margin: 0;
+
+            .bt-content {
+                width: auto;
+                flex-direction: column;
+            }
+        }
+
+        &:first-child {
+            margin-right: auto;
+        }
+
+        &:last-child {
+            margin-left: auto;
+        }
+    }
+}
+
+
+/* Burger menu */
+
+.burger {
+    width: auto;
+    height: 100%;
+}
+.burger .icon{
+    height: auto;
+}
+
+
+/* Note: a low z-index on any ancestor can break :hover and :active events in all descendants*/

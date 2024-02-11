@@ -1,0 +1,53 @@
+@use '../vars' as vars;
+@use '../layouts/helpers';
+
+
+
+%font-antialias {
+    //-webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+%clean-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: none;
+}
+
+
+:root, html, body {
+    @extend %font-antialias;
+    @extend %clean-container;
+    width: 100%;
+    font-weight: vars.$base-font-weight;
+    font-family: vars.$base-font-family;
+    font-size: vars.$root-font-size;
+    line-height: vars.$root-line-height;
+    letter-spacing: vars.$base-letter-spacing;
+}
+
+html, body {
+    @extend %clean-container;
+}
+
+/*body {
+    background: none;
+}*/
+
+@include helpers.screen-layout-break(vars.$small-screen-break) {
+    :root {
+        --nav-horizontal-margin-base: 0;
+        --nav-links-horizontal-margin-base: 0;
+    }
+    /*body {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }*/
+    .sections-strip {
+        position: relative;
+    }
+}

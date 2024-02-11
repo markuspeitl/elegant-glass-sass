@@ -1,0 +1,180 @@
+@use '../vars';
+@use '../layouts/helpers';
+@use '../reactive';
+
+//$small-screen-break: vars.$small-screen-break !default;
+
+$bg-color: vars.$navbar-bg-color vars.$primary-color !default;
+$fg-color: vars.$navbar-fg-link-color vars.$secondary-color !default;
+$hover-bg-color: vars.$navbar-bg-color rgb(15, 95, 73) !default;
+$hover-fg-color: vars.$navbar-fg-link-color white !default;
+$zindex: 999999 !default;
+$transition-time: 1.0s !default;
+$letter-spacing: 2px !default;
+
+
+//Debug
+.burger {
+    display: none;
+}
+//
+
+
+%nav-holder {
+    margin: 0;
+    /*height: $navbar-height;
+    height: auto;*/
+    width: inherit;
+    z-index: $zindex;
+    background: $bg-color;
+    color: $fg-color;
+    letter-spacing: $letter-spacing;
+
+    @include reactive.lin-transition($transition-time);
+
+    &:hover {
+        background-color: $hover-bg-color;
+        color: $hover-fg-color;
+        @include reactive.lin-transition($transition-time, 'background-color');
+    }
+    
+}
+
+%clean-link {
+    text-decoration: none;
+    border: none;
+}
+
+%clean-list {
+    list-style: none;
+    & > a {
+        @extend %clean-link;
+    }
+}
+
+
+
+
+.headaction {
+    margin-right: 0;
+    @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'horizontal');
+}
+
+
+/* ---------------------------- */
+
+
+// -------------- Navigation list: collection of interactable ui elements for navigation
+// Can hold: link menus, button menus, logos, (+ non interactive content, img, text, .etc)
+// Can be in horizontal or vertical orientation
+// Can be on top, right, bottom or left of the screen
+// Can be fixed or have a page pos (within content flow)
+
+.navlist {
+    margin: 0;
+    @extend %nav-holder;
+    @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'horizontal');
+
+    & > * {
+        height: vars.$nav-item-horizontal-height;
+    }
+
+    & ul {
+        @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'horizontal');
+    }
+
+    & ul > li {
+        @extend %clean-list;
+    }
+
+    & ul > li > a {
+        padding: 10px;
+        color: vars.$navbar-fg-link-color;
+        /*border-top: 1px solid #777777;*/
+    }
+}
+
+@include helpers.screen-layout-break(vars.$small-screen-break) {
+    .navlist {
+        width: 100%;
+        height: auto;
+        @extend %nav-holder;
+        @include helpers.space-between-children(0, 'horizontal');
+        @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'vertical');
+        margin-top: 2px !important;
+        margin-bottom: 10px !important;
+    
+        & > * {
+            height: vars.$nav-item-horizontal-height;
+        }
+    
+        & ul {
+            @include helpers.space-between-children(0, 'horizontal');
+            @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'vertical');
+
+            text-align: center;
+            flex-direction: column;
+            /*where does this 40px padding come from ???*/
+            padding-left: 0;
+        }
+    
+        & ul > li {
+            @extend %clean-list;
+            padding-top: 13px;
+            padding-bottom: 13px;
+        }
+    
+        & ul > li > a {
+            display: block;
+            width: 100%;
+        }
+
+        & ul > li:nth-child(odd) {
+            background: rgba(255,255,255, 0.2); //TODO: darken instead https://sass-lang.com/documentation/modules/color/
+        }
+    }
+}
+
+
+// ---------------------------- Navigation submenu
+// should be some kind of navlist or similar
+// options: stretch across screen, wrap content
+// maybe same menu as the links in the footer or the links in the sidebar (if sidebar is nav)
+
+.subhidden {
+    display: none;
+}
+.subnav {
+    display: none;
+}
+
+
+li {
+    position: relative;
+}
+/*.expandable_nav_url:hover ~ .subnav {*/
+.expandable_nav_url:hover ~ .subnav, .subnav:hover {
+    display: flex;
+    flex-direction: column;
+    /*position: relative;*/
+    /*top: $navbar-height;*/
+    position: absolute;
+    top: vars.$nav-text-font-size;
+    left: 0;
+    padding: 20px;
+    background: vars.$navbar-bg-color;
+}
+
+.subnav li {
+    padding: 10px;
+    margin: 0;
+}
+
+.subnav .nav_url {
+    padding: 0px;
+}
+
+.subnav ul {
+    padding: 0px;
+    margin: 0;
+}

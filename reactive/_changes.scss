@@ -1,0 +1,55 @@
+@use 'sass:list';
+
+$default-transition-time: 1.0s !default;
+
+@mixin lin-transition($transition-time: $default-transition-time, $target: 'all') {
+    
+    /*@if not ($transition-time) {
+        $transition-time: $default-transition-time;
+    }*/
+    -webkit-transition: $target $transition-time linear;
+    -ms-transition: $target $transition-time linear;
+    transition: $target $transition-time;
+}
+
+.transition {
+    @include lin-transition()
+}
+
+@function data-toggle($current-val, $value-options){
+
+    $first-option: list.nth($value-options, 1);
+    $second-option: list.nth($value-options, 2);
+
+    @if ($current-val == $first-option){
+        @return $second-option;
+    } @else if($current-val == $second-option){
+        @return $first-option;
+    }
+    @return $current-val;
+}
+
+@mixin flex-direction($ref-direction: row, $reverse: false){
+
+    $result-direction: $ref-direction;
+
+    @if ($reverse){
+        flex-direction: data-toggle($ref-direction, row column);
+    } 
+    @else {
+        flex-direction: $ref-direction
+    }
+}
+
+
+@mixin invert-hover($percent: 100%, $trans-time: 1.2s){
+    filter: invert($percent);
+    @include lin-transition($trans-time, 'filter')
+}
+
+.invert-hover:hover {
+    @include invert-hover(100%)
+}
+
+
+//@mixin rotate-flex($orientation)
