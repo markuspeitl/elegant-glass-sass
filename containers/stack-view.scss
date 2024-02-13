@@ -1,4 +1,5 @@
 @use '../vars';
+@use '../shared';
 
 $stack-view-default-h-size: 70vh;
 $stack-view-font-size: 2rem;
@@ -12,10 +13,10 @@ $stack-view-font-color: white;
     text-align: center;
     display: flex;
     height: $stack-view-default-h-size;
-    color: $stack-view-font-color;
+    //color: $stack-view-font-color;
     font-size: $stack-view-font-size;
 
-    & .section-background {
+    & .stack-bg {
         width: inherit;
         position: absolute;
         top: 0;
@@ -25,35 +26,28 @@ $stack-view-font-color: white;
         z-index: -9999;
         height: $stack-view-default-h-size;
     }
-
-    & .stack-bg {
-
-    }
 }
 
 .stack-overlay {
+    @extend .centerflex;
     width: 100%;
-    height: auto;
-    display: flex;
+    height: 100%;
     flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
 
-    & > div {
-        z-index: 0;
-        /*position: relative;*/
-        /*background: rgba(50,50,50, 0.2);*/
+    /*& > div {
+        z-index: -10;
+        
         background: linear-gradient(to bottom, rgba(50,50,50, 0.3), rgba(50,50,50, 0.04));
-        /*box-shadow: 10px 8px 10px 5px rgb(50,50,50);*/
-        display: flex;
+        
+        @extend .centerflex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        vertical-align: middle;
-    }
+    }*/
 
-    & .title {
+    /*position: relative;*/
+    /*background: rgba(50,50,50, 0.2);*/
+    /*box-shadow: 10px 8px 10px 5px rgb(50,50,50);*/
+    /*
+    & h1 {
         font-weight: vars.$main-title-font-weight;
         font-family: vars.$main-title-font-family;
         font-size: vars.$main-title-font-size;
@@ -64,7 +58,7 @@ $stack-view-font-color: white;
         margin: 13px;
     }
 
-    & .title ~ h2 {
+    & h2 {
         font-weight: vars.$main-title-secondary-font-weight;
         font-family: vars.$main-title-secondary-font-family;
         font-size: vars.$main-title-secondary-font-size;
@@ -78,10 +72,10 @@ $stack-view-font-color: white;
     }
     & .center-content > * {
         margin: 0;
-        margin-top: 0.3rem;
+        margin-top: 0.2rem;
     }
     & button {
-        margin-top: 1.5rem;
-    }
+        margin-top: 1.2rem;
+    }*/
     
 }

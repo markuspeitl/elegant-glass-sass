@@ -27,7 +27,7 @@ $button-default-padding-r: $button-content-spacing + 0.2rem;
     padding-right: $button-default-padding-r;
     font-size: vars.$buttons-font-size;
     font-weight: vars.$buttons-font-weight;
-    font-family: vars.$buttons-font-family;
+    //font-family: vars.$buttons-font-family;
     letter-spacing: vars.$buttons-letter-spacing;
 
     &:hover {

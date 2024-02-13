@@ -1,9 +1,7 @@
 @use "sass:map";
 
-$font-family-set: "alef", arial, Helvetica, "georgia";
 //$font-family-set: "montserrat";
-
-$base-font-family: $font-family-set;
+$base-font-family: "alef", arial, Helvetica, "georgia";
 $base-font-weight: 800;
 $base-letter-spacing: 2px;
 
@@ -17,7 +15,7 @@ $esoteric-font-family: 'dancing-script';
 $esoteric-font-family: 'milonga';
 
 
-$read-text-font-family:  'alef','arial';
+//$read-text-font-family:  'alef','arial';
 $titles-font-family: 'raleway';
 $control-font-family: 'arial';
 /*$quote-font-family: 'raleway';*/
@@ -34,11 +32,6 @@ $nav-text-font-weight: 400;
 $nav-icon-boldness: 400;
 $nav-button-text-boldness: 800;*/
 
-$buttons-font-weight: $normal-bold-font-weight;
-$buttons-font-family: $base-font-family;
-$icons-weight-thickness: $emphasised-font-weight;
-
-
 /*$content-section-title-font-weight: $emphasised-font-weight;
 $content-section-title-font-family: $base-font-family;*/
 $content-section-title-font-weight: 600 ;//$normal-bold-font-weight;
@@ -46,7 +39,7 @@ $content-section-title-font-weight: 600 ;//$normal-bold-font-weight;
 //asul@600, gabriela@600, young-serif@500!, ovo@800, castoro@800, stix-two-text@600,800 , crimson-pro@600,800
 // ovo, castoro, asul?, gabriela?, young-serif, stix-two-text, crimson-pro
 //crimson-pro, protest-riot, open-sans
-$content-section-title-font-family: 'merienda'; /*$esoteric-font-family*/
+$content-section-title-font-family: 'stix-two-text'; /*$esoteric-font-family*/
 $content-section-title-font-size: 2.7rem;
 $content-section-title-letter-space: 1px;
 
@@ -100,9 +93,15 @@ $main-title-secondary-font-family: $main-title-font-family;/*, $base-font-family
 $main-title-secondary-font-size: $main-title-font-size * 0.85;
 
 
-$nav-header-default-font-weight: $normal-bold-font-weight;
-$nav-header-default-font-family: arial;
-$nav-header-default-font-size: 21px;
+//$nav-header-default-font-weight: $normal-bold-font-weight;
+
+//inter@400, protest-riot@400, raleway@600, quicksand@600, cabin@400,600, mulish@400,600 abeezee@400
+//$nav-header-default-font-family: 'mulish';
+//$nav-header-default-font-size: 1.5rem;
+
+//size, variant, weight, size/line, family
+$nav-header-default-font: 400 1.5rem 'mulish';
+//$nav-header-default-font-weight: 1.5rem;
 
 $logo-title-family: Arial, Helvetica, sans-serif;
 $logo-title-size: 35px;
@@ -122,11 +121,11 @@ $root-font-size: 1rem !default;
     @return null;
 }*/
 
-$read-text-font: (
+/*$read-text-font: (
     weight: $regular-font-weight,
     family: $base-font-family,
     size: 1rem,
-);
+);*/
 
 @mixin apply-font-set($text-font-map) {
     font-weight: map.get($text-font-map, "weight");
@@ -135,13 +134,22 @@ $read-text-font: (
 }
 
 
+$buttons-font-size: 1.0rem;
+$buttons-font-weight: 600;
+$buttons-letter-spacing: 0.1rem;
+
+$icons-weight-thickness: $emphasised-font-weight;
+/*$buttons-font-weight: $normal-bold-font-weight;
+$buttons-font-family: 'mulish';
+
+
 $button-font-set: (
     weight: $buttons-font-weight,
     family: $buttons-font-family,
-    size: 1rem,
+    size: 2rem,
 );
 
 
 button {
     @include apply-font-set($button-font-set);
-}
+}*/

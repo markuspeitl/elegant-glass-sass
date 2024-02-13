@@ -5,9 +5,11 @@
 
 
 header {
-    font-weight: vars.$nav-header-default-font-weight;
+    /*font-weight: vars.$nav-header-default-font-weight;
     font-family: vars.$nav-header-default-font-family;
-    font-size: vars.$nav-header-default-font-size;
+    font-size: vars.$nav-header-default-font-size;*/
+
+    font: vars.$nav-header-default-font;
 
     @extend %clean-container;
     text-align: center;

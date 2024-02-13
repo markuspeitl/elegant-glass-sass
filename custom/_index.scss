@@ -16,7 +16,7 @@ $img-stack-font-size: 1.0rem;
     height: $main-stack-view-h-size !important;
     font-size: $img-stack-font-size;
 
-    & .section-background {
+    & .stack-bg {
         height: $main-stack-view-h-size !important;
     }
 
@@ -26,11 +26,11 @@ $img-stack-font-size: 1.0rem;
 }
 
 
-$title-font-size: 3rem;
+$title-font-size: 3.3rem;
 //$second-title-font-size * 0.85;
 $main-img-section-font-set: (
-    title-font: $title-font-size vars.$main-title-font-family,
-    secondary-title-font: $title-font-size * 0.85 vars.$main-title-font-family,
+    title-font: $title-font-size 'merienda',
+    secondary-title-font: $title-font-size * 0.85 'merienda',
     //body-font: $title-font-size * 0.5 vars.$main-title-font-family
     body-font: null,
 );
@@ -39,18 +39,18 @@ $main-img-section-font-set: (
     $title-font: map.get($section-font-set, "title-font");
     @if($title-font){
         h1 {
-            font: $title-font
+            font: $title-font !important
         }
     }
     $secondary-title-font: map.get($section-font-set, "secondary-title-font");
     @if($secondary-title-font){
         h2 {
-            font: $secondary-title-font
+            font: $secondary-title-font !important
         }
     }
     $body-font: map.get($section-font-set, "body-font");
     @if($body-font){
-        font: $body-font
+        font: $body-font !important
     }
 }
 
@@ -62,10 +62,22 @@ $main-img-section-font-set: (
 
     h1 {
         color: vars.$main-image-main-title-color;
-        text-shadow: 2px 2px 15px black;
+        //text-shadow: 2px 2px 15px black;
+        //text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit;
+        //Multiple can be applied by comma seperating them (in this case -> thicker text shadow)
+        text-shadow: 3px 3px 15px black, 3px 3px 15px black;
+        opacity: 0.95;
+        margin: 0;
+        margin-bottom: 0.75rem !important;
     }
     h2 {
         color: vars.$main-image-secondary-title-color;
-        text-shadow: 2px 2px 15px black;
+
+        text-shadow: 3px 3px 15px black, 3px 3px 15px black;
+        //text-shadow: 0px 0px 30px white, 3px 3px 15px black;
+        font-weight: 400;
+        opacity: 0.95;
+        margin: 0;
+        margin-bottom: 1.5rem !important;
     }
 }
