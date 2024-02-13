@@ -88,14 +88,15 @@ $letter-spacing: 2px !default;
 .navlist {
     margin: 0;
     @extend %nav-holder;
-    @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'horizontal');
+    @include helpers.space-between-children(var(--nav-horizontal-margin-base), horizontal);
 
     & > * {
         height: vars.$nav-item-horizontal-height;
     }
 
     & ul {
-        @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'horizontal');
+        @include helpers.space-between-children(var(--nav-horizontal-margin-base), horizontal);
+        @include helpers.border-between-children(1px solid white, horizontal);
     }
 
     & ul > li {

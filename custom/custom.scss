@@ -1,0 +1,123 @@
+@use "sass:map";
+@use '../vars';
+@use '../containers';
+
+/*
+$main-stack-view-h-size: 700px;
+$stack-view-default-h-size: auto;
+*/
+$main-stack-view-h-size: 70vh;
+$img-stack-font-size: 1.0rem;
+
+
+.img-text-stack {
+    @extend .stack-view;
+
+    //height: $main-stack-view-h-size;
+    font-size: $img-stack-font-size;
+
+    & .stack-bg {
+        //height: $main-stack-view-h-size;
+        //height: 100%;
+    }
+
+    .stack-bg {
+        height: 100%;
+    }
+}
+
+
+$title-font-size: 3.3rem;
+//$second-title-font-size * 0.85;
+$main-img-section-font-set: (
+    title-font: $title-font-size 'merienda',
+    secondary-title-font: $title-font-size * 0.85 'merienda',
+    //body-font: $title-font-size * 0.5 vars.$main-title-font-family
+    body-font: null,
+);
+
+@mixin section-fonts($section-font-set){
+    $title-font: map.get($section-font-set, "title-font");
+    @if($title-font){
+        h1 {
+            font: $title-font !important
+        }
+    }
+    $secondary-title-font: map.get($section-font-set, "secondary-title-font");
+    @if($secondary-title-font){
+        h2 {
+            font: $secondary-title-font !important
+        }
+    }
+    $body-font: map.get($section-font-set, "body-font");
+    @if($body-font){
+        font: $body-font !important
+    }
+}
+
+.main-stack {
+    @extend .img-text-stack;
+    @include section-fonts($main-img-section-font-set);
+
+    //height: $main-stack-view-h-size !important;
+    height: 1080px !important;
+
+    h1 {
+        color: vars.$main-image-main-title-color;
+        //text-shadow: 2px 2px 15px black;
+        //text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit;
+        //Multiple can be applied by comma seperating them (in this case -> thicker text shadow)
+        text-shadow: 3px 3px 15px black, 3px 3px 15px black;
+        opacity: 0.95;
+        margin: 0;
+        margin-bottom: 0.75rem !important;
+
+        //position: absolute;
+        //top: 90px;
+    }
+    h2 {
+        color: vars.$main-image-secondary-title-color;
+
+        text-shadow: 3px 3px 15px black, 3px 3px 15px black;
+        //text-shadow: 0px 0px 30px white, 3px 3px 15px black;
+        font-weight: 400;
+        opacity: 0.98;
+        margin: 0;
+        margin-bottom: 1.5rem !important;
+    }
+    
+}
+
+
+.main-stack .stack-bg {
+    position: fixed;
+    z-index: -99999;
+}
+.content-section {
+    z-index: 0;
+    //background: rgba($color: #ffffff, $alpha: 0.9);
+    background: rgba($color: #ededff, $alpha: 0.85);
+}
+
+.logo {
+    height: 500px;
+    margin: 0;
+    position: absolute;
+    left: 3em;
+    top: -10rem;
+    opacity: 0.85;
+    //transform: scaleX(-1);
+    transform: scaleX(-1);// rotate(20deg);
+}
+
+.main-stack .stack-overlay {
+    height: auto;
+    //width: auto;
+    position: absolute;
+    top: 240px;
+}
+
+//.sections-strip .content-section:nth-child(2) {
+.content-start {  
+    margin-top: -50vh !important;
+}
