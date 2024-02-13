@@ -1,6 +1,7 @@
 @use '../vars';
 @use '../layouts/helpers';
 @use '../reactive';
+@use '../shared';
 
 //$small-screen-break: vars.$small-screen-break !default;
 
@@ -60,19 +61,19 @@ $letter-spacing: 2px !default;
     border: none;
 }
 
-%clean-list {
+/*%clean-list {
     list-style: none;
     & > a {
         @extend %clean-link;
     }
-}
+}*/
 
 
 
 
 .headaction {
     //margin-right: 0;
-    @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'horizontal');
+    @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'horizontal');
 }
 
 
@@ -88,27 +89,50 @@ $letter-spacing: 2px !default;
 .navlist {
     margin: 0;
     @extend %nav-holder;
-    @include helpers.space-between-children(var(--nav-horizontal-margin-base), horizontal);
+    @include helpers.gap-between-children(var(--nav-horizontal-margin-base), horizontal);
 
     & > * {
         height: vars.$nav-item-horizontal-height;
     }
 
-    & ul {
-        @include helpers.space-between-children(var(--nav-horizontal-margin-base), horizontal);
+    nav > ul {
+        @include helpers.pad-between-children(var(--nav-horizontal-margin-base), horizontal);
         @include helpers.border-between-children(1px solid white, horizontal);
     }
 
-    & ul > li {
-        @extend %clean-list;
+    ul > li {
+        list-style: none;
+        //@extend %clean-list;
     }
 
-    & ul > li > a {
-        padding: 10px;
-        color: vars.$navbar-fg-link-color;
+    ul > li a {
+        //padding: 10px;
+        //color: vars.$navbar-fg-link-color;
         /*border-top: 1px solid #777777;*/
     }
+
+    ul > li a:hover {
+        //padding-bottom: 3px;
+        //border-bottom: 2px solid white;
+        //text-decoration: underline;
+        //text-decoration-thickness: 2px;
+    }
 }
+
+.navlist a {
+    @extend %clean-link;
+    color: vars.$navbar-fg-link-color;
+
+    &:hover {
+        padding-bottom: 3px;
+        border-bottom: 2px solid white;
+    }
+}
+
+.navlist ul {
+    list-style: none;
+}
+
 
 nav {
     //font: vars.$nav-header-default-font-size vars.$nav-header-default-font-family;
@@ -123,8 +147,8 @@ nav {
         width: 100%;
         height: auto;
         @extend %nav-holder;
-        @include helpers.space-between-children(0, 'horizontal');
-        @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'vertical');
+        @include helpers.gap-between-children(0, 'horizontal');
+        @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'vertical');
         margin-top: 2px !important;
         margin-bottom: 10px !important;
     
@@ -133,8 +157,8 @@ nav {
         }
     
         & ul {
-            @include helpers.space-between-children(0, 'horizontal');
-            @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'vertical');
+            @include helpers.pad-between-children(0, 'horizontal');
+            @include helpers.pad-between-children(var(--nav-horizontal-margin-base), 'vertical');
 
             text-align: center;
             flex-direction: column;
@@ -143,7 +167,7 @@ nav {
         }
     
         & ul > li {
-            @extend %clean-list;
+            //@extend %clean-list;
             padding-top: 13px;
             padding-bottom: 13px;
         }
@@ -170,14 +194,15 @@ nav {
 }
 .subnav {
     display: none;
+    width: 100%;
 }
 
 
 li {
     position: relative;
 }
-/*.expandable_nav_url:hover ~ .subnav {*/
-.expandable_nav_url:hover ~ .subnav, .subnav:hover {
+/*.expandable_nav_url:hover + .subnav {*/
+.expandable_nav_url:hover + .subnav, .subnav:hover {
     display: flex;
     flex-direction: column;
     /*position: relative;*/
@@ -202,3 +227,95 @@ li {
     padding: 0px;
     margin: 0;
 }
+
+
+.table-bar {
+    width: 100%;
+    //background-color: rgba(#22cc99, 0.85);
+    background-color: #22cc99;
+    top: 86px;
+    position: absolute;
+    left: 0;
+    text-align: left;
+    opacity: 0.1;
+    visibility: hidden;
+    //display: none;
+    padding: 4rem;
+}
+
+.nav-table {
+    //text-align: left;
+    width: auto;
+    
+    //display: none;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    //gap: 10px;
+
+    //li, a, ul {
+    & * {
+        //padding: 0 !important;
+        //margin: 0 !important;
+        //border: none !important;
+    }
+
+    .column {
+        justify-self: center;
+        //grid-column: -1 / 1;
+        //place-self: center;
+    }
+    h3 {
+        margin: 0;
+        padding-bottom: 1.0rem;
+        opacity: 0.75;
+        color: #086247;
+    }
+    li {
+        margin-top: 0.4rem;
+    }
+}
+
+/*.nav-table {
+    //@extend .centerflex;
+    //display: grid;
+    //display: flex;
+    display: grid;
+    grid-auto-flow: column;
+}*/
+
+.nav-table .column {
+    height: 100%;
+}
+/*nav li:hover + .nav-table {
+    display: grid;
+}
+.nav-table:hover {
+    display: grid;
+}*/
+
+/*.nav-tb-ck {
+    display: none;
+}*/
+
+.nav-tb-ck {
+    height: 20px;
+    width: 20px;
+    //display:
+    //opacity: 0.0;
+
+}
+.nav-tb-ck:checked + .table-bar {
+    visibility: visible;
+    //display: block;
+    
+    opacity: 0.95;
+    transition: 1s opacity;
+ }
+
+/*.nav-tb-ck:checked ~ .nav-tb-ck + .table-bar .nav-table {
+    display: none;
+ }*/

@@ -28,7 +28,7 @@ $size: vars.$nav-logo-font-size !default;
     }
     a {
         @extend .centerflex;
-        @include helpers.space-between-children(0.75em, 'horizontal');
+        @include helpers.gap-between-children(0.75em, 'horizontal');
     }
     
 }
@@ -81,5 +81,69 @@ $size: vars.$nav-logo-font-size !default;
         &:hover {
             opacity: 0.0;
         }
+    }
+}
+
+
+$logo-size: 20rem;
+$center-font-size: $logo-size * 0.6;
+$suftitle-font-size: $center-font-size * 0.375;
+
+//$center-font-size: 12rem;
+//$suftitle-font-size: 4.5rem;
+.rich-logo {
+    height: $logo-size;
+    width: auto;
+    position: relative;
+
+    color: white;
+    font-size: $center-font-size;
+    //font-family: 'ruthie';
+    font-family: 'ruthie';
+    //font-family: 'protest-revolution';
+    //font-family: 'pacifico';
+    font-weight: 800;
+    display: flex;
+    flex-direction: row;
+    //vertical-align: middle;
+    //align-items: center;
+    //justify-content: center;
+
+    .logo-stack {
+        position: relative;
+        height: $logo-size;
+        width: $logo-size;
+    }
+
+    img {
+        width: $logo-size;
+        height: auto;
+        z-index: -999;
+    }
+
+    .ovly-letter {
+        position: absolute;
+        //top: 140px;
+        top: calc($logo-size / 2) - calc($center-font-size / 2) + 0.9rem;
+        left: calc($logo-size / 2) - calc($center-font-size / 2) + 0.2rem;
+        z-index: 0;
+    }
+
+    .logo-suftitle {
+        //height: fit-content;
+        font-family: 'protest-revolution';
+        font-weight: 600;
+        font-size: $suftitle-font-size;
+        margin-left: - calc($logo-size / 4) - 0.2rem;
+        margin-top: calc($logo-size / 2) - calc($suftitle-font-size/2) + 2rem;//calc($suftitle-font-size/2);// - $suftitle-font-size + 0.4rem;
+        z-index: 0;
+    }
+
+}
+
+.bg-logo {
+    //position: absolute;
+    img {
+        opacity: 0.7;
     }
 }

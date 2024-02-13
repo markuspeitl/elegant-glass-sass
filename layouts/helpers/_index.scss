@@ -1,23 +1,43 @@
-@mixin space-between-children($spacing: 0.1rem, $orientation: horizontal){
+
+@mixin between-children($orientation: horizontal){
+
     & > *:not(:last-child) {
         @if ($orientation == horizontal or $orientation == h){
-            margin-right: $spacing;
+            @content();
         }
         @if ($orientation == vertical or $orientation == v){
-            margin-top: $spacing;
+            @content();
         }
     }
 }
 
+@mixin gap-between-children($spacing: 0.1rem, $orientation: horizontal){
+    @include between-children($orientation){
+        margin-right: $spacing;
+    }
+}
+
+@mixin pad-between-children($spacing: 0.1rem, $orientation: horizontal){
+    @include between-children($orientation){
+        padding-left: $spacing;
+        padding-right: $spacing;
+    }
+}
+
 @mixin border-between-children($border: 2px solid white, $orientation: horizontal){
-    & > *:not(:last-child) {
+
+    @include between-children($orientation){
+        border-right: $border;    
+    }
+
+    /*& > *:not(:last-child) {
         @if ($orientation == horizontal or $orientation == h){
             border-right: $border;
         }
         @if ($orientation == vertical or $orientation == v){
             border-right: $border;
         }
-    }
+    }*/
 }
 
 @mixin screen-layout-break($width-break: $default-screen-break){
