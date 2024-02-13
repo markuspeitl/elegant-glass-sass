@@ -1,19 +1,19 @@
 @use '../vars';
 
-$stack-section-default-h-size: 70vh;
-$stack-section-font-size: 2rem;
-$stack-section-font-color: white;
+$stack-view-default-h-size: 70vh;
+$stack-view-font-size: 2rem;
+$stack-view-font-color: white;
 
-.stacked-section {
+.stack-view {
     width: 100%;
     position: relative;
     top: 0;
     left: 0;
     text-align: center;
     display: flex;
-    height: $stack-section-default-h-size;
-    color: $stack-section-font-color;
-    font-size: $stack-section-font-size;
+    height: $stack-view-default-h-size;
+    color: $stack-view-font-color;
+    font-size: $stack-view-font-size;
 
     & .section-background {
         width: inherit;
@@ -23,7 +23,7 @@ $stack-section-font-color: white;
         z-index: inherit;
         object-fit: cover;
         z-index: -9999;
-        height: $stack-section-default-h-size;
+        height: $stack-view-default-h-size;
     }
 
     & .stack-bg {

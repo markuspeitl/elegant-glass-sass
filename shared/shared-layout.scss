@@ -29,6 +29,14 @@ $default-screen-break: 700px !default;
     left: 0;*/
 }
 
+.lalign {
+    margin-right: auto;
+}
+.ralign {
+    margin-left: auto;
+}
+
+
 .ophover:hover {
     @include reactive.lin-transition(1.5s opacity);
     opacity: 0.5;
@@ -37,7 +45,7 @@ $default-screen-break: 700px !default;
 
 
 @media only screen and (max-width : $default-screen-break) {
-    .leftalignflex, .rightalignflex, .centerflex{
+    .lalign, .ralign, .centerflex{
         margin: 0;
     }
 

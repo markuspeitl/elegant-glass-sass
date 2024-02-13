@@ -29,16 +29,15 @@ $default-transition-time: 1.0s !default;
     @return $current-val;
 }
 
-@mixin flex-direction($ref-direction: row, $reverse: false){
-
-    $result-direction: $ref-direction;
-
+@function toggle-two-set($current-val, $value-options, $reverse: false){
     @if ($reverse){
-        flex-direction: data-toggle($ref-direction, row column);
+        @return data-toggle($current-val, $value-options);
     } 
-    @else {
-        flex-direction: $ref-direction
-    }
+    @return $current-val;
+}
+
+@mixin flex-direction($ref-direction: row, $reverse: false){
+    flex-direction: toggle-two-set($ref-direction, 'row column', $reverse)
 }
 
 

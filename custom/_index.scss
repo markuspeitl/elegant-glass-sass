@@ -1,21 +1,71 @@
-/*
-$main-stack-section-h-size: 700px;
-$stack-section-default-h-size: auto;
-*/
-$main-stack-section-h-size: 70vh;
-$main-stack-section-font-size: 2.8rem;
+@use "sass:map";
+@use '../vars';
+@use '../containers';
 
-.main-image-holder {
-    @extend .stacked-section;
-    height: $main-stack-section-h-size !important;
-    font-size: $main-stack-section-font-size;
+/*
+$main-stack-view-h-size: 700px;
+$stack-view-default-h-size: auto;
+*/
+$main-stack-view-h-size: 70vh;
+$img-stack-font-size: 1.0rem;
+
+
+.img-text-stack {
+    @extend .stack-view;
+
+    height: $main-stack-view-h-size !important;
+    font-size: $img-stack-font-size;
 
     & .section-background {
-        height: $main-stack-section-h-size !important;
+        height: $main-stack-view-h-size !important;
     }
 
-    .main-image {
+    img {
         height: 100%;
     }
 }
 
+
+$title-font-size: 3rem;
+//$second-title-font-size * 0.85;
+$main-img-section-font-set: (
+    title-font: $title-font-size vars.$main-title-font-family,
+    secondary-title-font: $title-font-size * 0.85 vars.$main-title-font-family,
+    //body-font: $title-font-size * 0.5 vars.$main-title-font-family
+    body-font: null,
+);
+
+@mixin section-fonts($section-font-set){
+    $title-font: map.get($section-font-set, "title-font");
+    @if($title-font){
+        h1 {
+            font: $title-font
+        }
+    }
+    $secondary-title-font: map.get($section-font-set, "secondary-title-font");
+    @if($secondary-title-font){
+        h2 {
+            font: $secondary-title-font
+        }
+    }
+    $body-font: map.get($section-font-set, "body-font");
+    @if($body-font){
+        font: $body-font
+    }
+}
+
+.main-stack {
+    @extend .img-text-stack;
+    height: $main-stack-view-h-size !important;
+
+    @include section-fonts($main-img-section-font-set);
+
+    h1 {
+        color: vars.$main-image-main-title-color;
+        text-shadow: 2px 2px 15px black;
+    }
+    h2 {
+        color: vars.$main-image-secondary-title-color;
+        text-shadow: 2px 2px 15px black;
+    }
+}

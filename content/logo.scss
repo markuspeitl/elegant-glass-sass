@@ -6,7 +6,7 @@ $family: vars.$logo-title-family !default;
 $weight: 400 !default;
 $size: vars.$nav-logo-font-size !default;
 
-.navbar:hover .logo-holder {
+.navlist:hover .logo-holder {
     opacity: 0;
 
     @include reactive.lin-transition();

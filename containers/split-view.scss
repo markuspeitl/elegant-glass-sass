@@ -1,5 +1,5 @@
 @use '../vars';
-
+@use 'sass:list';
 
 /*.left-pane {
     width: 46%;
@@ -44,16 +44,54 @@
         max-width: 1200px;
     }
 
-    & img {
+    /*& img {
         height: auto;
         width: 100%;
-        /*object-fit:cover;
+        object-fit:cover;
         
         max-width:100%;
-        max-height: 100%;*/
+        max-height: 100%;
+    }*/
+}
+
+//TODO generic keyword to array choice binding
+
+$orientation_list: 'horizontal vertical';
+
+@mixin orientation-stretch-sub($orientation: 'horizontal', $elem){
+
+    $list-index: list.index('horizontal vertical', $orientation);
+
+    @if($list-index == 0){
+        #{$elem}{
+            height: auto;
+            width: 100%;
+            object-fit:cover;
+        }
+    } @else if($list-index == 1){
+        #{$elem}{
+            height: 100%;
+            width: auto;
+            object-fit:cover;
+        }
+    } @else {
+        #{$elem}{
+            height: auto;
+            width: auto;
+        }
     }
 }
 
+@mixin img-stretch($orientation: 'horizontal'){
+    @include orientation-stretch-sub($orientation, 'img');
+}
+
+.img-use-width {
+    @include img-stretch('horizontal');
+    img {
+        filter: saturate(50%) brightness(1.8);
+    }
+}
 
 
 @media only screen and (max-width : 1000px) {

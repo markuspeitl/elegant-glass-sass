@@ -4,10 +4,25 @@
 
 //$small-screen-break: vars.$small-screen-break !default;
 
-$bg-color: vars.$navbar-bg-color vars.$primary-color !default;
+@function defined($value-options){
+    @each $opt in $value-options {
+        @if ($opt){
+            @return $opt;
+        }
+    }
+
+    @return null;
+};
+
+/*$bg-color: vars.$navbar-bg-color vars.$primary-color !default;
 $fg-color: vars.$navbar-fg-link-color vars.$secondary-color !default;
 $hover-bg-color: vars.$navbar-bg-color rgb(15, 95, 73) !default;
-$hover-fg-color: vars.$navbar-fg-link-color white !default;
+$hover-fg-color: vars.$navbar-fg-link-color white !default;*/
+$bg-color: vars.$navbar-bg-color !default;
+$fg-color: vars.$navbar-fg-link-color !default;
+$hover-bg-color: rgb(15, 95, 73) !default;
+$hover-fg-color: vars.$navbar-fg-link-color !default;
+
 $zindex: 999999 !default;
 $transition-time: 1.0s !default;
 $letter-spacing: 2px !default;
@@ -56,7 +71,7 @@ $letter-spacing: 2px !default;
 
 
 .headaction {
-    margin-right: 0;
+    //margin-right: 0;
     @include helpers.space-between-children(var(--nav-horizontal-margin-base), 'horizontal');
 }
 

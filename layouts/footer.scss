@@ -2,7 +2,8 @@
 @use '../containers/stack-view';
 
 footer {
-    background: red;
+    /*background: red;*/
+    position: relative;
     width: 100%;
     display: grid;
     grid-template-columns: auto auto auto;
