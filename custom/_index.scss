@@ -13,14 +13,15 @@ $img-stack-font-size: 1.0rem;
 .img-text-stack {
     @extend .stack-view;
 
-    height: $main-stack-view-h-size !important;
+    //height: $main-stack-view-h-size;
     font-size: $img-stack-font-size;
 
     & .stack-bg {
-        height: $main-stack-view-h-size !important;
+        //height: $main-stack-view-h-size;
+        //height: 100%;
     }
 
-    img {
+    .stack-bg {
         height: 100%;
     }
 }
@@ -56,9 +57,10 @@ $main-img-section-font-set: (
 
 .main-stack {
     @extend .img-text-stack;
-    height: $main-stack-view-h-size !important;
-
     @include section-fonts($main-img-section-font-set);
+
+    //height: $main-stack-view-h-size !important;
+    height: 1080px !important;
 
     h1 {
         color: vars.$main-image-main-title-color;
@@ -76,8 +78,31 @@ $main-img-section-font-set: (
         text-shadow: 3px 3px 15px black, 3px 3px 15px black;
         //text-shadow: 0px 0px 30px white, 3px 3px 15px black;
         font-weight: 400;
-        opacity: 0.95;
+        opacity: 0.98;
         margin: 0;
         margin-bottom: 1.5rem !important;
     }
+    
+}
+
+
+.main-stack .stack-bg {
+    position: fixed;
+    z-index: -99999;
+}
+.content-section {
+    z-index: 0;
+    //background: rgba($color: #ffffff, $alpha: 0.9);
+    background: rgba($color: #ededff, $alpha: 0.85);
+}
+
+.logo {
+    height: 80%;
+    margin: 0;
+    position: absolute;
+    left: 4em;
+    top: 3em;
+    opacity: 0.85;
+    //transform: scaleX(-1);
+    transform: scaleX(-1);// rotate(20deg);
 }

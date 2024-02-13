@@ -4,6 +4,8 @@
     font-weight: vars.$quote-box-font-weight;
     font-family: vars.$quote-box-font-family;
     font-size: vars.$quote-box-font-size;
+    color: white;
+    text-shadow: 3px 3px 15px black, 3px 3px 15px black;
     line-height: 2.5rem;
     
     /*& cite {
