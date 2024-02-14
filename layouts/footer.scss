@@ -1,28 +1,33 @@
 @use '../vars';
+@use '../shared';
 @use '../containers/stack-view';
 
 footer {
     /*background: red;*/
     position: relative;
+    top: 0;
     width: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
+    //grid-template-columns: repeat(3, 1fr);
+    //https://stackoverflow.com/questions/47601564/equal-width-columns-in-css-grid
+    //grid-template-columns: repeat(3, minmax(0, 1fr));
+    //grid-template-rows: auto 50px;
+    //column-gap: 50px;
+    //grid-auto-flow: column;
+    //padding-left: 50px;
+    //padding-right: 50px;
+    //display: grid;
+    //display: flex;
+    //flex-direction: column;
+    color: white !important;
+    font-size: 1.5rem !important;
 
-    .grid-left {
 
+    .stack-overlay {
+        //@extend .centerflew-col;
+        display: flex;
+        flex-direction: column;
     }
-    .grid-center {
-        
-    }
-    .grid-right {
-        
-    }
-    .grid-bottom {
-        
-    }
+
 
     //Todo do not do this with that (use stack-view instead and just put the grid in the foreground)
     .bg {
@@ -31,4 +36,111 @@ footer {
         left: 0;
         object-fit: cover;
     }
+
+    input[type=email] {
+        background-color: rgba($color: #ffffff, $alpha: 0.9);
+        //border: 2px solid darkgreen;
+        color: black;
+        margin-right: 1rem;
+        box-shadow: 0px 0px 10px white;
+    }
+
+    input[type=email]:hover {
+        opacity: 0.8;
+    }
+    input[type=email]:focus {
+        opacity: 1.0;
+    }
+
+    button {
+        box-shadow: 0px 0px 10px white;
+        background-color: rgba(#3ede81, 0.6) !important;
+    }
+    
 }
+
+.panes {
+    display: flex;
+    flex-direction: row;
+    //align-items: center;
+    //justify-content: center;
+    vertical-align: top;
+    
+    
+    padding: 3rem;
+    width: calc(100% - 3rem * 2);
+
+    & > * {
+        width: calc(100% / 3);
+        height: 100%;
+        //padding: 2rem;
+        @extend .centerflex-col;
+    }
+
+    .left-screen {
+        margin-right: auto;
+    }
+
+    .right-screen {
+        margin-left: auto;
+    }
+}
+
+.bottom-screen {
+    //@extend .centerflex-col;
+    //justify-self: end;
+    //width: 100%;
+    //display: block;
+    //flex-direction: row;
+    //position: absolute;
+    //bottom: 20px;
+    //z-index: 999;
+    //position: relative;
+    @extend .centerflex-col;
+    
+
+    & > * {
+        padding: 1rem;
+    }
+}
+
+.copybar {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 2rem;
+    a {
+        margin-left: 2rem;
+        //margin-right: 1rem;
+    }
+}
+
+.social-bar {
+    display: flex;
+    flex-direction: row;
+    a {
+        padding: 0.5rem;
+    }
+
+    img {
+        border-radius: 50%;
+        padding: 10px;
+        border: 2px solid white;
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    img:hover {
+        opacity: 0.5;
+    }
+}
+
+#footer-bg-img {
+    filter: sepia(60%) blur(3px) brightness(40%) hue-rotate(30deg);
+    opacity: 0.85;
+}
+
+.middle-screen {
+    //Align image with bottom
+    padding-left: 50px;
+}
+

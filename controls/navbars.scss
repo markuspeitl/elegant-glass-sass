@@ -15,6 +15,19 @@
     @return null;
 };
 
+
+@mixin nav_link_hover_effect(){
+    padding-bottom: 3px;
+    border-bottom: solid white;
+    border-bottom-width: 2px;
+}
+
+@mixin nav_link_hover(){
+    &:hover {
+        @include nav_link_hover_effect();
+    }
+}
+
 /*$bg-color: vars.$navbar-bg-color vars.$primary-color !default;
 $fg-color: vars.$navbar-fg-link-color vars.$secondary-color !default;
 $hover-bg-color: vars.$navbar-bg-color rgb(15, 95, 73) !default;
@@ -62,16 +75,6 @@ $letter-spacing: 2px !default;
     border: none;
 }
 
-/*%clean-list {
-    list-style: none;
-    & > a {
-        @extend %clean-link;
-    }
-}*/
-
-
-
-
 .headaction {
     //margin-right: 0;
     @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'horizontal');
@@ -89,61 +92,24 @@ $letter-spacing: 2px !default;
 
 .navlist {
     margin: 0;
+    @extend .centerflex-row;
     @extend %nav-holder;
+
     @include helpers.gap-between-children(var(--nav-horizontal-margin-base), horizontal);
+
 
     & > * {
         height: vars.$nav-item-horizontal-height;
+    }
+
+    nav {
+        @extend .centerflex-row;
     }
 
     nav > ul {
         @include helpers.pad-between-children(var(--nav-horizontal-margin-base), horizontal);
         @include helpers.border-between-children(1px solid white, horizontal);
     }
-
-    ul > li {
-        list-style: none;
-        //@extend %clean-list;
-    }
-
-    ul > li a {
-        //padding: 10px;
-        //color: vars.$navbar-fg-link-color;
-        /*border-top: 1px solid #777777;*/
-    }
-
-    ul > li a:hover {
-        //padding-bottom: 3px;
-        //border-bottom: 2px solid white;
-        //text-decoration: underline;
-        //text-decoration-thickness: 2px;
-    }
-    &:hover{
-        //@include reactive.lin-transition(2.0s background-color);
-    }
-}
-
-@mixin nav_link_hover_effect(){
-    padding-bottom: 3px;
-    border-bottom: solid white;
-    border-bottom-width: 2px;
-}
-
-@mixin nav_link_hover(){
-    &:hover {
-        @include nav_link_hover_effect();
-    }
-}
-
-.navlist a {
-    @extend %clean-link;
-    color: vars.$navbar-fg-link-color;
-
-    @include nav_link_hover()
-}
-
-.navlist ul {
-    list-style: none;
 }
 
 
@@ -197,56 +163,12 @@ nav {
 }
 
 
-// ---------------------------- Navigation submenu
-// should be some kind of navlist or similar
-// options: stretch across screen, wrap content
-// maybe same menu as the links in the footer or the links in the sidebar (if sidebar is nav)
-
-.subhidden {
-    display: none;
-}
-.subnav {
-    display: none;
-    width: 100%;
-}
-
-
-li {
-    position: relative;
-}
-/*.expandable_nav_url:hover + .subnav {*/
-.expandable_nav_url:hover + .subnav, .subnav:hover {
-    display: flex;
-    flex-direction: column;
-    /*position: relative;*/
-    /*top: $navbar-height;*/
-    position: absolute;
-    top: vars.$nav-text-font-size;
-    left: 0;
-    padding: 20px;
-    background: vars.$navbar-bg-color;
-}
-
-.subnav li {
-    padding: 10px;
-    margin: 0;
-}
-
-.subnav .nav_url {
-    padding: 0px;
-}
-
-.subnav ul {
-    padding: 0px;
-    margin: 0;
-}
-
 
 .table-bar {
     width: 100%;
     //background-color: rgba(#22cc99, 0.85);
     background-color: #22cc99;
-    top: 86px;
+    top: vars.$nav-item-horizontal-height;
     position: absolute;
     left: 0;
     text-align: left;
@@ -259,28 +181,31 @@ li {
 .nav-table {
     //text-align: left;
     width: auto;
-    
     //display: none;
     display: grid;
     grid-auto-flow: column;
-    justify-items: center;
-    align-items: center;
+    //align-items: center;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     grid-gap: 10px;
+    //text-align: center;
     //gap: 10px;
+    padding-left: 20%;
+    padding-right: 20%;
+    align-items: start;
+}
 
-    //li, a, ul {
-    & * {
-        //padding: 0 !important;
-        //margin: 0 !important;
-        //border: none !important;
-    }
+.nav-column {
+    //justify-self: center;
+    //grid-column: -1 / 1;
+    //place-self: center;
+    //height: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //padding-left: 0 !important;
 
-    .column {
-        justify-self: center;
-        //grid-column: -1 / 1;
-        //place-self: center;
-    }
     h3 {
         margin: 0;
         padding-bottom: 1.0rem;
@@ -290,46 +215,32 @@ li {
     li {
         margin-top: 0.4rem;
     }
+    .linklist {
+        flex-direction: column;
+    }
 }
+.linklist {
+    //@extend .centerflex-row;
+    //all: unset;
+    padding: 0;
 
-/*.nav-table {
-    //@extend .centerflex;
-    //display: grid;
-    //display: flex;
-    display: grid;
-    grid-auto-flow: column;
-}*/
+    display: flex;
+    //flex-direction: column;
 
-.nav-table .column {
-    height: 100%;
+    //justify-content: start;
+    //align-items: start;
+    list-style: none;
+
+    li {
+        position: relative;
+    }
+
+    a {
+        @extend %clean-link;
+        @include nav_link_hover();
+        color: vars.$navbar-fg-link-color;
+    }
 }
-/*nav li:hover + .nav-table {
-    display: grid;
-}
-.nav-table:hover {
-    display: grid;
-}*/
-
-/*.nav-tb-ck {
-    display: none;
-}*/
-
-.nav-tb-ck {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    //display:
-    opacity: 0.0;
-
-}
-/*.nav-tb-ck:checked + .table-bar {
-    visibility: visible;
-    //display: block;
-    
-    opacity: 0.95;
-    transition: 1s opacity;
- }*/
 
 li:has(.nav-tb-ck:checked) + .table-bar {
     visibility: visible;
@@ -338,7 +249,15 @@ li:has(.nav-tb-ck:checked) + .table-bar {
     opacity: 0.95;
     transition: 1s opacity;
 }
- //.nav-tb-ck + 
+
+.nav-tb-ck {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    //display:
+    opacity: 0.0;
+}
 
 .nav-tb-ck:hover { 
     
@@ -367,3 +286,84 @@ li:has(.nav-tb-ck:checked) + .table-bar {
 /*.nav-tb-ck:checked ~ .nav-tb-ck + .table-bar .nav-table {
     display: none;
  }*/
+
+
+
+// ---------------------------- Navigation submenu
+// should be some kind of navlist or similar
+// options: stretch across screen, wrap content
+// maybe same menu as the links in the footer or the links in the sidebar (if sidebar is nav)
+
+/*.subhidden {
+    display: none;
+}
+.subnav {
+    display: none;
+    width: 100%;
+}
+
+
+li {
+    position: relative;
+}
+.expandable_nav_url:hover + .subnav {*/
+/*.expandable_nav_url:hover + .subnav, .subnav:hover {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: vars.$nav-text-font-size;
+    left: 0;
+    padding: 20px;
+    background: vars.$navbar-bg-color;
+}
+
+.subnav li {
+    padding: 10px;
+    margin: 0;
+}
+
+.subnav .nav_url {
+    padding: 0px;
+}
+
+.subnav ul {
+    padding: 0px;
+    margin: 0;
+}*/
+
+
+
+/*.nav-table {
+    //@extend .centerflex;
+    //display: grid;
+    //display: flex;
+    display: grid;
+    grid-auto-flow: column;
+}*/
+
+/*nav li:hover + .nav-table {
+    display: grid;
+}
+.nav-table:hover {
+    display: grid;
+}*/
+
+/*.nav-tb-ck {
+    display: none;
+}*/
+
+
+/*.nav-tb-ck:checked + .table-bar {
+    visibility: visible;
+    //display: block;
+    
+    opacity: 0.95;
+    transition: 1s opacity;
+ }*/
+
+ /*%clean-list {
+    list-style: none;
+    & > a {
+        @extend %clean-link;
+    }
+}*/

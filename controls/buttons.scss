@@ -72,7 +72,7 @@ $button-default-transition-time: 2s;
 
 
 .bt-content {
-    @extend .centerflex, %clearbox;
+    @extend .centerflex-row, %clearbox;
     background: none;
 
     & > span:not(:first-child) {

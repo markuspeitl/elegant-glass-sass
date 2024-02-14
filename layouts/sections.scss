@@ -1,5 +1,5 @@
 @use '../vars';
-
+@use '../shared';
 
 $frame-padding-lr: vars.$section-strip-base-padding-lr !default;
 //$section-titles-family: vars.$content-section-title-font-family !default;
@@ -26,9 +26,8 @@ $frame-padding-lr: vars.$section-strip-base-padding-lr !default;
 
     section {
         width: 100%;
-        justify-content: center;
-        align-items: center;
-        vertical-align: middle;
+        
+        @include shared.center-content();
         display: flex;
         margin: 0;
        /*padding-left: $section-item-base-padding-lr;
@@ -58,3 +57,10 @@ $frame-padding-lr: vars.$section-strip-base-padding-lr !default;
 
 
 
+/*.content-section {
+    width: 100%;
+
+    & > div {
+        max-width: 1200px;
+    }
+}*/

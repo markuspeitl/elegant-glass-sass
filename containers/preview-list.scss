@@ -1,17 +1,39 @@
 @use '../vars';
+@use '../shared';
 
 .preview-section-holder {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 40px;
-    margin-left: auto;
-    margin-right: auto;
+    //display: flex;
+    //flex-direction: row;
+    //flex-wrap: wrap;
+    //margin: 40px;
+    //margin-left: auto;
+    //margin-right: auto;;
+    display: grid;
+    @include shared.center-content();
+
+    padding: {
+        left: 10%;
+        right: 10%;
+        top: 20px;
+    }
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    row-gap: 30px;
+
+    a {
+        all: unset;
+        font-family: 'cabin';
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: #009586;
+        //text-decoration: underline;
+        border-bottom: 2px solid;
+    }
 }
 
 .preview-section-holder article {
-    width: 400px;
-    padding: 20px;
+    //width: 400px;
+    //padding: 20px;
 }
 .preview-section-holder article img {
     width: 100%;

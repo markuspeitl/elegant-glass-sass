@@ -2,14 +2,29 @@
 
 $default-screen-break: 700px !default;
 
-/* General*/
-.centerflex {
-    display: flex;
-    flex-direction: row;
-    vertical-align:middle;
+
+@mixin center-content(){
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    vertical-align: middle;
+}
+
+
+@mixin center-flex($direction: row){
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+
+/* General*/
+.centerflex-row {
+    @include center-flex();
+}
+.centerflex-col {
+    @include center-flex(column);
 }
 
 .plainlink {
@@ -21,13 +36,13 @@ $default-screen-break: 700px !default;
     outline: 0;
 }
 
-.leftalignflex {
+/*.leftalignflex {
     @extend .centerflex;
     margin-right: auto;
-    /*position: absolute;
+    position: absolute;
     top: 0;
-    left: 0;*/
-}
+    left: 0;
+}*/
 
 .lalign {
     margin-right: auto;
@@ -43,15 +58,15 @@ $default-screen-break: 700px !default;
 }
 
 
-
+/*
 @media only screen and (max-width : $default-screen-break) {
-    .lalign, .ralign, .centerflex{
+    .lalign, .ralign, .centerflex-row{
         margin: 0;
     }
 
-    .centerflex {
+    .centerflex-row {
         justify-content: left;
-        /*padding-left: 0;*/
+        padding-left: 0;
         text-align: center;
     }
-}
+}*/
