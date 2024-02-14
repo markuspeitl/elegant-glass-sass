@@ -2,14 +2,14 @@
 
 $default-transition-time: 1.0s !default;
 
-@mixin lin-transition($transition-time: $default-transition-time, $target: 'all') {
+@mixin lin-transition($transition-time: $default-transition-time, $target: all) {
     
     /*@if not ($transition-time) {
         $transition-time: $default-transition-time;
     }*/
-    -webkit-transition: $target $transition-time linear;
-    -ms-transition: $target $transition-time linear;
-    transition: $target $transition-time;
+    -webkit-transition: $transition-time $target linear;
+    -ms-transition: $transition-time $target linear;
+    transition: $transition-time $target;
 }
 
 .transition {

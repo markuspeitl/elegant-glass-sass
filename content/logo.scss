@@ -29,8 +29,14 @@ $size: vars.$nav-logo-font-size !default;
     a {
         @extend .centerflex;
         @include helpers.gap-between-children(0.75em, 'horizontal');
+        border: none !important;
     }
     
+}
+
+.navlogo-holder a:hover {
+    opacity: 0.6;
+    @include reactive.lin-transition(1.0s, opacity);
 }
 
 
@@ -51,8 +57,8 @@ $size: vars.$nav-logo-font-size !default;
     opacity: 0.87;
 }
 .logo-holder img:hover {
-    @include reactive.lin-transition(1.4s opacity);
     opacity: 0.7;
+    @include reactive.lin-transition(1.4s opacity);
 }
 .logo-holder {
     font-size: vars.$nav-logo-font-size;
@@ -91,6 +97,7 @@ $suftitle-font-size: $center-font-size * 0.375;
 
 //$center-font-size: 12rem;
 //$suftitle-font-size: 4.5rem;
+//TODO migrate to em -> based on parent font size
 .rich-logo {
     height: $logo-size;
     width: auto;

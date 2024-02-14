@@ -51,7 +51,8 @@ $letter-spacing: 2px !default;
     &:hover {
         background-color: $hover-bg-color;
         color: $hover-fg-color;
-        @include reactive.lin-transition($transition-time, 'background-color');
+        //@include reactive.lin-transition($transition-time, 'background-color');
+        @include reactive.lin-transition($transition-time color);
     }
     
 }
@@ -117,6 +118,9 @@ $letter-spacing: 2px !default;
         //text-decoration: underline;
         //text-decoration-thickness: 2px;
     }
+    &:hover{
+        //@include reactive.lin-transition(2.0s background-color);
+    }
 }
 
 .navlist a {
@@ -125,7 +129,8 @@ $letter-spacing: 2px !default;
 
     &:hover {
         padding-bottom: 3px;
-        border-bottom: 2px solid white;
+        border-bottom: solid white;
+        border-bottom-width: 2px;
     }
 }
 

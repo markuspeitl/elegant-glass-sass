@@ -12,6 +12,7 @@ $ovl-button-height: vars.$nav-item-horizontal-height * 0.7;
 $button-content-spacing: 1rem;
 $button-default-padding-l: $button-content-spacing + 0.4rem;
 $button-default-padding-r: $button-content-spacing + 0.2rem;
+$button-default-transition-time: 2s;
 
 %clearbox {
     border: 0;
@@ -31,7 +32,7 @@ $button-default-padding-r: $button-content-spacing + 0.2rem;
     letter-spacing: vars.$buttons-letter-spacing;
 
     &:hover {
-        @include reactive.lin-transition(1.5s);
+        @include reactive.lin-transition($button-default-transition-time, color);
     }
 }
 
@@ -112,7 +113,7 @@ $bt-transition-time: vars.$transition-time 1.0s !default;
         padding-bottom: 5px;
         background-color: $button-highlight-bg-color;
         color: vars.$nav-text-color;
-        @include reactive.lin-transition($bt-transition-time, 'background-color');
+        //@include reactive.lin-transition($bt-transition-time, 'background-color');
     }
 }
 
