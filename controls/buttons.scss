@@ -31,6 +31,8 @@ $button-default-transition-time: 2s;
     //font-family: vars.$buttons-font-family;
     letter-spacing: vars.$buttons-letter-spacing;
 
+    @include reactive.lin-transition($button-default-transition-time, color);
+
     &:hover {
         @include reactive.lin-transition($button-default-transition-time, color);
     }

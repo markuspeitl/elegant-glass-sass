@@ -18,10 +18,16 @@
 }
 
 @mixin pad-between-children($spacing: 0.1rem, $orientation: horizontal){
-    @include between-children($orientation){
+    
+    & > * {
         padding-left: $spacing;
         padding-right: $spacing;
     }
+
+    /*@include between-children($orientation){
+        padding-left: $spacing;
+        padding-right: $spacing;
+    }*/
 }
 
 @mixin border-between-children($border: 2px solid white, $orientation: horizontal){

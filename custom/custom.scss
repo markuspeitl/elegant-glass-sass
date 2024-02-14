@@ -1,14 +1,17 @@
 @use "sass:map";
 @use '../vars';
 @use '../containers';
+@use '../controls';
 
 /*
 $main-stack-view-h-size: 700px;
 $stack-view-default-h-size: auto;
 */
-$main-stack-view-h-size: 70vh;
+//$main-stack-view-h-size: 70vh;
 $img-stack-font-size: 1.0rem;
 
+$content-start-offset: 65vh;
+//$content-start-reverse-offset: $content-start-offset - 100vh;
 
 .img-text-stack {
     @extend .stack-view;
@@ -60,7 +63,8 @@ $main-img-section-font-set: (
     @include section-fonts($main-img-section-font-set);
 
     //height: $main-stack-view-h-size !important;
-    height: 1080px !important;
+    //height: 1080px !important;
+    height: 100% !important;
 
     h1 {
         color: vars.$main-image-main-title-color;
@@ -90,7 +94,7 @@ $main-img-section-font-set: (
 
 
 .main-stack .stack-bg {
-    position: fixed;
+    position: fixed !important;
     z-index: -99999;
 }
 .content-section {
@@ -120,9 +124,32 @@ $main-img-section-font-set: (
 
 //.sections-strip .content-section:nth-child(2) {
 .content-start {  
-    margin-top: -50vh !important;
+    margin-top: $content-start-offset !important;
 }
 
 #main-call-button {
     font-size: 1.4rem;
+    //box-shadow: 0px 0px 20px white;
+
+    &:hover, &:active {
+        box-shadow: 0px 0px 20px white;
+    }
+}
+
+.immersive-button {
+    @extend .light-button;
+
+    $button-height: 40px;
+    $button-width: 60px;
+    $height: $button-height;
+    width: $button-width;
+    /*padding: {
+        left: 50px;
+        right: 50px;
+    };*/
+    position: absolute;
+    right: 0;
+    top: calc($content-start-offset - $button-height*2);
+    font-size: 3.0rem;
+    z-index: 9999;
 }

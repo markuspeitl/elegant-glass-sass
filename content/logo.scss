@@ -122,18 +122,13 @@ $suftitle-font-size: $center-font-size * 0.375;
         width: $logo-size;
     }
 
-    img {
-        width: $logo-size;
-        height: auto;
-        z-index: -999;
-    }
-
     .ovly-letter {
         position: absolute;
         //top: 140px;
         top: calc($logo-size / 2) - calc($center-font-size / 2) + 0.9rem;
         left: calc($logo-size / 2) - calc($center-font-size / 2) + 0.2rem;
         z-index: 0;
+        text-shadow: 0px 0px 15px black;
     }
 
     .logo-suftitle {
@@ -144,6 +139,20 @@ $suftitle-font-size: $center-font-size * 0.375;
         margin-left: - calc($logo-size / 4) - 0.2rem;
         margin-top: calc($logo-size / 2) - calc($suftitle-font-size/2) + 2rem;//calc($suftitle-font-size/2);// - $suftitle-font-size + 0.4rem;
         z-index: 0;
+        text-shadow: 0px 0px 15px black;
+    }
+
+
+    img {
+        width: $logo-size;
+        height: auto;
+        z-index: -999;
+        @include reactive.lin-transition(2.0s, filter);
+    }
+    &:hover img {
+        //opacity: 0.5;
+        filter: invert(100%);
+        @include reactive.lin-transition(2.0s, filter);
     }
 
 }
