@@ -30,6 +30,11 @@ $button-default-transition-time: 2s;
     font-weight: vars.$buttons-font-weight;
     //font-family: vars.$buttons-font-family;
     letter-spacing: vars.$buttons-letter-spacing;
+    
+    display: inline-flex;
+    flex-direction: row;
+    //width: fit-content;
+    text-decoration: none;
 
     @include reactive.lin-transition($button-default-transition-time, color);
 
