@@ -18,7 +18,7 @@
 }
 
 
-:root, html, body {
+:root, html, body, main {
     @extend %font-antialias;
     @extend %clean-container;
     width: 100%;
@@ -31,6 +31,10 @@
 
 html, body {
     @extend %clean-container;
+}
+
+body > * {
+    position: relative;
 }
 
 /*body {

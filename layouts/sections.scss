@@ -9,7 +9,7 @@ $frame-padding-lr: vars.$section-strip-base-padding-lr !default;
     padding: 0;
     padding-left: $frame-padding-lr;
     padding-right: $frame-padding-lr;
-    position: absolute;
+    //position: absolute;
     top: 0;
     left: 0;
     display: flex;
