@@ -14,7 +14,7 @@
 
 .split-view {
     width: auto !important;
-    margin: 60px;
+    margin: 3.75em;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
@@ -30,7 +30,7 @@
         align-items: center;
         vertical-align: middle;
         display: flex;
-        margin-left: 40px;
+        margin-left: 2.5em;
     }
 
     & > .section-content {
@@ -40,7 +40,7 @@
         display: grid;
         /*grid-template-columns: 500px;*/
         /*grid-auto-rows: minmax(100px, auto);*/
-        gap: 20px;
+        gap: 1.25em;
         max-width: 1200px;
     }
 

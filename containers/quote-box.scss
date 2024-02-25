@@ -1,11 +1,15 @@
 @use '../vars';
 
+//vars.$light-text-shadow-color
+$text-shadow-color: black !default;
+$text-shadow: 0.2em 0.2em 1em $text-shadow-color;
+
 .quote-box {
     font-weight: vars.$quote-box-font-weight;
     font-family: vars.$quote-box-font-family;
     font-size: vars.$quote-box-font-size;
     color: vars.$dark-bg-font-color;
-    text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15px vars.$light-text-shadow-color;
+    text-shadow: $text-shadow, $text-shadow;
     line-height: 2.5rem;
     
     /*& cite {

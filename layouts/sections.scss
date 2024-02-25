@@ -4,6 +4,7 @@
 $frame-padding-lr: vars.$section-strip-base-padding-lr !default;
 //$section-titles-family: vars.$content-section-title-font-family !default;
 $content-section-title-shadow-color: white;
+$title-shadow: 2px 2px 30px $content-section-title-shadow-color, 2px 2px 30px $content-section-title-shadow-color;
 
 .sections-strip {
     /*width: 100% !important;*/
@@ -19,7 +20,7 @@ $content-section-title-shadow-color: white;
 
     /*padding: 60px;*/
     line-height: 1.5;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: vars.$content-section-body-font-weight;
     font-family: vars.$content-section-body-font-family;
     font-size: vars.$content-section-body-font-size;
@@ -45,7 +46,7 @@ $content-section-title-shadow-color: white;
         font-size: vars.$content-section-title-font-size;
         color: vars.$content-section-title-color;
         letter-spacing: vars.$content-section-title-letter-space;
-        text-shadow: 2px 2px 30px $content-section-title-shadow-color, 2px 2px 30px $content-section-title-shadow-color;
+        text-shadow: $title-shadow;
     }
     
     .quote {

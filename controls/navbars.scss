@@ -1,10 +1,7 @@
-@use '../vars';
+//@use '../vars';
 @use '../layouts/helpers';
 @use '../reactive';
 @use '../shared';
-
-
-
 
 //$small-screen-break: vars.$small-screen-break !default;
 
@@ -36,19 +33,23 @@ $fg-color: vars.$navbar-fg-link-color vars.$secondary-color !default;
 $hover-bg-color: vars.$navbar-bg-color rgb(15, 95, 73) !default;
 $hover-fg-color: vars.$navbar-fg-link-color white !default;*/
 
+$nav-header-default-font: 400 1.3rem 'mulish';
 
 $zindex: 999999 !default;
 $transition-time: 1.0s !default;
-$letter-spacing: 2px !default;
+$letter-spacing: 0.125em !default;
 
-$bg-color: vars.$navbar-bg-color !default;
-$fg-color: vars.$navbar-fg-link-color !default;
-$hover-fg-color: vars.$navbar-fg-link-color !default;
+$bg-color: linear-gradient(to bottom right, rgba(15, 95, 73, 0.95), rgba(0, 65, 63, 0.6)) !default;
+$fg-color: #ffffff !default;
+$hover-fg-color: #ffffff !default;
 $hover-bg-color: rgb(15, 95, 73) !default;
-$navlist-item-seperator-color: white;
-$table-bar-bg-color: #22cc99;
-$nav-column-title-color: #086247;
-$expandable_icon_shadow_color: #4ef7c5;
+$navlist-item-seperator-color: white !default;
+$table-bar-bg-color: #22cc99 !default;
+$nav-column-title-color: #086247 !default;
+$nav-item-horizontal-height: 5.625rem;
+
+//TODO = lighten tablebar color
+$expandable_icon_shadow_color: #4ef7c5 !default;
 
 //Debug
 .burger {
@@ -107,7 +108,7 @@ $expandable_icon_shadow_color: #4ef7c5;
 
 
     & > * {
-        height: vars.$nav-item-horizontal-height;
+        height: $nav-item-horizontal-height;
     }
 
     nav {
@@ -123,24 +124,24 @@ $expandable_icon_shadow_color: #4ef7c5;
 
 nav {
     //font: vars.$nav-header-default-font-size vars.$nav-header-default-font-family;
-    font: vars.$nav-header-default-font;
+    font: $nav-header-default-font;
     //font-family: 'mulish';
     margin-left: auto;
 }
 
-
-@include helpers.screen-layout-break(vars.$small-screen-break) {
+$small-screen-break: 700px;
+@include helpers.screen-layout-break($small-screen-break) {
     .navlist {
         width: 100%;
         height: auto;
         @extend %nav-holder;
         @include helpers.gap-between-children(0, 'horizontal');
         @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'vertical');
-        margin-top: 2px !important;
-        margin-bottom: 10px !important;
+        margin-top: 0.125em !important;
+        margin-bottom: 0.625em !important;
     
         & > * {
-            height: vars.$nav-item-horizontal-height;
+            height: $nav-item-horizontal-height;
         }
     
         & ul {
@@ -155,8 +156,8 @@ nav {
     
         & ul > li {
             //@extend %clean-list;
-            padding-top: 13px;
-            padding-bottom: 13px;
+            padding-top: 0.8em;
+            padding-bottom: 0.8em;
         }
     
         & ul > li > a {
@@ -176,7 +177,7 @@ nav {
     width: 100%;
     //background-color: rgba(#22cc99, 0.85);
     background-color: $table-bar-bg-color;
-    top: vars.$nav-item-horizontal-height;
+    top: $nav-item-horizontal-height;
     position: absolute;
     left: 0;
     text-align: left;
@@ -195,7 +196,7 @@ nav {
     //align-items: center;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    grid-gap: 10px;
+    grid-gap: 0.625em;
     //text-align: center;
     //gap: 10px;
     padding-left: 20%;
@@ -246,7 +247,7 @@ nav {
     a {
         @extend %clean-link;
         @include nav_link_hover();
-        color: vars.$navbar-fg-link-color;
+        color: $fg-color;
     }
 }
 
@@ -267,6 +268,8 @@ li:has(.nav-tb-ck:checked) + .table-bar {
     opacity: 0.0;
 }
 
+
+$expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandable_icon_shadow_color;
 .nav-tb-ck:hover { 
     
     & + a {
@@ -274,7 +277,7 @@ li:has(.nav-tb-ck:checked) + .table-bar {
     }
 
     ~ .icon {
-        text-shadow: 0px 0px 30px $expandable_icon_shadow_color, 0px 0px 15px $expandable_icon_shadow_color;
+        text-shadow: $expand-shadow;
     }
 }
 
@@ -287,7 +290,7 @@ li:has(.nav-tb-ck:checked) + .table-bar {
 .nav-tb-ck:checked ~ .icon {
     rotate: 180deg;
     transition: 1.0s rotate;
-    text-shadow: 0px 0px 30px $expandable_icon_shadow_color, 0px 0px 15px $expandable_icon_shadow_color;
+    text-shadow: $expand-shadow;
 }
 
 

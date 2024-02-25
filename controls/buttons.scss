@@ -116,8 +116,8 @@ $bt-transition-time: vars.$transition-time 1.0s !default;
 .button-bar {
     & button {
         width: auto;
-        padding-top: 15px;
-        padding-bottom: 5px;
+        padding-top: 1em;
+        padding-bottom: 0.375em;
         background-color: $button-highlight-bg-color;
         color: vars.$nav-text-color;
         //@include reactive.lin-transition($bt-transition-time, 'background-color');

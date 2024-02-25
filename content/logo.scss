@@ -1,15 +1,24 @@
-@use '../vars';
+//@use '../vars';
 @use '../reactive';
 @use '../shared';
 @use '../layouts/helpers';
 
-//$small-screen-break: vars.$small-screen-break !default;
-$family: vars.$logo-title-family !default;
-$weight: 400 !default;
-$size: vars.$nav-logo-font-size !default;
-$rich-logo-font-color: white;
 
-.navlogo-holder {
+$text-shadow-color: black !default;
+$text-shadow: 0px 0px 15px $text-shadow-color !default;
+//vars.$rich-logo-font-color
+$color: white !default;
+$weight: 400 !default;
+//$family: vars.$logo-title-family !default;
+$family: arial !default;
+//$size: vars.$nav-logo-font-size !default;
+$font-size: 20px;
+
+//$small-screen-break: vars.$small-screen-break !default;
+
+//depreciated -> should be the same as rich-logo just at different size + spacings
+//$rich-logo-font-color: white;
+/*.navlogo-holder {
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -23,8 +32,7 @@ $rich-logo-font-color: white;
         font-size: 1.5em;
         font-family: 'merienda';
         font-weight: 800;
-        color: vars.$rich-logo-font-color;
-        
+        color: $color;
     }
     a {
         @extend .centerflex-row;
@@ -50,7 +58,6 @@ $rich-logo-font-color: white;
     margin-left: var(--nav-horizontal-margin-base);
 }
 .logo-holder img {
-    /*position: fixed;*/
     position: absolute;
     top: 60px;
     left: -30px;
@@ -89,73 +96,111 @@ $rich-logo-font-color: white;
         }
     }
 }
+*/
+
+//$logo-size: 20rem;
+//$center-font-size: $logo-size * 0.6;
+//$suftitle-font-size: $center-font-size * 0.375;
 
 
-$logo-size: 20rem;
-$center-font-size: $logo-size * 0.6;
-$suftitle-font-size: $center-font-size * 0.375;
+
+$overlay-letter-family: ('ruthie', 'helvetica', 'sans-serif') !default;
+$overlay-letter-weight: 800 !default;
+$font-family: ('protest-revolution', 'helvetica', 'sans-serif') !default;
+$font-weight: 600 !default;
+
+//$rich-logo-font-size: 320px;
+$rich-logo-font-size: 20rem !default;
+$rich-logo-size: 1em;
+$half-rich-logo-size: 0.5em;
+$overlay-letter-size: 0.6em;
+$suffix-font-size: $overlay-letter-size * 0.375;
+$center-suffix-top: $half-rich-logo-size - calc($suftitle-font-size / 2);
 
 //$center-font-size: 12rem;
 //$suftitle-font-size: 4.5rem;
 //TODO migrate to em -> based on parent font size
 .rich-logo {
-    height: $logo-size;
+    //Set here for using as reference for 'em' unit
+    //font-size: $center-font-size;
+    font-size: $rich-logo-size;
+    
+    //height: $logo-size;
+    height: $rich-logo-size;
     width: auto;
     position: relative;
 
-    color: $rich-logo-font-color;
-    font-size: $center-font-size;
     //font-family: 'ruthie';
-    font-family: 'ruthie';
+    //font-family: 'ruthie';
     //font-family: 'protest-revolution';
     //font-family: 'pacifico';
-    font-weight: 800;
     @extend .centerflex-row;
+
+    color: $color;
+    text-shadow: $text-shadow;
+    z-index: 0;
+    font-family: $font-family;
+    font-weight: $font-weight;
 
     .logo-stack {
         position: relative;
-        height: $logo-size;
-        width: $logo-size;
+        //height: $logo-size;
+        height: $rich-logo-size;
+        width: $rich-logo-size;
+        //width: $logo-size;
+
+        .overlay-letter {
+            position: absolute;
+            //top: 140px;
+            font-size: $overlay-letter-size;
+            top: $half-rich-logo-size - calc($overlay-letter-size / 2) + 0.9rem;
+            left: $half-rich-logo-size - calc($overlay-letter-size / 2) + 0.2rem;
+            font-family: $overlay-letter-family;
+            font-weight: $overlay-letter-weight;
+        }
+
+        img {
+            //width: $logo-size;
+            height: $rich-logo-size;
+            width: $rich-logo-size;
+            z-index: -999;
+            @include reactive.lin-transition(2.0s, filter);
+        }
+        &:hover img {
+            //opacity: 0.5;
+            filter: invert(100%);
+            @include reactive.lin-transition(2.0s, filter);
+        }
     }
 
-    .ovly-letter {
-        position: absolute;
-        //top: 140px;
-        top: calc($logo-size / 2) - calc($center-font-size / 2) + 0.9rem;
-        left: calc($logo-size / 2) - calc($center-font-size / 2) + 0.2rem;
-        z-index: 0;
-        text-shadow: 0px 0px 15px vars.$light-text-shadow-color;
-    }
-
-    .logo-suftitle {
-        //height: fit-content;
-        font-family: 'protest-revolution';
-        font-weight: 600;
+    .suffix {
         font-size: $suftitle-font-size;
-        
-        margin-left: - calc($logo-size / 4) - 0.2rem;
-        margin-top: calc($logo-size / 2) - calc($suftitle-font-size/2) + 2rem;//calc($suftitle-font-size/2);// - $suftitle-font-size + 0.4rem;
-        /*position: absolute;
-        left: - calc($logo-size / 4) - 0.2rem;
-        top: calc($logo-size / 2) - calc($suftitle-font-size/2) + 2rem;*/
-        
-        z-index: 0;
-        text-shadow: 0px 0px 15px vars.$light-text-shadow-color;
+        margin-left: 0 - calc($logo-size / 4) - 0.02em;
+        margin-top: $center-suffix-top + calc($suftitle-font-size / 3);//calc($suftitle-font-size/2);// - $suftitle-font-size + 0.4rem;
+        //height: fit-content;
     }
+}
 
-
-    img {
-        width: $logo-size;
-        height: auto;
-        z-index: -999;
-        @include reactive.lin-transition(2.0s, filter);
+//.navigation-rich-logo {
+header .rich-logo {
+    //Make the element 90px high
+    font-size: 90px;
+    .ovly-letter {
+        display: none;
     }
-    &:hover img {
-        //opacity: 0.5;
-        filter: invert(100%);
-        @include reactive.lin-transition(2.0s, filter);
+    .suffix-title {
+        font-size: 0.6em;
+        margin-left: 0.1em;
+        margin-top: 0em;
     }
+}
 
+footer .rich-logo {
+    //Make the element 240px high
+    font-size: 15rem;
+    .suffix-title {
+        display: none;
+    }
 }
 
 .bg-logo {
@@ -164,3 +209,7 @@ $suftitle-font-size: $center-font-size * 0.375;
         opacity: 0.7;
     }
 }
+
+/*position: absolute;
+        left: - calc($logo-size / 4) - 0.2rem;
+        top: calc($logo-size / 2) - calc($suftitle-font-size/2) + 2rem;*/

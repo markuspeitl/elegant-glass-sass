@@ -1,10 +1,10 @@
-$footer-text-color: white;
-$social-icon-border-color: white;
-$footer-button-bg-color: #3ede81;
-$footer-input-bg-color: #ffffff;
-$footer-input-fg-color: black;
+$footer-text-color: white !default;
+$social-icon-border-color: white !default;
+$footer-button-bg-color: #3ede81 !default;
+$footer-input-bg-color: #ffffff !default;
+$footer-input-fg-color: black !default;
+$input-shadow: 0px 0px 0.625em $footer-input-bg-color;
 
-@use '../vars';
 @use '../shared';
 @use '../containers/stack-view';
 
@@ -48,7 +48,6 @@ footer {
         //border: 2px solid darkgreen;
         color: $footer-input-fg-color;
         margin-right: 1rem;
-        box-shadow: 0px 0px 10px $footer-input-bg-color;
     }
 
     input[type=email]:hover {
@@ -59,10 +58,12 @@ footer {
     }
 
     button {
-        box-shadow: 0px 0px 10px $footer-input-bg-color;
         background-color: rgba($footer-button-bg-color, 0.6) !important;
     }
-    
+
+    input, button {
+        box-shadow: $input-shadow;
+    }
 }
 
 .panes {
@@ -129,8 +130,8 @@ footer {
 
     img {
         border-radius: 50%;
-        padding: 10px;
-        border: 2px solid $social-icon-border-color;
+        padding: 0.625em;
+        border: 0.125em solid $social-icon-border-color;
         width: 1.5em;
         height: 1.5em;
     }
@@ -147,6 +148,6 @@ footer {
 
 .middle-screen {
     //Align image with bottom
-    padding-left: 50px;
+    padding-left: 3.125em;
 }
 

@@ -1,0 +1,46 @@
+@use 'sass:color';
+
+$color: rgb(15, 95, 73) !default;
+
+
+/*$dark-bg-stroke: white;
+$dark-bg-fill: black;
+$light-bg-stroke: black;
+$light-bg-fill: white;
+$highlight-stroke: white;
+$highlight-emphasis-stroke: #086247;
+$highlight-fill: #22cc99;*/
+//$highlight-fill: rgba(62, 222, 129, 0.6);
+
+$dark-bg-stroke: color.scale($color, $lightness: +80%) !default;
+$dark-bg-fill: color.scale($color, $lightness: -80%) !default;
+$light-bg-stroke: invert($dark-bg-stroke) !default;
+$light-bg-fill: invert($dark-bg-fill) !default;
+$highlight-emphasis-stroke: color.scale($color, $hue: -5deg, $saturation: -10%, $lightness: -10%) !default;
+$highlight-fill: color.scale($color, $hue: +15deg, $saturation: +20%, $lightness: +20%) !default;
+$highlight-stroke: invert(color.scale($highlight-fill, $lightness: +80%)) !default;
+
+//Map a requested value to a color in the color space
+//Color space is a non linear space that maps input color to output color and can have any implementation.
+//One implementation can be a finite set of complementary colors, analogous colors, any amount of numbers, color interpolation, .etc
+@function color-space($color, $hue, $saturation, $lightness){
+
+}
+
+//https://sass-lang.com/documentation/modules/color/
+@function bg-highlight-color($color, $bg-color, $intensity){
+    $main-color-lightness: color.lightness($color);
+    $bg-color-lightness: color.lightness($bg-color);
+
+    $sat-main-color: color.scale($color, $saturation: +20%); 
+
+    @if($main-color-lightness > 50%){
+        @if($bg-color-lightness > 50%){
+            @return color.scale($color, $lightness: -$intensity);
+        }
+        @return color.scale($color, $lightness: $intensity);
+    }
+    @else {
+
+    }
+}

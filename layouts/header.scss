@@ -1,15 +1,15 @@
-@use '../vars';
 @use '../layouts/helpers';
 //for clean-container
 @use 'frame' as frame;
 
+$nav-header-default-font: 400 1.3rem 'mulish';
 
 header {
     /*font-weight: vars.$nav-header-default-font-weight;
     font-family: vars.$nav-header-default-font-family;
     font-size: vars.$nav-header-default-font-size;*/
 
-    font: vars.$nav-header-default-font;
+    font: $nav-header-default-font;
 
     @extend %clean-container;
     text-align: center;

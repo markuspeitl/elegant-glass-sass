@@ -31,7 +31,7 @@
     }*/
 }
 
-@mixin border-between-children($border: 2px solid white, $orientation: horizontal){
+@mixin border-between-children($border: 0.125em solid white, $orientation: horizontal){
 
     @include between-children($orientation){
         border-right: $border;    

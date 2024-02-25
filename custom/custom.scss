@@ -12,6 +12,16 @@ $img-stack-font-size: 1.0rem;
 
 $content-start-offset: 65vh;
 //$content-start-reverse-offset: $content-start-offset - 100vh;
+$content-section-bg-color: #ededff;
+$title-font-size: 3.3rem;
+//$second-title-font-size * 0.85;
+$main-img-section-font-set: (
+    title-font: $title-font-size 'merienda',
+    secondary-title-font: $title-font-size * 0.85 'merienda',
+    //body-font: $title-font-size * 0.5 vars.$main-title-font-family
+    body-font: null,
+);
+
 
 .img-text-stack {
     @extend .stack-view;
@@ -28,16 +38,6 @@ $content-start-offset: 65vh;
         height: 100%;
     }
 }
-
-$content-section-bg-color: #ededff;
-$title-font-size: 3.3rem;
-//$second-title-font-size * 0.85;
-$main-img-section-font-set: (
-    title-font: $title-font-size 'merienda',
-    secondary-title-font: $title-font-size * 0.85 'merienda',
-    //body-font: $title-font-size * 0.5 vars.$main-title-font-family
-    body-font: null,
-);
 
 @mixin section-fonts($section-font-set){
     $title-font: map.get($section-font-set, "title-font");
@@ -58,6 +58,7 @@ $main-img-section-font-set: (
     }
 }
 
+$main-stack-text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15px vars.$light-text-shadow-color;
 .main-stack {
     @extend .img-text-stack;
     @include section-fonts($main-img-section-font-set);
@@ -71,7 +72,6 @@ $main-img-section-font-set: (
         //text-shadow: 2px 2px 15px black;
         //text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit;
         //Multiple can be applied by comma seperating them (in this case -> thicker text shadow)
-        text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15px vars.$light-text-shadow-color;
         opacity: 0.95;
         margin: 0;
         margin-bottom: 3.3rem !important;
@@ -81,13 +81,14 @@ $main-img-section-font-set: (
     }
     h2 {
         color: vars.$main-image-secondary-title-color;
-
-        text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15px vars.$light-text-shadow-color;
         //text-shadow: 0px 0px 30px white, 3px 3px 15px black;
         font-weight: 400;
         opacity: 0.98;
         margin: 0;
         margin-bottom: 1.5rem !important;
+    }
+    h1, h2 {
+        text-shadow: $main-stack-text-shadow;
     }
     
 }
@@ -127,29 +128,30 @@ $main-img-section-font-set: (
     margin-top: $content-start-offset !important;
 }
 
+
+$main-call-glow: 0px 0px 0.8em vars.$dark-text-shadow-color;
 #main-call-button {
     font-size: 1.4rem;
     //box-shadow: 0px 0px 20px white;
 
     &:hover, &:active {
-        box-shadow: 0px 0px 20px vars.$dark-text-shadow-color;
+        box-shadow: $main-call-glow
     }
 }
 
 .immersive-button {
     @extend .light-button;
-
-    $button-height: 40px;
-    $button-width: 60px;
+    font-size: 3.0rem;
+    $button-height: 2em;
+    $button-width: 4em;
     $height: $button-height;
     width: $button-width;
     /*padding: {
         left: 50px;
         right: 50px;
     };*/
+    z-index: 9999;
     position: absolute;
     right: 0;
-    top: calc($content-start-offset - $button-height*2);
-    font-size: 3.0rem;
-    z-index: 9999;
+    top: calc($content-start-offset - $button-height * 2);
 }

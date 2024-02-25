@@ -3,7 +3,8 @@
 @use '../vars';
 @use '../shared';
 
-$preview-item-link-color: vars.$preview-item-link-color !default;
+//light-bg-highlight
+$preview-item-link-color: #009586 !default;
 
 .preview-section-holder {
     //display: flex;
@@ -21,17 +22,17 @@ $preview-item-link-color: vars.$preview-item-link-color !default;
         top: 20px;
     }
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    row-gap: 30px;
+    gap: 1.0em;
+    row-gap: 2.0em;
 
     a {
         all: unset;
         font-family: 'cabin';
         font-weight: 600;
-        font-size: 1.2rem;
-        color: vars.$preview-item-link-color;
+        font-size: 1.2em;
+        color: $preview-item-link-color;
         //text-decoration: underline;
-        border-bottom: 2px solid;
+        border-bottom: 0.125em solid;
     }
 }
 
