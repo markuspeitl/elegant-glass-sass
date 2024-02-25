@@ -1,3 +1,4 @@
+@use 'sass:list';
 
 @mixin between-children($orientation: horizontal){
 
@@ -50,4 +51,9 @@
     @media only screen and (max-width: $width-break) {
         @content;
     }
+}
+
+@mixin set-color-pair($color-pair: white black){
+    background-color: list.nth($color-pair, 1);
+    color: list.nth($color-pair, 2);
 }
