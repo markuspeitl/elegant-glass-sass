@@ -115,7 +115,7 @@ $rich-logo-size: 1em;
 $half-rich-logo-size: 0.5em;
 $overlay-letter-size: 0.6em;
 $suffix-font-size: $overlay-letter-size * 0.375;
-$center-suffix-top: $half-rich-logo-size - calc($suftitle-font-size / 2);
+$center-suffix-top: $half-rich-logo-size - calc($suffix-font-size / 2);
 
 //$center-font-size: 12rem;
 //$suftitle-font-size: 4.5rem;
@@ -153,8 +153,8 @@ $center-suffix-top: $half-rich-logo-size - calc($suftitle-font-size / 2);
             position: absolute;
             //top: 140px;
             font-size: $overlay-letter-size;
-            top: $half-rich-logo-size - calc($overlay-letter-size / 2) + 0.9rem;
-            left: $half-rich-logo-size - calc($overlay-letter-size / 2) + 0.2rem;
+            top: $half-rich-logo-size - calc($overlay-letter-size / 2) * 0.9;
+            left: $half-rich-logo-size - calc($overlay-letter-size / 2) * 0.95;
             font-family: $overlay-letter-family;
             font-weight: $overlay-letter-weight;
         }
@@ -174,9 +174,9 @@ $center-suffix-top: $half-rich-logo-size - calc($suftitle-font-size / 2);
     }
 
     .suffix {
-        font-size: $suftitle-font-size;
-        margin-left: 0 - calc($logo-size / 4) - 0.02em;
-        margin-top: $center-suffix-top + calc($suftitle-font-size / 3);//calc($suftitle-font-size/2);// - $suftitle-font-size + 0.4rem;
+        font-size: $suffix-font-size;
+        margin-left: 0 - calc($rich-logo-size / 4) - 0.02em;
+        margin-top: $center-suffix-top + calc($suffix-font-size / 3);//calc($suffix-font-size/2);// - $suffix-font-size + 0.4rem;
         //height: fit-content;
     }
 }

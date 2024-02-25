@@ -17,8 +17,8 @@ header {
     position: fixed;
     z-index: 9999999;
 }
-
-@include helpers.screen-layout-break(vars.$small-screen-break) {
+$small-screen-break: 700px;
+@include helpers.screen-layout-break($small-screen-break) {
     header {
         position: relative;
     }

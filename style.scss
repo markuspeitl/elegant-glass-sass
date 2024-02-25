@@ -1,12 +1,12 @@
-@forward 'fonts';
-@forward 'vars';
-@forward 'layouts';
-@forward 'reactive';
+@use 'fonts';
+@use 'vars';
+@use 'layouts';
+@use 'reactive';
 
-@forward 'containers';
-@forward 'content';
-@forward 'controls';
-@forward 'custom';
+@use 'containers';
+@use 'content';
+@use 'controls';
+@use 'custom';
 
 //$material-symbols-font-path: '/img/icons/material-symbols/';
 @import 'node_modules/material-symbols/index';
