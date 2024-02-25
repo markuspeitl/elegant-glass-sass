@@ -3,7 +3,7 @@
 
 $stack-view-default-h-size: 70vh;
 $stack-view-font-size: 2rem;
-$stack-view-font-color: white;
+
 
 .stack-view {
     width: 100%;
@@ -13,7 +13,7 @@ $stack-view-font-color: white;
     text-align: center;
     display: flex;
     height: $stack-view-default-h-size;
-    //color: $stack-view-font-color;
+    //color: vars.$stack-view-font-color;
     font-size: $stack-view-font-size;
 
     & .stack-bg {

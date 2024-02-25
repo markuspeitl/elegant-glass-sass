@@ -108,7 +108,7 @@ $button-default-transition-time: 2s;
 
 // -------------- Button bar (example: top right in navigation to highlight a set of actions)
 
-$button-highlight-bg-color: hsl(161, 48%, 59%) !default;
+$button-highlight-bg-color: vars.$button-highlight-bg-color !default;
 $bt-transition-time: vars.$transition-time 1.0s !default;
 //$nav-text-color: white;
 

@@ -1,5 +1,9 @@
+
+
 @use '../vars';
 @use '../shared';
+
+$preview-item-link-color: vars.$preview-item-link-color !default;
 
 .preview-section-holder {
     //display: flex;
@@ -25,7 +29,7 @@
         font-family: 'cabin';
         font-weight: 600;
         font-size: 1.2rem;
-        color: #009586;
+        color: vars.$preview-item-link-color;
         //text-decoration: underline;
         border-bottom: 2px solid;
     }

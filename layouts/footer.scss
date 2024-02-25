@@ -1,3 +1,9 @@
+$footer-text-color: white;
+$social-icon-border-color: white;
+$footer-button-bg-color: #3ede81;
+$footer-input-bg-color: #ffffff;
+$footer-input-fg-color: black;
+
 @use '../vars';
 @use '../shared';
 @use '../containers/stack-view';
@@ -18,7 +24,7 @@ footer {
     //display: grid;
     //display: flex;
     //flex-direction: column;
-    color: white !important;
+    color: $footer-text-color !important;
     font-size: 1.5rem !important;
 
 
@@ -38,11 +44,11 @@ footer {
     }
 
     input[type=email] {
-        background-color: rgba($color: #ffffff, $alpha: 0.9);
+        background-color: rgba($color: $footer-input-bg-color, $alpha: 0.9);
         //border: 2px solid darkgreen;
-        color: black;
+        color: $footer-input-fg-color;
         margin-right: 1rem;
-        box-shadow: 0px 0px 10px white;
+        box-shadow: 0px 0px 10px $footer-input-bg-color;
     }
 
     input[type=email]:hover {
@@ -53,8 +59,8 @@ footer {
     }
 
     button {
-        box-shadow: 0px 0px 10px white;
-        background-color: rgba(#3ede81, 0.6) !important;
+        box-shadow: 0px 0px 10px $footer-input-bg-color;
+        background-color: rgba($footer-button-bg-color, 0.6) !important;
     }
     
 }
@@ -124,7 +130,7 @@ footer {
     img {
         border-radius: 50%;
         padding: 10px;
-        border: 2px solid white;
+        border: 2px solid $social-icon-border-color;
         width: 1.5em;
         height: 1.5em;
     }

@@ -12,10 +12,9 @@
         
         float: right;
         width: 100%;
-        background-color: rgba(#22cc99, 0.8);
+        
         padding: 20px;
-        color: white;
-    
+        @include helpers.set-color-pair(vars.$search-box-color-pair);
         @include helpers.gap-between-children(0.1rem, horizontal);
     }
 
