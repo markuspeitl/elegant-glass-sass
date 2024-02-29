@@ -111,7 +111,9 @@ $font-weight: 600 !default;
 
 //$rich-logo-font-size: 320px;
 $rich-logo-font-size: 20rem !default;
+
 $rich-logo-size: 1em;
+
 $half-rich-logo-size: 0.5em;
 $overlay-letter-size: 0.6em;
 $suffix-font-size: $overlay-letter-size * 0.375;
@@ -127,6 +129,7 @@ $center-suffix-top: $half-rich-logo-size - calc($suffix-font-size / 2);
     
     //height: $logo-size;
     height: $rich-logo-size;
+    //line-height: $rich-logo-size;;
     width: auto;
     position: relative;
 
@@ -147,20 +150,52 @@ $center-suffix-top: $half-rich-logo-size - calc($suffix-font-size / 2);
         //height: $logo-size;
         height: $rich-logo-size;
         width: $rich-logo-size;
+        display: flex;
+        align-items: center;
+        //vertical-align: middle;
+        justify-content: center;
         //width: $logo-size;
 
         .overlay-letter {
-            position: absolute;
+            //position: absolute;
             //top: 140px;
+            //font-size: $overlay-letter-size;
+            
+            //top: $half-rich-logo-size - calc($overlay-letter-size / 2); //* 0.9;
+            //left: $half-rich-logo-size - calc($overlay-letter-size / 2);// * 0.95;
+            //display: none;
+            //height: $overlay-letter-size;
+            //width: $overlay-letter-size;
+
+            //justify-self: center;
+            //height: 0;
+            //width: 0;
             font-size: $overlay-letter-size;
-            top: $half-rich-logo-size - calc($overlay-letter-size / 2) * 0.9;
-            left: $half-rich-logo-size - calc($overlay-letter-size / 2) * 0.95;
+            line-height: $overlay-letter-size;
+            //position: relative;
+            //height: 0px;
+            //width: 0px;
+            position: relative;
+            top: calc(12%);
+            right: calc(8%);
+            //right: 0.5em;
+
+            /*position: absolute;
+            //top: 0;
+            left: 0;
+            top: calc(50% - 1em / 2);*/
+            //left: calc(50% - 1em / 2);
             font-family: $overlay-letter-family;
             font-weight: $overlay-letter-weight;
+
+            
         }
 
         img {
             //width: $logo-size;
+            position: absolute;
+            top: 0;
+            left: 0;
             height: $rich-logo-size;
             width: $rich-logo-size;
             z-index: -999;
@@ -178,28 +213,6 @@ $center-suffix-top: $half-rich-logo-size - calc($suffix-font-size / 2);
         margin-left: 0 - calc($rich-logo-size / 4) - 0.02em;
         margin-top: $center-suffix-top + calc($suffix-font-size / 3);//calc($suffix-font-size/2);// - $suffix-font-size + 0.4rem;
         //height: fit-content;
-    }
-}
-
-//.navigation-rich-logo {
-header .rich-logo {
-    //Make the element 90px high
-    font-size: 90px;
-    .ovly-letter {
-        display: none;
-    }
-    .suffix-title {
-        font-size: 0.6em;
-        margin-left: 0.1em;
-        margin-top: 0em;
-    }
-}
-
-footer .rich-logo {
-    //Make the element 240px high
-    font-size: 15rem;
-    .suffix-title {
-        display: none;
     }
 }
 

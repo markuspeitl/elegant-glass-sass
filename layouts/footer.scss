@@ -7,6 +7,7 @@ $input-shadow: 0px 0px 0.625em $footer-input-bg-color;
 
 @use '../shared';
 @use '../containers/stack-view';
+@use '../vars';
 
 footer {
     /*background: red;*/
@@ -28,10 +29,15 @@ footer {
     font-size: 1.5rem !important;
 
 
-    .stack-overlay {
+    .stack-bg {
         //@extend .centerflew-col;
         display: flex;
         flex-direction: column;
+    }
+    .stack-fg {
+        //Allow the flex items to fill the remaining available space
+        flex-grow: 1;
+        height: auto;
     }
 
 
@@ -74,7 +80,13 @@ footer {
     vertical-align: top;
     
     
-    padding: 3rem;
+    padding: {
+        left: 3rem;
+        right: 3rem;
+        top: 4rem;
+        bottom: 0.5rem;
+    }
+
     width: calc(100% - 3rem * 2);
 
     & > * {
@@ -104,7 +116,7 @@ footer {
     //z-index: 999;
     //position: relative;
     @extend .centerflex-col;
-    
+    margin-top: auto;
 
     & > * {
         padding: 1rem;
@@ -141,13 +153,68 @@ footer {
     }
 }
 
-#footer-bg-img {
+/*footer .stack-bg {
     filter: sepia(60%) blur(3px) brightness(40%) hue-rotate(30deg);
     opacity: 0.85;
-}
+}*/
 
 .middle-screen {
     //Align image with bottom
-    padding-left: 3.125em;
+    padding-left: 1.125em;
 }
 
+footer {
+    //background: rgba(237, 237, 255, 0.85);
+    //background: rgba(85, 120, 95, 0.95);
+    background: rgba(55, 95, 90, 0.95);
+    //height: auto !important;
+    height: 70vh !important;
+}
+
+footer .stack-bg {
+    //object-fit: cover;
+    //object-fit: cover !important;
+    object-fit: cover !important;
+    //height: auto;
+    height: 100% !important;
+    //min-height: 70vh;
+    //width: 102%;
+    margin-left: -3px;
+    margin-right: -3px;
+    
+}
+
+footer .stack-bg {
+    filter: sepia(70%) blur(5px) brightness(55%) hue-rotate(35deg);
+    opacity: 0.60;
+}
+footer:hover {
+    background-color: rgba(82, 30, 106, 0.9);
+    transition: 2s background-color;
+    .stack-bg {
+        filter: blur(6px) brightness(32%) hue-rotate(-170deg) saturate(110%);
+        //filter: sepia(70%) blur(5px) brightness(55%) hue-rotate(35deg);
+        opacity: 1.0;
+        transition: 3s all;
+    }
+}
+
+
+
+.alt-bg {
+    background: rgba(55, 90, 65, 0.95);
+    .stack-bg img {
+        filter: sepia(60%) blur(3px) brightness(40%) hue-rotate(30deg);
+    }
+}
+
+$footer-text-shadow: 2px 2px 30px black, 2px 2px 30px black;
+footer {
+    height: auto !important;
+    line-height: 1.5;
+    font-size: 1.25rem;
+    font-weight: vars.$content-section-body-font-weight;
+    font-family: vars.$content-section-body-font-family;
+    color: vars.$content-section-text-color;
+    text-shadow: $footer-text-shadow;
+}

@@ -22,6 +22,11 @@ $main-img-section-font-set: (
     body-font: null,
 );
 
+html {
+    //Controls global reference for 'rem' units
+    font-size: 16px !important;
+}
+
 
 .img-text-stack {
     @extend .stack-view;
@@ -59,13 +64,15 @@ $main-img-section-font-set: (
 }
 
 $main-stack-text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15px vars.$light-text-shadow-color;
-.main-stack {
-    @extend .img-text-stack;
+#main-stack {
+    background: none;
+    //@extend .img-text-stack;
     @include section-fonts($main-img-section-font-set);
 
     //height: $main-stack-view-h-size !important;
     //height: 1080px !important;
-    height: 100% !important;
+    //height: 100% !important;
+    //height: 100vh !important;
 
     h1 {
         color: vars.$main-image-main-title-color;
@@ -94,38 +101,46 @@ $main-stack-text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15p
 }
 
 
-.main-stack .stack-bg {
+#main-stack .stack-bg {
     position: fixed !important;
-    z-index: -99999;
+    //z-index: -99999;
 }
-.content-section {
+#main-stack .stack-bg {
+    height: 100vh;
+    //width: auto;
+    //position: absolute;
+    //top: 1.0rem;
+    //top: 240px;
+}
+
+#main-stack .stack-fg {
+    //margin-top: -25vh;
+    position: absolute;
+    top: calc(vars.$nav-item-horizontal-height - 1.3em);
+}
+
+/*.content-section {
     z-index: 0;
     //background: rgba($color: #ffffff, $alpha: 0.9);
     background: rgba($color: $content-section-bg-color, $alpha: 0.85);
+}*/
+
+section {
+    z-index: 0;
+    //background: rgba($color: #ffffff, $alpha: 0.9);
+    background: rgba($color: $content-section-bg-color, $alpha: 0.85);
+    //border-radius: 30px;
+    box-shadow: 0px 0px 10px white;;
 }
 
-.logo {
-    height: 500px;
-    margin: 0;
-    position: absolute;
-    left: 3em;
-    top: -10rem;
-    opacity: 0.85;
-    //transform: scaleX(-1);
-    transform: scaleX(-1);// rotate(20deg);
-}
-
-.main-stack .stack-overlay {
-    height: auto;
-    //width: auto;
-    position: absolute;
-    top: 1.0rem;
-    //top: 240px;
-}
 
 //.sections-strip .content-section:nth-child(2) {
 .content-start {  
     margin-top: $content-start-offset !important;
+}
+
+.content-box img {
+    width: 100%;
 }
 
 
@@ -137,6 +152,11 @@ $main-call-glow: 0px 0px 0.8em vars.$dark-text-shadow-color;
     &:hover, &:active {
         box-shadow: $main-call-glow
     }
+}
+
+.headvisual {
+    @extend .centerflex-row;
+    display: flex;
 }
 
 .immersive-button {
@@ -154,4 +174,85 @@ $main-call-glow: 0px 0px 0.8em vars.$dark-text-shadow-color;
     position: absolute;
     right: 0;
     top: calc($content-start-offset - $button-height * 2);
+}
+
+
+header .rich-logo {
+    //Make the element 90px high
+    font-size: 90px;
+    .overlay-letter {
+        display: none;
+    }
+    .suffix {
+        font-size: 0.6em;
+        margin-left: 0.1em;
+        margin-top: 0em;
+    }
+
+    font-size: 5rem;
+    .suffix {
+        font-size: 0.5em;
+        font-family: 'merienda';
+        font-weight: 800;
+        //padding-right: 0.2em;
+    }
+}
+
+main .rich-logo {
+    font-size: 20rem;
+    img {
+        opacity: 0.75;
+    }
+    .suffix {
+        margin-left: -1.3em;
+        margin-top: 1.4em;
+        letter-spacing: 0.07em;
+    }
+}
+
+footer .rich-logo {
+    //Make the element 240px high @ 16px root font-size
+    font-size: 15rem;
+    /*.suffix {
+        display: none;
+    }*/
+}
+
+
+/*.logo {
+    height: 500px;
+    margin: 0;
+    position: absolute;
+    left: 3em;
+    top: -10rem;
+    opacity: 0.85;
+    //transform: scaleX(-1);
+    transform: scaleX(-1);// rotate(20deg);
+}*/
+
+.fhighlight {
+    filter: saturate(50%) brightness(1.8);
+}
+.ffade {
+    filter: sepia(60%) blur(3px) brightness(40%) hue-rotate(30deg);
+    opacity: 0.85;
+}
+
+
+
+.content-box {
+    padding-bottom: 2em;
+}
+
+
+.glass-back {
+    //footer .stack-fg
+    backdrop-filter: blur(5px);
+}
+
+footer .stack-fg {
+    z-index: 99
+}
+footer img {
+    z-index: 0 !important;
 }

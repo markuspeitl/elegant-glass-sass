@@ -13,7 +13,7 @@ $stack-view-font-size: 2rem !default;
     display: flex;
     height: $stack-view-default-h-size;
     //color: vars.$stack-view-font-color;
-    font-size: $stack-view-font-size;
+    //font-size: $stack-view-font-size;
 
     & .stack-bg {
         width: inherit;
@@ -27,10 +27,10 @@ $stack-view-font-size: 2rem !default;
     }
 }
 
-.stack-overlay, .stack-fg {
+.stack-bg, .stack-fg {
     //@extend .centerflex-col;
-    width: 100%;
-    height: 100%;
+    //width: 100%;
+    //height: 100%;
 
     /*& > div {
         z-index: -10;

@@ -14,6 +14,8 @@
 
 @mixin gap-between-children($spacing: 0.1rem, $orientation: horizontal){
     @include between-children($orientation){
+
+        //For some reason the sass compiler inverts this to be 'margin-right' -> probably a bug (postcss/cssnano)
         margin-right: $spacing;
     }
 }
