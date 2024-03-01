@@ -190,7 +190,7 @@ footer .stack-bg {
 }
 footer:hover {
     background-color: rgba(82, 30, 106, 0.9);
-    transition: 2s background-color;
+    transition: 3s background-color;
     .stack-bg {
         filter: blur(6px) brightness(32%) hue-rotate(-170deg) saturate(110%);
         //filter: sepia(70%) blur(5px) brightness(55%) hue-rotate(35deg);

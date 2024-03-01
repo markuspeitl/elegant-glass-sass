@@ -14,7 +14,7 @@ $preview-item-link-color: #009586 !default;
     //margin-left: auto;
     //margin-right: auto;;
     display: grid;
-    @include shared.center-content();
+    //@include shared.center-content();
 
     padding: {
         left: 10%;

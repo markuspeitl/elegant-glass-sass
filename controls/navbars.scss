@@ -48,6 +48,8 @@ $table-bar-bg-color: #22cc99 !default;
 $nav-column-title-color: #086247 !default;
 $nav-item-horizontal-height: 5.625rem;
 
+$nav-header-height: $nav-item-horizontal-height;
+
 //TODO = lighten tablebar color
 $expandable_icon_shadow_color: #4ef7c5 !default;
 
@@ -171,22 +173,6 @@ $small-screen-break: 700px;
     }
 }
 
-
-
-.table-bar {
-    width: 100%;
-    //background-color: rgba(#22cc99, 0.85);
-    background-color: $table-bar-bg-color;
-    top: $nav-item-horizontal-height;
-    position: absolute;
-    left: 0;
-    text-align: left;
-    opacity: 0.1;
-    visibility: hidden;
-    //display: none;
-    padding: 4rem;
-}
-
 .nav-table {
     //text-align: left;
     width: auto;
@@ -251,9 +237,32 @@ $small-screen-break: 700px;
     }
 }
 
-li:has(.nav-tb-ck:checked) + .table-bar {
+.table-bar {
+    width: 100%;
+    //background-color: rgba(#22cc99, 0.85);
+    background-color: $table-bar-bg-color;
+    top: $nav-item-horizontal-height;
+    position: absolute;
+    left: 0;
+    text-align: left;
+    opacity: 0.1;
+    visibility: hidden;
+    //display: none;
+    padding: {
+        top: 4rem;
+        bottom: 4rem;
+    }
+    //padding: 4rem;
+}
+
+li:has(.nav-tb-ck:checked) /*+*/ > .table-bar {
     visibility: visible;
     //display: block;
+    display: block;
+    position: fixed;
+    left: 0;
+    top: $nav-header-height;
+    
 
     opacity: 0.95;
     transition: 1s opacity;
@@ -266,6 +275,7 @@ li:has(.nav-tb-ck:checked) + .table-bar {
     width: 100%;
     //display:
     opacity: 0.0;
+    z-index: 999;
 }
 
 
