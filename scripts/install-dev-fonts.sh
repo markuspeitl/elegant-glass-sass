@@ -86,7 +86,8 @@ abeezee \
 philosopher \
 amaranth \
 atkinson-hyperlegible \
-alef
+alef \
+Comfortaa \
 
 
 # serif font (more legible than handwriting font and less than sansserif fonts -> good for headings, as they are big anyway and therefore
@@ -116,7 +117,7 @@ alef
 #gabriela: esoteric, serifs and line ends are swung in at the ends, handwriting or brush looks with dynamics
 #asul: dynamic in double V shape, trapez, minimal serifs, subtle angled dynamics, quite sans like
 #montaga: slanted swings in lines, uneven base shapes, slanted serifs at all tops
-
+#Comfortaa: rounded glyph edges, very clean and minimal (maybe a bit too minimal -> harder to read than other sans-serif fonts)
 
 ./install-font.sh \
 merriweather \

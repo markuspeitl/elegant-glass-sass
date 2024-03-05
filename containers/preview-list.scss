@@ -2,6 +2,7 @@
 
 @use '../vars';
 @use '../shared';
+@use '../controls';
 
 //light-bg-highlight
 $preview-item-link-color: #009586 !default;
@@ -15,7 +16,6 @@ $preview-item-link-color: #009586 !default;
     //margin-right: auto;;
     display: grid;
     //@include shared.center-content();
-
     padding: {
         left: 10%;
         right: 10%;
@@ -25,15 +25,7 @@ $preview-item-link-color: #009586 !default;
     gap: 1.0em;
     row-gap: 2.0em;
 
-    a {
-        all: unset;
-        font-family: 'cabin';
-        font-weight: 600;
-        font-size: 1.2em;
-        color: $preview-item-link-color;
-        //text-decoration: underline;
-        border-bottom: 0.125em solid;
-    }
+    @include controls.colored-links($preview-item-link-color);
 }
 
 .preview-section-holder article {

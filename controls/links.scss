@@ -1,0 +1,29 @@
+$link-color: #009586 !default;
+
+@mixin colored-link-style($color: $link-color) {
+    text-decoration: none;
+    font-family: 'cabin';
+    font-weight: 600;
+    font-size: 1.2em;
+    color: $color;
+    border-bottom: 0.125em solid;
+
+    &:hover {
+        opacity: 0.7;
+        transition: 0.5s opacity;
+    }
+
+    &:visited {
+        color: $color;
+    }
+}
+
+@mixin colored-links($color: $link-color) {
+    a {
+        @include colored-link-style($color);
+    }
+}
+
+//a {} global
+@include colored-links($link-color);
+

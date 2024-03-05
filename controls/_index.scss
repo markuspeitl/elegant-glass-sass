@@ -1,5 +1,5 @@
-@use 'icons';
-@use 'buttons';
-@use 'links';
-@use 'navbars';
-@use 'forms';
+@forward 'icons';
+@forward 'buttons';
+@forward 'links';
+@forward 'navbars';
+@forward 'forms';
