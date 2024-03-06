@@ -16,12 +16,12 @@ $text-shadow: 0.2em 0.2em 1em $text-shadow-color;
         line-height: 2.5rem;
     }*/
     
-    &  cite::before {
+    /*&  cite::before {
         content: '"';
     }
     &  cite::after {
         content: '"';
-    }
+    }*/
     & .from-ref {
         font: {
             weight: vars.$quote-from-ref-weight;

@@ -17,13 +17,13 @@ $preview-item-link-color: #009586 !default;
     display: grid;
     //@include shared.center-content();
     padding: {
-        left: 10%;
-        right: 10%;
+        left: 20%;
+        right: 20%;
         top: 20px;
     }
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.0em;
-    row-gap: 2.0em;
+    gap: 2.0em;
+    row-gap: 3.0em;
 
     @include controls.colored-links($preview-item-link-color);
 }
@@ -34,5 +34,6 @@ $preview-item-link-color: #009586 !default;
 }
 .preview-section-holder article img {
     width: 100%;
+    height: 15em;
     object-fit: cover;
 }

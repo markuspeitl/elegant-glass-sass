@@ -303,6 +303,9 @@ $expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandab
     text-shadow: $expand-shadow;
 }
 
+.navspacer {
+    height: $nav-header-height;
+}
 
 /*.nav-tb-ck:checked ~ .nav-tb-ck + .table-bar .nav-table {
     display: none;

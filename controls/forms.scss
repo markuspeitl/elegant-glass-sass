@@ -29,7 +29,7 @@ $search-box-color-pair: rgba(#22cc99, 0.8) white !default;
 
 
 form input {
-    all: unset;
+    //all: unset;
     //font-size: 1.2rem;
     font-size: 1.4rem;
     padding: 0.8rem;
@@ -47,7 +47,7 @@ input[type=text], input[type=email] {
 }
 input[type=submit] {
     //background-color: rgba(green, 0.8);
-    display: none;
+    //display: none;
     //visibility: hidden;
 }
 form button {
