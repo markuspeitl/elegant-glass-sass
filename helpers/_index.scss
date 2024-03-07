@@ -1,22 +1,23 @@
 @use 'sass:list';
 
-@mixin between-children($orientation: horizontal){
+@mixin between-children(){
 
     & > *:not(:last-child) {
-        @if ($orientation == horizontal or $orientation == h){
-            @content();
-        }
-        @if ($orientation == vertical or $orientation == v){
-            @content();
-        }
+        @content();
     }
 }
 
 @mixin gap-between-children($spacing: 0.1rem, $orientation: horizontal){
-    @include between-children($orientation){
 
-        //For some reason the sass compiler inverts this to be 'margin-right' -> probably a bug (postcss/cssnano)
-        margin-right: $spacing;
+    @if ($orientation == horizontal or $orientation == h){
+        @include between-children() {
+            margin-right: $spacing;
+        }
+    }
+    @if ($orientation == vertical or $orientation == v){
+        @include between-children() {
+            margin-top: $spacing;
+        }
     }
 }
 
@@ -35,8 +36,15 @@
 
 @mixin border-between-children($border: 0.125em solid white, $orientation: horizontal){
 
-    @include between-children($orientation){
-        border-right: $border;    
+    @if ($orientation == horizontal or $orientation == h){
+        @include between-children() {
+            border-right: $border;
+        }
+    }
+    @if ($orientation == vertical or $orientation == v){
+        @include between-children() {
+            border-top: $border;
+        }
     }
 
     /*& > *:not(:last-child) {

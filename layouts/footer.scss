@@ -136,6 +136,8 @@ footer {
 .social-bar {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     a {
         padding: 0.5rem;
     }

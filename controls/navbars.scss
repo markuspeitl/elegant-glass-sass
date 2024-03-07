@@ -131,48 +131,6 @@ nav {
     margin-left: auto;
 }
 
-$small-screen-break: 700px;
-@include helpers.screen-layout-break($small-screen-break) {
-    .navlist {
-        width: 100%;
-        height: auto;
-        @extend %nav-holder;
-        @include helpers.gap-between-children(0, 'horizontal');
-        @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'vertical');
-        margin-top: 0.125em !important;
-        margin-bottom: 0.625em !important;
-    
-        & > * {
-            height: $nav-item-horizontal-height;
-        }
-    
-        & ul {
-            @include helpers.pad-between-children(0, 'horizontal');
-            @include helpers.pad-between-children(var(--nav-horizontal-margin-base), 'vertical');
-
-            text-align: center;
-            flex-direction: column;
-            /*where does this 40px padding come from ???*/
-            padding-left: 0;
-        }
-    
-        & ul > li {
-            //@extend %clean-list;
-            padding-top: 0.8em;
-            padding-bottom: 0.8em;
-        }
-    
-        & ul > li > a {
-            display: block;
-            width: 100%;
-        }
-
-        & ul > li:nth-child(odd) {
-            background: rgba(255,255,255, 0.2); //TODO: darken instead https://sass-lang.com/documentation/modules/color/
-        }
-    }
-}
-
 .nav-table {
     //text-align: left;
     width: auto;
@@ -242,7 +200,7 @@ $small-screen-break: 700px;
     //background-color: rgba(#22cc99, 0.85);
     background-color: $table-bar-bg-color;
     top: $nav-item-horizontal-height;
-    position: absolute;
+    position: fixed;
     left: 0;
     text-align: left;
     opacity: 0.1;
@@ -257,18 +215,17 @@ $small-screen-break: 700px;
 
 li:has(.nav-tb-ck:checked) /*+*/ > .table-bar {
     visibility: visible;
-    //display: block;
     display: block;
-    position: fixed;
-    left: 0;
-    top: $nav-header-height;
-    
-
     opacity: 0.95;
+    //display: block;
+    //position: fixed;
+    //left: 0;
+    //top: $nav-header-height;
     transition: 1s opacity;
 }
 
 .nav-tb-ck {
+    all: unset;
     position: absolute;
     left: 0;
     height: 100%;
@@ -297,7 +254,7 @@ $expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandab
     font-weight: 800;
 }
 
-.nav-tb-ck:checked ~ .icon {
+.nav-tb-ck:checked ~ a .icon {
     rotate: 180deg;
     transition: 1.0s rotate;
     text-shadow: $expand-shadow;
@@ -306,6 +263,235 @@ $expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandab
 .navspacer {
     height: $nav-header-height;
 }
+
+@include helpers.aspect-break(1080/ 944){
+    $nav-item-horizontal-height: $nav-item-horizontal-height * 2;
+    .navlist {
+        flex-wrap: wrap;
+        /*& > * {
+            height: $nav-item-horizontal-height;
+        }*/
+        nav {
+            margin-left: 1em;
+        }
+        .headaction {
+            margin-right: auto;
+        }
+    }
+    .table-bar {
+        top: $nav-item-horizontal-height;
+    }
+}
+
+@include helpers.aspect-break(714/ 944){
+    //$nav-item-horizontal-height: $nav-item-horizontal-height * 2;
+    header {
+        position: relative;
+        top: 0;
+    }
+
+    $nav-entry-height: 3em;
+    .navlist {
+        height: auto;
+        flex-wrap: wrap;
+        flex-direction: column;
+
+        .headvisual {
+            height: $nav-item-horizontal-height * 1.4;
+            width: 100%;
+        }
+        nav {
+            margin-left: 1em;
+            flex-direction: column;
+            height: auto;
+            margin: 0;
+            width: 100%;
+            & > ul {
+                flex-direction: column;
+                width: 100%;
+                margin: 0;
+
+                & > li {
+                    height: $nav-entry-height;
+                    line-height: $nav-entry-height;
+                    border: none !important;
+                    //justify-content: center;
+                    //align-items: center;
+                    //display: flex;
+                    .nav_url {
+                        all: unset;
+                        border: unset;
+                        display: block;
+                        //margin: auto;
+                        //height: 100%;
+                    }
+                    .nav_url:hover, .nav-tb-ck:hover + .nav_url {
+                        border: unset;
+                        box-shadow: 0px 0px 5px white;
+                    }
+                }
+
+                & > li:nth-child(odd) {
+                    background: rgba(255,255,255, 0.2); //TODO: darken instead https://sass-lang.com/documentation/modules/color/
+                }
+            }
+        }
+        .headaction {
+            margin-right: auto;
+            margin-top: 1em;
+        }
+    }
+
+    .table-bar {
+        position: absolute;
+        top: $nav-entry-height;
+        z-index: 9999;
+        padding-top: 1.4em;
+        padding-bottom: 1em;
+
+        .nav-table {
+            grid-auto-flow: row;
+            grid-template-columns: 1fr;
+        }
+        .nav-column {
+            align-items: start;
+            ul {
+                width: 100%;
+                li {
+                    height: $nav-entry-height * 0.8;
+                    line-height: $nav-entry-height * 0.8;
+                    
+                }
+            }
+            a {
+                width: 100%;
+                display: block;
+                //padding: 0.0em;
+                padding-left: 0.5em !important;
+
+                &:hover {
+                    border: unset;
+                    box-shadow: 0px 0px 5px white;
+                }
+            }
+        }
+        h3 {
+            margin-bottom: 0.0em;
+            padding-bottom: 0.1em;
+        }
+    }
+
+    #main-stack .stack-fg {
+        top: 0.5rem !important;
+    }
+    .top-logo {
+        padding: 0;
+        margin-left: -8% !important;
+    }
+
+    .split-view .right-pane {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        margin: auto !important;
+        width: 80%;
+    }
+
+    .small-width {
+        width: 80% !important;
+    }
+
+    .preview-section-holder {
+        padding: 0 !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        row-gap: 2em !important;
+        gap: 1em !important;
+    }
+
+    footer {
+        .panes {
+            padding: 0 !important;
+            width: 100% !important;
+            flex-direction: column;
+            align-items: center;
+        }
+        .left-screen {
+            margin-right: unset !important;;
+        }
+        .middle-screen {
+            padding-left: 0 !important;
+        }
+        .right-screen {
+            margin-left: unset !important;
+            width: 80%;
+        }
+        .copybar {
+            flex-direction: column-reverse;
+            .nav_url {
+                margin: 0;
+                line-height: 1 !important;
+                height: auto !important;
+            }
+            @include helpers.gap-between-children(1em, vertical);
+        }
+        #email-input {
+            margin-right: 0 !important;
+        }
+        .nav-column {
+            text-align: center;
+        }
+    }
+}
+
+@include helpers.aspect-break(581/ 944){
+    .preview-section-holder {
+        padding: 0 !important;
+        grid-template-columns: 1fr !important;
+        row-gap: 2em !important;
+        gap: 1em !important;
+    }
+}
+
+/*$small-screen-break: 700px;
+@include helpers.screen-layout-break($small-screen-break) {
+    .navlist {
+        width: 100%;
+        height: auto;
+        @extend %nav-holder;
+        @include helpers.gap-between-children(0, 'horizontal');
+        @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'vertical');
+        margin-top: 0.125em !important;
+        margin-bottom: 0.625em !important;
+    
+        & > * {
+            height: $nav-item-horizontal-height;
+        }
+    
+        & ul {
+            @include helpers.pad-between-children(0, 'horizontal');
+            @include helpers.pad-between-children(var(--nav-horizontal-margin-base), 'vertical');
+
+            text-align: center;
+            flex-direction: column;
+            padding-left: 0;
+        }
+    
+        & ul > li {
+            //@extend %clean-list;
+            padding-top: 0.8em;
+            padding-bottom: 0.8em;
+        }
+    
+        & ul > li > a {
+            display: block;
+            width: 100%;
+        }
+
+        & ul > li:nth-child(odd) {
+            background: rgba(255,255,255, 0.2); //TODO: darken instead https://sass-lang.com/documentation/modules/color/
+        }
+    }
+}*/
+
 
 /*.nav-tb-ck:checked ~ .nav-tb-ck + .table-bar .nav-table {
     display: none;

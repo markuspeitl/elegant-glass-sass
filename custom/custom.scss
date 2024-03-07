@@ -15,12 +15,6 @@ $content-start-offset: 65vh;
 $content-section-bg-color: #ededff;
 $title-font-size: 3.3rem;
 //$second-title-font-size * 0.85;
-$main-img-section-font-set: (
-    title-font: $title-font-size 'merienda',
-    secondary-title-font: $title-font-size * 0.85 'merienda',
-    //body-font: $title-font-size * 0.5 vars.$main-title-font-family
-    body-font: null,
-);
 
 html {
     //Controls global reference for 'rem' units
@@ -63,11 +57,28 @@ html {
     }
 }
 
+/*$main-img-section-font-set: (
+    title-font: $title-font-size 'merienda',
+    secondary-title-font: $title-font-size * 0.85 'merienda',
+    body-font: null,
+);*/
+
+$main-title-font-size: 3.3em;
+$main-img-section-font-set: (
+    title-font: $main-title-font-size 'merienda',
+    secondary-title-font: $main-title-font-size * 0.85 'merienda',
+    body-font: null,
+);
+
 $main-stack-text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15px vars.$light-text-shadow-color;
 #main-stack {
     background: none;
     //@extend .img-text-stack;
     @include section-fonts($main-img-section-font-set);
+
+    font-size: 12px;
+    height: 40em;
+    
 
     //height: $main-stack-view-h-size !important;
     //height: 1080px !important;
@@ -81,7 +92,7 @@ $main-stack-text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15p
         //Multiple can be applied by comma seperating them (in this case -> thicker text shadow)
         opacity: 0.95;
         margin: 0;
-        margin-bottom: 3.3rem !important;
+        margin-bottom: 1em !important;
 
         //position: absolute;
         //top: 90px;
@@ -92,7 +103,7 @@ $main-stack-text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15p
         font-weight: 400;
         opacity: 0.98;
         margin: 0;
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 1em !important;
     }
     h1, h2 {
         text-shadow: $main-stack-text-shadow;
@@ -200,7 +211,7 @@ header .rich-logo {
 }
 
 main .rich-logo {
-    font-size: 20rem;
+    font-size: 20em;
     img {
         opacity: 0.75;
     }
