@@ -16,15 +16,16 @@
 };
 
 $nav-link-hover-border-color: white;
-@mixin nav_link_hover_effect($color: $nav-link-hover-border-color){
-    padding-bottom: 3px;
-    border-bottom: solid $color;
-    border-bottom-width: 2px;
+@mixin nav_link_hover_effect($color: $nav-link-hover-border-color, $margin-top: null){
+    //padding-bottom: 3px;
+    //border-bottom: solid $color;
+    //border-bottom-width: 2px;
+    @include helpers.spaceless-border('bottom', 2px, $color);
 }
 
-@mixin nav_link_hover(){
+@mixin nav_link_hover($margin-top: null){
     &:hover {
-        @include nav_link_hover_effect();
+        @include nav_link_hover_effect($nav-link-hover-border-color, $margin-top);
     }
 }
 
@@ -203,7 +204,6 @@ nav {
     position: fixed;
     left: 0;
     text-align: left;
-    opacity: 0.1;
     visibility: hidden;
     //display: none;
     padding: {
@@ -216,7 +216,8 @@ nav {
 li:has(.nav-tb-ck:checked) /*+*/ > .table-bar {
     visibility: visible;
     display: block;
-    opacity: 0.95;
+    opacity: 1.0;
+    background-color: rgba($table-bar-bg-color, 0.97);
     //display: block;
     //position: fixed;
     //left: 0;
@@ -427,13 +428,15 @@ $expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandab
         .copybar {
             flex-direction: column-reverse;
             .nav_url {
-                margin: 0;
+                //margin: 0;
+                margin-left: auto;
+                margin-right: auto;
                 line-height: 1 !important;
                 height: auto !important;
             }
             @include helpers.gap-between-children(1em, vertical);
         }
-        #email-input {
+        input[type=email] {
             margin-right: 0 !important;
         }
         .nav-column {

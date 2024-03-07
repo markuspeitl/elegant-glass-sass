@@ -41,6 +41,10 @@ label {
     display: none;
 }
 
+input {
+    outline: none;
+}
+
 input[type=text], input[type=email] {
     //background-color: rgba(blue, 0.8);
     width: auto;

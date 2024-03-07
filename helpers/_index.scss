@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use 'sass:math';
 
 @mixin between-children(){
 
@@ -73,4 +74,16 @@
 @mixin set-color-pair($color-pair: white black){
     background-color: list.nth($color-pair, 1);
     color: list.nth($color-pair, 2);
+}
+
+@mixin spaceless-border($border-side: bottom, $border-thickness: 1px, $border-color: white, $current-margin-top: 0, $border-style: solid){
+    
+    @if($border-side == null){
+        border: $border-thickness $border-style $border-color;
+        margin-bottom: $current-margin-top - 2 * $border-thickness;
+    }
+    @else {
+        border-#{$border-side}: $border-thickness $border-style $border-color;
+        margin-bottom: $current-margin-top - $border-thickness;
+    }
 }
