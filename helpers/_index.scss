@@ -55,6 +55,13 @@
     }
 }
 
+@mixin aspect-break($aspect-ratio: 4 / 3){
+    @media only screen and (max-aspect-ratio: $aspect-ratio) {
+        @content;
+    }
+}
+
+
 @mixin set-color-pair($color-pair: white black){
     background-color: list.nth($color-pair, 1);
     color: list.nth($color-pair, 2);
