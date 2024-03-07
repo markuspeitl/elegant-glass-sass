@@ -26,10 +26,11 @@
     font-weight: vars.$base-font-weight;
     font-family: vars.$base-font-family;
     font-size: vars.$root-font-size;
+    
     line-height: vars.$root-line-height;
     letter-spacing: vars.$base-letter-spacing;
     //TODO enable for production
-    //overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 html, body {
