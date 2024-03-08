@@ -17,8 +17,18 @@
     background: none;
 }
 
+:root {
+    font-size: 1.7vh;
+}
 
-:root, html, body, main {
+//phone landscape
+@media only screen and (min-aspect-ratio: 20 / 9) {
+    :root {
+        font-size: 3.2vh;
+    }
+}
+
+html, body, main {
     @extend %font-antialias;
     @extend %clean-container;
     width: 100%;
@@ -26,7 +36,7 @@
     font-weight: vars.$base-font-weight;
     font-family: vars.$base-font-family;
     font-size: vars.$root-font-size;
-    
+
     line-height: vars.$root-line-height;
     letter-spacing: vars.$base-letter-spacing;
     //TODO enable for production

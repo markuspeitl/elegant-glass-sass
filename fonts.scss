@@ -163,8 +163,8 @@ $fonts_dir_path: './fonts';
 	font-weight: 400;
 	font-style: normal;
 	src:
-		url($fonts_dir_path + '/ruthie/ruthie-v26-latin_latin-ext-regular.woff') format('woff'),
-		url($fonts_dir_path + '/ruthie/ruthie-v26-latin_latin-ext-regular.woff2') format('woff2'),
+		url($fonts_dir_path + '/ruthie/ruthie-v26-latin_latin-ext-regular.woff2') format('woff2'),	
+		url($fonts_dir_path + '/ruthie/ruthie-v26-latin_latin-ext-regular.woff') format('woff'),	
 		url($fonts_dir_path + '/ruthie/ruthie-v26-latin_latin-ext-regular.svg') format('svg');
 }
 

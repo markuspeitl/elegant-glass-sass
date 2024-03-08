@@ -75,6 +75,12 @@ $button-default-transition-time: 2s;
     font-weight: vars.$icons-weight-thickness;
 }
 
+//Color can not be changed from css directly (filter | change svg fill property in file | use as svg mask | inhtml svg + style with css -- are the options)
+.svg-icon {
+    //filter: sepia(50%) saturate(100%) hue-rotate(80deg);
+    //filter: invert(50%) sepia(100%) saturate(200%) brightness(120%) hue-rotate(120deg)
+    filter: invert(100%)
+}
 
 .bt-content {
     @extend .centerflex-row, %clearbox;

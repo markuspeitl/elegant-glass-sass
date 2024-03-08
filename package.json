@@ -12,9 +12,7 @@
   },
   "author": "Markus Peitl",
   "license": "UNLICENCED",
-  "dependencies": {
-    "material-symbols": "^0.15.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "browser-sync": "^3.0.2",
     "http-server": "^14.1.1",

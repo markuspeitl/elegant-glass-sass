@@ -16,14 +16,20 @@ $content-section-bg-color: #ededff;
 $title-font-size: 3.3rem;
 //$second-title-font-size * 0.85;
 
-html {
+/*html {
     //Controls global reference for 'rem' units
     //font-size: 16px !important;
 
     //Not 'px' does not work on mobile as these browser manipulate the root font size in
     //that case to make it larger -> probably to make unoptimized sites more readable
-    font-size: 1.7vh !important;
+    font-size: 1.7vh;
 }
+
+@media only screen and (min-aspect-ratio: 20 / 10) {
+    html {
+        font-size: 3.2vh !important;
+    }
+}*/
 
 
 .img-text-stack {
