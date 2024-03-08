@@ -1,0 +1,69 @@
+@use '../helpers';
+@use 'sass:list';
+
+.events-table {
+    display: grid;
+    grid-template-columns: 1.0fr 1.5fr 0.5fr;
+    //gap: 0.5em;
+    row-gap: 0.5em;
+
+    & > * {
+        //border: 1px solid black;
+        padding: 0.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #00534b;
+        //background: radial-gradient(rgba(#009586, 0.15), rgba(#009586, 0.05));
+        //background: linear-gradient(to right, rgba(15, 95, 73, 0.25), rgba(0, 65, 63, 0.05))
+        //text-shadow: 0.0em 0.0em 0.1em #009586;
+        border-bottom: 1px solid #00534b;
+    }
+
+    h3 {
+        margin: 0;
+    }
+}
+
+/*.events-table {
+    display: flex;
+    flex-direction: column;
+
+    .row {
+        display: flex;
+        flex-direction: row;
+
+        & > *:last-child {
+            margin-left: auto;
+        }
+        & > *:first-child {
+            margin-right: auto;
+        }
+    }
+}*/
+
+$break2: list.slash(7, 9);
+
+@include helpers.aspect-break($break2){
+    .events-table {
+        grid-template-columns: 1fr;
+
+        //& > *:nth-child(3n){
+        & > * {
+            border-bottom: none;
+        }
+
+        & > .lrow{
+            padding-bottom: 1.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 1px solid #00534b;
+        }
+
+        .header {
+            display: none;
+        }
+
+        row-gap: 0em;
+    }
+}

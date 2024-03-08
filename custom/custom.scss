@@ -286,10 +286,12 @@ footer img {
 
 .page-content {
     //text-align: center;
-    padding-left: 20%;
-    padding-right: 20%;
-    margin-top: 4em;
-    padding-bottom: 4em;
+    //padding-left: 20%;
+    //padding-right: 20%;
+    //width: 80%;
+    max-width: 80ch;
+    margin-top: 0.7em;
+    padding-bottom: 5em;
 
     section {
         background: none;

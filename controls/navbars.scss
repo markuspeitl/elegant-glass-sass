@@ -2,6 +2,7 @@
 @use '../helpers';
 @use '../reactive';
 @use '../shared';
+@use 'sass:list';
 
 //$small-screen-break: vars.$small-screen-break !default;
 
@@ -106,6 +107,7 @@ $expandable_icon_shadow_color: #4ef7c5 !default;
     margin: 0;
     @extend .centerflex-row;
     @extend %nav-holder;
+    flex-wrap: wrap;
 
     @include helpers.gap-between-children(var(--nav-horizontal-margin-base), horizontal);
 
@@ -262,13 +264,19 @@ $expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandab
 }
 
 .navspacer {
-    height: $nav-header-height;
+    height: $nav-item-horizontal-height;
 }
 
-@include helpers.aspect-break(1080/ 944){
+//$break1: list.slash(15, 13);
+$break1: list.slash(5, 4);
+
+$break2: list.slash(7, 9);
+$break3: list.slash(2, 3);
+$break4: list.slash(1, 1);
+
+@include helpers.aspect-break($break1){
     $nav-item-horizontal-height: $nav-item-horizontal-height * 2;
     .navlist {
-        flex-wrap: wrap;
         /*& > * {
             height: $nav-item-horizontal-height;
         }*/
@@ -282,13 +290,30 @@ $expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandab
     .table-bar {
         top: $nav-item-horizontal-height;
     }
+    .navspacer {
+        height: $nav-item-horizontal-height;
+    }
 }
 
-@include helpers.aspect-break(714/ 944){
+@include helpers.aspect-break($break4){
+    $nav-item-horizontal-height: $nav-item-horizontal-height * 3;
+    .table-bar {
+        top: $nav-item-horizontal-height;
+    }
+    .navspacer {
+        height: $nav-item-horizontal-height;
+    }
+}
+
+@include helpers.aspect-break($break2){
     //$nav-item-horizontal-height: $nav-item-horizontal-height * 2;
     header {
         position: relative;
         top: 0;
+    }
+
+    .navspacer {
+        height: 0;
     }
 
     $nav-entry-height: 3em;
@@ -445,7 +470,7 @@ $expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandab
     }
 }
 
-@include helpers.aspect-break(581/ 944){
+@include helpers.aspect-break($break3){
     .preview-section-holder {
         padding: 0 !important;
         grid-template-columns: 1fr !important;

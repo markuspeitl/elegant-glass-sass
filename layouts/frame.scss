@@ -43,6 +43,11 @@ html, body, main {
     overflow-x: hidden;
 }
 
+body {
+    //display: inline-block;
+    //text-align: center;
+}
+
 html, body {
     @extend %clean-container;
 }
