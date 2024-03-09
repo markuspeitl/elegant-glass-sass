@@ -5,6 +5,7 @@
 
 $search-box-color-pair: rgba(#22cc99, 0.8) white !default;
 $footer-button-bg-color: #3ede81 !default;
+$footer-input-bg-color: #ffffff !default;
 $input-shadow: 0px 0px 0.625em $footer-input-bg-color;
 
 .search-bar {
@@ -56,16 +57,21 @@ input[type=submit] {
     //display: none;
     //visibility: hidden;
 }
-form button,.rbtn {
-    @extend .light-button;
-    font-size: 1.8rem;
-    padding: 1.0rem;
-    background-color: rgba($footer-button-bg-color, 0.6);
-    /*.icon {
-        height: 40px;
-    }*/
+
+form {
+    button,.rbtn {
+        @extend .light-button;
+        font-size: 1.8rem;
+        padding: 1.0rem;
+        background-color: rgba($footer-button-bg-color, 0.6);
+        /*.icon {
+            height: 40px;
+        }*/
+    }
+
+    input, button, .rbtn {
+        box-shadow: $input-shadow;
+    }
 }
 
-form input, button, .rbtn {
-    box-shadow: $input-shadow;
-}
+
