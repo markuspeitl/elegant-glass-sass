@@ -3,11 +3,11 @@
 @use '../helpers';
 @use '../shared';
 
-$ovl-button-default-bg-opacity: 0.3;
-$ovl-button-hover-bg-opacity: 0.8;
+$ovl-button-default-bg-opacity: 0.4;
+$ovl-button-hover-bg-opacity: 0.9;
 $ovl-button-border: 0.1rem solid vars.$ovl-button-fg-color;
 
-$ovl-button-height: vars.$nav-item-horizontal-height * 0.7;
+$ovl-button-height: 2.5em;
 
 $button-content-spacing: 1rem;
 $button-default-padding-l: $button-content-spacing + 0.4rem;
@@ -40,6 +40,12 @@ $button-default-transition-time: 2s;
 
     &:hover {
         @include reactive.lin-transition($button-default-transition-time, color);
+        .svg-icon {
+            @include reactive.lin-transition($button-default-transition-time, filter);
+        }
+    }
+    .svg-icon {
+        @include reactive.lin-transition($button-default-transition-time, filter);
     }
 }
 
@@ -51,6 +57,9 @@ $button-default-transition-time: 2s;
     &:hover {
         background-color: rgba(vars.$ovl-button-fg-color, $ovl-button-hover-bg-opacity);
         color: vars.$ovl-button-bg-color;
+        .svg-icon {
+            filter: invert(0%);
+        }
     }
 }
 
@@ -62,6 +71,9 @@ $button-default-transition-time: 2s;
     &:hover {
         color: vars.$ovl-button-bg-color;
         background-color: rgba(vars.$ovl-button-fg-color, $ovl-button-hover-bg-opacity);
+        .svg-icon {
+            filter: invert(0%);
+        }
     }
 }
 
@@ -79,7 +91,7 @@ $button-default-transition-time: 2s;
 .svg-icon {
     //filter: sepia(50%) saturate(100%) hue-rotate(80deg);
     //filter: invert(50%) sepia(100%) saturate(200%) brightness(120%) hue-rotate(120deg)
-    filter: invert(100%)
+    filter: invert(100%);
 }
 
 .bt-content {
@@ -100,11 +112,18 @@ $button-default-transition-time: 2s;
 
 .img-ovl-button {
     @extend .dark-button;
+    //font-family: raleway;
     border: $ovl-button-border;
     height: $ovl-button-height;
 
     &:hover {
         border: none;
+        
+        //font-weight: 600;
+        //@include reactive.lin-transition($button-default-transition-time, all);
+        //font-size: 150%;
+        //
+        //border-color: rgba(100,100,100, 0.4);
     }
 }
 

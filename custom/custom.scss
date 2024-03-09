@@ -149,7 +149,7 @@ $main-stack-text-shadow: 3px 3px 15px vars.$light-text-shadow-color, 3px 3px 15p
 section {
     z-index: 0;
     //background: rgba($color: #ffffff, $alpha: 0.9);
-    background: rgba($color: $content-section-bg-color, $alpha: 0.85);
+    background: rgba($color: $content-section-bg-color, $alpha: 0.9);
     //background: rgba(white, 0.85);
     //border-radius: 30px;
     box-shadow: 0px 0px 10px white;;
@@ -201,7 +201,7 @@ $main-call-glow: 0px 0px 0.8em vars.$dark-text-shadow-color;
 
 header .rich-logo {
     //Make the element 90px high
-    font-size: 90px;
+    //font-size: 90px;
     .overlay-letter {
         display: none;
     }

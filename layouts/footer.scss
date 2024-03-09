@@ -1,6 +1,5 @@
 $footer-text-color: white !default;
 $social-icon-border-color: white !default;
-$footer-button-bg-color: #3ede81 !default;
 $footer-input-bg-color: #ffffff !default;
 $footer-input-fg-color: black !default;
 $input-shadow: 0px 0px 0.625em $footer-input-bg-color;
@@ -63,13 +62,13 @@ footer {
         opacity: 1.0;
     }
 
-    button {
+    /*button {
         background-color: rgba($footer-button-bg-color, 0.6) !important;
-    }
+    }*/
 
-    input, button {
+    /*input, button {
         box-shadow: $input-shadow;
-    }
+    }*/
 }
 
 .panes {

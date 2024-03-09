@@ -30,6 +30,12 @@ $nav-link-hover-border-color: white;
     }
 }
 
+@mixin flex-center(){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*$bg-color: vars.$navbar-bg-color vars.$primary-color !default;
 $fg-color: vars.$navbar-fg-link-color vars.$secondary-color !default;
 $hover-bg-color: vars.$navbar-bg-color rgb(15, 95, 73) !default;
@@ -92,6 +98,9 @@ $expandable_icon_shadow_color: #4ef7c5 !default;
     //margin-right: 0;
     @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'horizontal');
 }
+.headaction .rbtn {
+    height: 100%;
+}
 
 
 /* ---------------------------- */
@@ -123,6 +132,14 @@ $expandable_icon_shadow_color: #4ef7c5 !default;
     nav > ul {
         @include helpers.pad-between-children(var(--nav-horizontal-margin-base), horizontal);
         @include helpers.border-between-children(1px solid $navlist-item-seperator-color, horizontal);
+    }
+    nav > ul > li {
+        @include flex-center();
+        
+        & > a {
+            @include flex-center();
+            padding-bottom: 0.15em;
+        }
     }
 }
 
@@ -189,12 +206,19 @@ nav {
 
     li {
         position: relative;
+        //display: flex;
+        //align-items: center;
+        //justify-content: center;
+        //display: block;
+        //@include flex-center();
     }
 
     a {
         @extend %clean-link;
         @include nav_link_hover();
         color: $fg-color;
+
+        //@include flex-center();
     }
 }
 
@@ -338,6 +362,7 @@ $break4: list.slash(1, 1);
                 margin: 0;
 
                 & > li {
+                    width: 100%;
                     height: $nav-entry-height;
                     line-height: $nav-entry-height;
                     border: none !important;
@@ -345,14 +370,22 @@ $break4: list.slash(1, 1);
                     //align-items: center;
                     //display: flex;
                     .nav_url {
-                        all: unset;
-                        border: unset;
-                        display: block;
+                        //all: unset;
+                        //border: unset;
+                        //display: block;
                         //margin: auto;
                         //height: 100%;
+                        padding-bottom: 0;
+                        width: inherit;
+
+                        &:hover {
+                            border: unset;
+                            margin-bottom: 0;
+                        }
                     }
                     .nav_url:hover, .nav-tb-ck:hover + .nav_url {
                         border: unset;
+                        margin-bottom: 0;
                         box-shadow: 0px 0px 5px white;
                     }
                 }

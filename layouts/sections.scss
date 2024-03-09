@@ -6,6 +6,8 @@ $frame-padding-lr: vars.$section-strip-base-padding-lr !default;
 $content-section-title-shadow-color: white;
 $title-shadow: 2px 2px 30px $content-section-title-shadow-color, 2px 2px 30px $content-section-title-shadow-color;
 
+$title-color: rgb(13, 128, 124) !default;
+
 .sections-strip {
     /*width: 100% !important;*/
     padding: 0;
@@ -49,7 +51,7 @@ $title-shadow: 2px 2px 30px $content-section-title-shadow-color, 2px 2px 30px $c
         font-family: vars.$content-section-title-font-family !important;
         font-weight: vars.$content-section-title-font-weight !important;
         font-size: vars.$content-section-title-font-size;
-        color: vars.$content-section-title-color;
+        color: $title-color;
         letter-spacing: vars.$content-section-title-letter-space;
         text-shadow: $title-shadow;
     }
