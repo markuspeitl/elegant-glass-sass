@@ -1,78 +1,89 @@
+@use '../shared';
+
 $contact-border-color: #009586 !default;
 $contact-button-color: #009586 !default;
+
+$contact-input-height: 2.0em;
+$contact-base-font-size: 1.0em;
 
 #contact {
  
     //margin-top: 80px;
-    background: none;
-    margin-bottom: 140px;
+    //background: none;
+    //margin-bottom: 140px;
     width: 100%;
-    display: block;
+    @include shared.center-flex(column);
     text-align: center;
+    max-width: 55ch;
 
     h1 {
         font-size: 2.5em;
+    }    
+
+    font-size: $contact-base-font-size;
+
+    input, textarea {
+        $horizontal-padding: 1em;
+        $border-size: 0.15em;
+        
+        border: $border-size solid $contact-border-color;
+        //padding: 0;
+        padding-left: $horizontal-padding;
+        padding-right: $horizontal-padding;
+        width: calc(100% - $horizontal-padding * 2 - $border-size * 2);
+        //background: none;
+        //font-size: 1em;
+        //font-weight: bold;
     }
-    
-    form{
-        display: block;
+
+    input[type=text], input[type=email] {
+        margin-bottom: 1em;
+        height: $contact-input-height;
+    }
+
+    textarea {
+        margin-top: 1em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        height: $contact-input-height * 2.5;
+        font-size: inherit;
+    }
+
+
+    #dataprotectholder {
+        //@include shared.center-flex(row);
+        display: flex;
+        align-items: start;
+        flex-wrap: wrap;
+        margin-bottom: 0.5em;
+        text-align: left;
         width: 100%;
+        padding: 0.5em;
+
+        #dataprotect {
+            display: inline;
+            width: auto;
+            transform: scale(2) translate(25%, 25%);
+            margin-right: 1em;
+            margin-bottom: 1em;
+            //margin: 1em;
+        }
+
+        label {
+            font-size: 0.8em;
+        }
     }
-    
-    #singlelineholder{
-        /*float: left;*/
-        display: block;
-    }
-    
-    #message{
-        /*float: left;*/
-        display: block;
-    }
-    
-    #submitholder{
-        float: left;
-        width: 100%;
-    }
-    
-    /*hpot*/
-    .mailfff{
-        display: none;
-    }
-    .mailfff input{
-        display: none;
-    }
-    
-    .singlelineinput{
-        margin-bottom: 20px;
-        font-weight: bold;
-        padding-left: 20px;
-        padding-right: 20px; 
-        height: 60px;
-        width: 700px;
-        background: none;
-        border: 3px solid $contact-border-color;
-        font-size: 16px;
-    }
-    
-    form textarea{
-        margin-top: 20px;
-        padding: 20px;
-        height: 170px;
-        width: 700px;
-        background: none;
-        border: 3px solid $contact-border-color;
-        font-size: 20px;
-    }
-    
+
     #submit{
-        margin-top: 20px;
-        height: 60px;
-        width: 400px;
+        //font-size: 1em;
+        letter-spacing: 0.1em;
+        margin-top: 0.2em;
+        height: 3.2em;
+        width: 80%;
         border: none;
         background: $contact-button-color;
         color: white;
         font-weight: bold;
-        font-size: 20px;
     }
     
     #submit:disabled{
@@ -83,26 +94,44 @@ $contact-button-color: #009586 !default;
         opacity: 0.5;
         transition: 0.5s;
     }
-    
-    #dataprotectholder{
-        margin-top:20px;
-        margin-bottom:10px;
-    }
-    
-    #dataprotect{
-        font-size: 20px;
-    }
-    
-    @media only screen and (max-width : 840px) 
-    {
-        .singlelineinput{
-            width: 80%;
-        }
-    
-        form textarea{
-            width: 80%;
-        }
-    
-    }    
 }
 
+/*Honey pot input to catch contact formular bots*/
+.hpot {
+    all: unset !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    //margin: 0 !important;
+    //padding: 0 !important;
+    //border: none !important;
+}
+
+
+
+/*form{
+        display: block;
+        width: 100%;
+    }*/
+
+    
+    /*#singlelineholder{
+        display: block;
+    }
+    
+    #message{
+        display: block;
+    }*/
+    
+    /*#submitholder{
+        float: left;
+        width: 100%;
+    }*/
+    
+    /*hpot
+    .mailfff{
+        display: none;
+    }
+    .mailfff input{
+        display: none;
+    }*/

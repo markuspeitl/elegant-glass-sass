@@ -9,13 +9,16 @@ $default-screen-break: 700px !default;
     vertical-align: middle;
 }
 
-
-@mixin center-flex($direction: row){
+@mixin flex-center(){
     display: flex;
-    flex-direction: $direction;
     align-items: center;
     justify-content: center;
-    vertical-align: middle;
+}
+
+
+@mixin center-flex($direction: row){
+    @include flex-center();
+    flex-direction: $direction;
 }
 
 

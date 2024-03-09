@@ -30,12 +30,6 @@ $nav-link-hover-border-color: white;
     }
 }
 
-@mixin flex-center(){
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /*$bg-color: vars.$navbar-bg-color vars.$primary-color !default;
 $fg-color: vars.$navbar-fg-link-color vars.$secondary-color !default;
 $hover-bg-color: vars.$navbar-bg-color rgb(15, 95, 73) !default;
@@ -134,10 +128,10 @@ $expandable_icon_shadow_color: #4ef7c5 !default;
         @include helpers.border-between-children(1px solid $navlist-item-seperator-color, horizontal);
     }
     nav > ul > li {
-        @include flex-center();
+        @include shared.flex-center();
         
         & > a {
-            @include flex-center();
+            @include shared.flex-center();
             padding-bottom: 0.15em;
         }
     }
