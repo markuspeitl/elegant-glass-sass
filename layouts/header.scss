@@ -9,6 +9,8 @@ header {
     font-family: vars.$nav-header-default-font-family;
     font-size: vars.$nav-header-default-font-size;*/
 
+    
+    height: auto;
     font: $nav-header-default-font;
 
     @extend %clean-container;

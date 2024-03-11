@@ -17,7 +17,7 @@
     }
     @if ($orientation == vertical or $orientation == v){
         @include between-children() {
-            margin-top: $spacing;
+            margin-bottom: $spacing;
         }
     }
 }

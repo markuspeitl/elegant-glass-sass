@@ -1,34 +1,16 @@
 //@use '../vars';
+@use 'sass:list';
 @use '../helpers';
 @use '../reactive';
 @use '../shared';
-@use 'sass:list';
 
 //$small-screen-break: vars.$small-screen-break !default;
 
-@function defined($value-options){
-    @each $opt in $value-options {
-        @if ($opt){
-            @return $opt;
-        }
-    }
-
-    @return null;
-};
-
-$nav-link-hover-border-color: white;
-@mixin nav_link_hover_effect($color: $nav-link-hover-border-color, $margin-top: null){
-    //padding-bottom: 3px;
-    //border-bottom: solid $color;
-    //border-bottom-width: 2px;
-    @include helpers.spaceless-border('bottom', 2px, $color);
-}
-
-@mixin nav_link_hover($margin-top: null){
+/*@mixin nav_link_hover($margin-top: null){
     &:hover {
         @include nav_link_hover_effect($nav-link-hover-border-color, $margin-top);
     }
-}
+}*/
 
 /*$bg-color: vars.$navbar-bg-color vars.$primary-color !default;
 $fg-color: vars.$navbar-fg-link-color vars.$secondary-color !default;
@@ -48,12 +30,13 @@ $hover-bg-color: rgb(15, 95, 73) !default;
 $navlist-item-seperator-color: white !default;
 $table-bar-bg-color: #22cc99 !default;
 $nav-column-title-color: #086247 !default;
-$nav-item-horizontal-height: 5.625rem;
-
-$nav-header-height: $nav-item-horizontal-height;
+//$nav-item-horizontal-height: 5.625rem;
+//$nav-header-height: $nav-item-horizontal-height;
 
 //TODO = lighten tablebar color
 $expandable_icon_shadow_color: #4ef7c5 !default;
+
+$menu-item-gap: 1em;
 
 //Debug
 .burger {
@@ -88,15 +71,6 @@ $expandable_icon_shadow_color: #4ef7c5 !default;
     border: none;
 }
 
-.headaction {
-    //margin-right: 0;
-    @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'horizontal');
-}
-.headaction .rbtn {
-    height: 100%;
-}
-
-
 /* ---------------------------- */
 
 
@@ -106,43 +80,83 @@ $expandable_icon_shadow_color: #4ef7c5 !default;
 // Can be on top, right, bottom or left of the screen
 // Can be fixed or have a page pos (within content flow)
 
+$nav-row-height: 4em;
+$nav-row-height-column: 3em;
+
 .navlist {
+    //height: $nav-row-height;
+    box-sizing: border-box;
+
     margin: 0;
     @extend .centerflex-row;
     @extend %nav-holder;
     flex-wrap: wrap;
+}
 
-    @include helpers.gap-between-children(var(--nav-horizontal-margin-base), horizontal);
 
-
-    & > * {
-        height: $nav-item-horizontal-height;
+.headvisual {
+    height: $nav-row-height;
+    //Prevents padding from modifying height value
+    box-sizing: border-box;
+    //padding: 0.0em;
+    .rich-logo {
+        //height: 80% !important;
+        font-size: 3em;
     }
+}
 
-    nav {
-        @extend .centerflex-row;
-    }
+nav {
+    height: $nav-row-height;
+    box-sizing: border-box;
 
-    nav > ul {
-        @include helpers.pad-between-children(var(--nav-horizontal-margin-base), horizontal);
+    @extend .centerflex-row;
+    font: $nav-header-default-font;
+    margin-left: auto;
+    margin-right: auto;
+
+    & > ul {
+        @include helpers.pad-between-children($menu-item-gap, horizontal);
         @include helpers.border-between-children(1px solid $navlist-item-seperator-color, horizontal);
-    }
-    nav > ul > li {
-        @include shared.flex-center();
-        
-        & > a {
+
+        & > li {
             @include shared.flex-center();
-            padding-bottom: 0.15em;
+            
+            & > a {
+                @include shared.flex-center();
+                //For hover border offset
+                padding-bottom: 0.15em;
+            }
         }
     }
 }
 
+.headaction {
+    height: $nav-row-height;
+    box-sizing: border-box;
 
-nav {
-    //font: vars.$nav-header-default-font-size vars.$nav-header-default-font-family;
-    font: $nav-header-default-font;
-    //font-family: 'mulish';
-    margin-left: auto;
+    padding: 0.4em;
+    //margin-right: 0;
+    @include helpers.gap-between-children($menu-item-gap, 'horizontal');
+    .rbtn {
+        height: 100%;
+    }
+}
+
+.table-bar {
+    width: 100%;
+    //background-color: rgba(#22cc99, 0.85);
+    background-color: $table-bar-bg-color;
+    top: $nav-row-height;
+    position: fixed;
+    left: 0;
+    text-align: left;
+    visibility: hidden;
+    //display: none;
+    padding: {
+        top: 4rem;
+        bottom: 4rem;
+    }
+    //padding: 4rem;
 }
 
 .nav-table {
@@ -157,8 +171,10 @@ nav {
     grid-gap: 0.625em;
     //text-align: center;
     //gap: 10px;
-    padding-left: 20%;
-    padding-right: 20%;
+    //padding-left: 10%;
+    //padding-right: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
     align-items: start;
 }
 
@@ -179,8 +195,17 @@ nav {
         opacity: 0.75;
         color: $nav-column-title-color;
     }
-    li {
-        margin-top: 0.4rem;
+    ul > li {
+        
+        $item-side-spacing: ($menu-item-gap * 3 / 4) / 2;
+
+        padding-top: $item-side-spacing;
+        padding-bottom: $item-side-spacing;
+        a {
+            box-sizing: border-box;
+            padding-top: $item-side-spacing;
+            padding-bottom: $item-side-spacing;
+        }
     }
     .linklist {
         flex-direction: column;
@@ -209,39 +234,24 @@ nav {
 
     a {
         @extend %clean-link;
-        @include nav_link_hover();
         color: $fg-color;
-
         //@include flex-center();
+
+        &:hover {
+            @include shared.underline_link_hover_fx();
+        }
     }
 }
 
-.table-bar {
-    width: 100%;
-    //background-color: rgba(#22cc99, 0.85);
-    background-color: $table-bar-bg-color;
-    top: $nav-item-horizontal-height;
-    position: fixed;
-    left: 0;
-    text-align: left;
-    visibility: hidden;
-    //display: none;
-    padding: {
-        top: 4rem;
-        bottom: 4rem;
-    }
-    //padding: 4rem;
-}
+// ---------------- Navigation hovering and subnav activating
+
+$hover-text-shadow: 0px 0px 1em $expandable_icon_shadow_color, 0px 0px 1em $expandable_icon_shadow_color;
 
 li:has(.nav-tb-ck:checked) /*+*/ > .table-bar {
     visibility: visible;
     display: block;
     opacity: 1.0;
     background-color: rgba($table-bar-bg-color, 0.97);
-    //display: block;
-    //position: fixed;
-    //left: 0;
-    //top: $nav-header-height;
     transition: 1s opacity;
 }
 
@@ -254,35 +264,37 @@ li:has(.nav-tb-ck:checked) /*+*/ > .table-bar {
     //display:
     opacity: 0.0;
     z-index: 999;
-}
 
-
-$expand-shadow: 0px 0px 2em $expandable_icon_shadow_color, 0px 0px 1em $expandable_icon_shadow_color;
-.nav-tb-ck:hover { 
-    
-    & + a {
-        @include nav_link_hover_effect();
-    }
-
-    ~ .icon {
-        text-shadow: $expand-shadow;
+    & + .nav_url .icon {
+        rotate: 0deg;
+        transition: 0.5s rotate;
     }
 }
 
-.nav-tb-ck ~ .icon {
-    rotate: 0deg;
-    transition: 1.0s rotate;
-    font-weight: 800;
+.nav-tb-ck:hover {
+    cursor: pointer;
+}
+.nav_url:hover, .nav-tb-ck:hover + .nav_url {
+    @include shared.underline_link_hover_fx();
+    text-shadow: $hover-text-shadow;
+}
+.nav-tb-ck:hover + .nav_url .icon {
+    rotate: 90deg;
+    transition: 0.5s rotate;
 }
 
-.nav-tb-ck:checked ~ a .icon {
-    rotate: 180deg;
-    transition: 1.0s rotate;
-    text-shadow: $expand-shadow;
+.nav-tb-ck:checked + .nav_url {
+    text-shadow: $hover-text-shadow;
+    .icon {
+        rotate: 180deg;
+        transition: 0.5s rotate;
+    }
 }
+
+// -------------------------------
 
 .navspacer {
-    height: $nav-item-horizontal-height;
+    height: $nav-row-height;
 }
 
 //$break1: list.slash(15, 13);
@@ -293,33 +305,40 @@ $break3: list.slash(2, 3);
 $break4: list.slash(1, 1);
 
 @include helpers.aspect-break($break1){
-    $nav-item-horizontal-height: $nav-item-horizontal-height * 2;
+    $nav-row-height: $nav-row-height * 2;
     .navlist {
         /*& > * {
-            height: $nav-item-horizontal-height;
+            height: $nav-row-height;
         }*/
-        nav {
-            margin-left: 1em;
-        }
-        .headaction {
-            margin-right: auto;
-        }
+        
+    }
+    nav {
+        margin-left: 0em;
+    }
+    .headaction {
+        margin-right: auto;
     }
     .table-bar {
-        top: $nav-item-horizontal-height;
+        top: $nav-row-height;
     }
     .navspacer {
-        height: $nav-item-horizontal-height;
+        height: $nav-row-height;
     }
 }
 
 @include helpers.aspect-break($break4){
-    $nav-item-horizontal-height: $nav-item-horizontal-height * 3;
+    $nav-row-height: $nav-row-height * 3;
     .table-bar {
-        top: $nav-item-horizontal-height;
+        top: $nav-row-height;
     }
     .navspacer {
-        height: $nav-item-horizontal-height;
+        height: $nav-row-height;
+    }
+    nav {
+        margin-left: auto;
+    }
+    .headvisual {
+        width: 100%;
     }
 }
 
@@ -329,108 +348,111 @@ $break4: list.slash(1, 1);
         position: relative;
         top: 0;
     }
-
     .navspacer {
         height: 0;
     }
 
-    $nav-entry-height: 3em;
     .navlist {
+        //flex-wrap: wrap;
         height: auto;
-        flex-wrap: wrap;
         flex-direction: column;
-
-        .headvisual {
-            height: $nav-item-horizontal-height * 1.4;
-            width: 100%;
-        }
-        nav {
-            margin-left: 1em;
+    }
+    .headvisual {
+        height: $nav-row-height * 1.2;
+        width: 100%;
+    }
+    nav {
+        flex-direction: column;
+        height: auto;
+        margin: 0;
+        width: 100%;
+        & > ul {
             flex-direction: column;
-            height: auto;
-            margin: 0;
             width: 100%;
-            & > ul {
-                flex-direction: column;
+            margin: 0;
+            @include helpers.pad-between-children(0px, horizontal);
+
+            & > li {
                 width: 100%;
-                margin: 0;
-
-                & > li {
+                height: $nav-row-height-column;
+                //line-height: $nav-row-height-column;
+                border: none !important;
+                //justify-content: center;
+                //align-items: center;
+                //display: flex;
+                .nav_url {
+                    //padding-bottom: 0;
                     width: 100%;
-                    height: $nav-entry-height;
-                    line-height: $nav-entry-height;
-                    border: none !important;
-                    //justify-content: center;
-                    //align-items: center;
-                    //display: flex;
-                    .nav_url {
-                        //all: unset;
-                        //border: unset;
-                        //display: block;
-                        //margin: auto;
-                        //height: 100%;
-                        padding-bottom: 0;
-                        width: inherit;
-
-                        &:hover {
-                            border: unset;
-                            margin-bottom: 0;
-                        }
-                    }
-                    .nav_url:hover, .nav-tb-ck:hover + .nav_url {
-                        border: unset;
-                        margin-bottom: 0;
-                        box-shadow: 0px 0px 5px white;
-                    }
-                }
-
-                & > li:nth-child(odd) {
-                    background: rgba(255,255,255, 0.2); //TODO: darken instead https://sass-lang.com/documentation/modules/color/
                 }
             }
+
+            & > li:nth-child(odd) {
+                background: rgba(255,255,255, 0.2); //TODO: darken instead https://sass-lang.com/documentation/modules/color/
+            }
         }
-        .headaction {
-            margin-right: auto;
-            margin-top: 1em;
-        }
+    }
+    .headaction {
+        margin-right: auto;
+        margin-top: 1em;
+    }
+    
+    .nav_url:hover, .nav-tb-ck:hover + .nav_url {
+        border: none !important;
+        @include shared.box_link_hover_fx();
     }
 
     .table-bar {
         position: absolute;
-        top: $nav-entry-height;
+        top: $nav-row-height-column;
         z-index: 9999;
         padding-top: 1.4em;
-        padding-bottom: 1em;
+        padding-bottom: 1em;   
+        
+    }
 
-        .nav-table {
-            grid-auto-flow: row;
-            grid-template-columns: 1fr;
-        }
-        .nav-column {
-            align-items: start;
-            ul {
-                width: 100%;
-                li {
-                    height: $nav-entry-height * 0.8;
-                    line-height: $nav-entry-height * 0.8;
-                    
-                }
-            }
-            a {
-                width: 100%;
-                display: block;
-                //padding: 0.0em;
-                padding-left: 0.5em !important;
+    $nav-table-padding-x: 1em;
 
-                &:hover {
-                    border: unset;
-                    box-shadow: 0px 0px 5px white;
-                }
-            }
-        }
+    .nav-table {
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        margin-left: 0;
+        margin-right: 0;
         h3 {
             margin-bottom: 0.0em;
             padding-bottom: 0.1em;
+            padding-left: $nav-table-padding-x;
+        }
+    }
+    .nav-column {
+        align-items: start;
+        ul {
+            width: 100%;
+            & > li {
+                //height: $nav-row-height-column * 0.8;
+                //line-height: $nav-row-height-column * 0.8;
+
+                $item-side-spacing: ($menu-item-gap * 3 / 4) / 2;
+    
+                padding-top: 0;
+                padding-bottom: 0;
+                a {
+                    //box-sizing: border-box;
+                    padding-top: $item-side-spacing / 2;
+                    padding-bottom: $item-side-spacing / 2;
+                }
+
+            }
+            
+        }
+        a {
+            width: 100%;
+            display: block;
+            //padding: 0.0em;
+            padding-left: $nav-table-padding-x * 2 !important;
+
+            &:hover {
+                @include shared.box_link_hover_fx()
+            }
         }
     }
 
@@ -486,7 +508,7 @@ $break4: list.slash(1, 1);
                 line-height: 1 !important;
                 height: auto !important;
             }
-            @include helpers.gap-between-children(1em, vertical);
+            @include helpers.gap-between-children($menu-item-gap, 'horizontal');
         }
         input[type=email] {
             margin-right: 0 !important;
@@ -505,130 +527,3 @@ $break4: list.slash(1, 1);
         gap: 1em !important;
     }
 }
-
-/*$small-screen-break: 700px;
-@include helpers.screen-layout-break($small-screen-break) {
-    .navlist {
-        width: 100%;
-        height: auto;
-        @extend %nav-holder;
-        @include helpers.gap-between-children(0, 'horizontal');
-        @include helpers.gap-between-children(var(--nav-horizontal-margin-base), 'vertical');
-        margin-top: 0.125em !important;
-        margin-bottom: 0.625em !important;
-    
-        & > * {
-            height: $nav-item-horizontal-height;
-        }
-    
-        & ul {
-            @include helpers.pad-between-children(0, 'horizontal');
-            @include helpers.pad-between-children(var(--nav-horizontal-margin-base), 'vertical');
-
-            text-align: center;
-            flex-direction: column;
-            padding-left: 0;
-        }
-    
-        & ul > li {
-            //@extend %clean-list;
-            padding-top: 0.8em;
-            padding-bottom: 0.8em;
-        }
-    
-        & ul > li > a {
-            display: block;
-            width: 100%;
-        }
-
-        & ul > li:nth-child(odd) {
-            background: rgba(255,255,255, 0.2); //TODO: darken instead https://sass-lang.com/documentation/modules/color/
-        }
-    }
-}*/
-
-
-/*.nav-tb-ck:checked ~ .nav-tb-ck + .table-bar .nav-table {
-    display: none;
- }*/
-
-
-
-// ---------------------------- Navigation submenu
-// should be some kind of navlist or similar
-// options: stretch across screen, wrap content
-// maybe same menu as the links in the footer or the links in the sidebar (if sidebar is nav)
-
-/*.subhidden {
-    display: none;
-}
-.subnav {
-    display: none;
-    width: 100%;
-}
-
-
-li {
-    position: relative;
-}
-.expandable_nav_url:hover + .subnav {*/
-/*.expandable_nav_url:hover + .subnav, .subnav:hover {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: vars.$nav-text-font-size;
-    left: 0;
-    padding: 20px;
-    background: vars.$navbar-bg-color;
-}
-
-.subnav li {
-    padding: 10px;
-    margin: 0;
-}
-
-.subnav .nav_url {
-    padding: 0px;
-}
-
-.subnav ul {
-    padding: 0px;
-    margin: 0;
-}*/
-
-
-
-/*.nav-table {
-    //@extend .centerflex;
-    //display: grid;
-    //display: flex;
-    display: grid;
-    grid-auto-flow: column;
-}*/
-
-/*nav li:hover + .nav-table {
-    display: grid;
-}
-.nav-table:hover {
-    display: grid;
-}*/
-
-/*.nav-tb-ck {
-    display: none;
-}*/
-
-
-/*.nav-tb-ck:checked + .table-bar {
-    visibility: visible;
-    //display: block;
-    
-    opacity: 0.95;
-    transition: 1s opacity;
- }*/
-
- /*%clean-list {
-    list-style: none;
-    & > a {
-        @extend %clean-link;
-    }
-}*/

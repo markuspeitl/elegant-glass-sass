@@ -1,4 +1,5 @@
 @use '../reactive';
+@use '../helpers';
 
 $default-screen-break: 700px !default;
 
@@ -73,3 +74,39 @@ $default-screen-break: 700px !default;
         text-align: center;
     }
 }*/
+
+
+@function defined($value-options){
+    @each $opt in $value-options {
+        @if ($opt){
+            @return $opt;
+        }
+    }
+
+    @return null;
+};
+
+
+@mixin link_hover_fx(){
+    cursor: pointer;
+}
+
+$nav-link-hover-border-color: white;
+
+@mixin underline_link_hover_fx($color: $nav-link-hover-border-color, $margin-top: null){
+    @include link_hover_fx();
+    @include helpers.spaceless-border('bottom', 2px, $color);
+}
+@mixin box_link_hover_fx($color: $nav-link-hover-border-color, $margin-bottom: null){
+    @include link_hover_fx();
+    border: unset;
+
+    @if($margin-bottom){
+        margin-bottom: $margin-bottom;
+    }
+    @else {
+        margin-bottom: 0;
+    }
+    
+    box-shadow: 0px 0px 5px white;
+}

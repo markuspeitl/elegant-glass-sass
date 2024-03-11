@@ -182,5 +182,9 @@ $bt-transition-time: vars.$transition-time 1.0s !default;
     height: auto;
 }
 
+.rbtn:hover {
+    cursor: pointer; 
+}
+
 
 /* Note: a low z-index on any ancestor can break :hover and :active events in all descendants*/
