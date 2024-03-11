@@ -93,10 +93,14 @@ $default-screen-break: 700px !default;
 
 $nav-link-hover-border-color: white;
 
-@mixin underline_link_hover_fx($color: $nav-link-hover-border-color, $margin-top: null){
+@mixin underline_link_hover_fx($color: $nav-link-hover-border-color, $line-size: 2px, $margin-top: 0px){
     @include link_hover_fx();
-    @include helpers.spaceless-border('bottom', 2px, $color);
+    @include helpers.spaceless-border('bottom', 2px, $color, $margin-top);
 }
+@mixin reset_underline_link_hover_fx($margin-top: 0px){
+    @include helpers.reset-spaceless-border('bottom', $margin-top);
+}
+
 @mixin box_link_hover_fx($color: $nav-link-hover-border-color, $margin-bottom: null){
     @include link_hover_fx();
     border: unset;

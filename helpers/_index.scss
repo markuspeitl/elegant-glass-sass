@@ -64,8 +64,17 @@
     }
 }
 
-@mixin aspect-break($aspect-ratio: list.slash(4, 3)){
-    @media only screen and (max-aspect-ratio: $aspect-ratio) {
+//$offset-ratio-percent == fine adjustment from common break points
+@mixin aspect-break($aspect-ratio: list.slash(4, 3), $offset-ratio-percent: 0){
+
+    $aspect-x: list.nth($aspect-ratio, 1);
+    $aspect-y: list.nth($aspect-ratio, 2);
+    //$new-aspect: list.slash(calc($aspect-x + $offset-screen-percent), 3);
+
+    $aspect-ratio-float: calc($aspect-x / $aspect-y);
+    $aspect-ratio-float: calc($aspect-ratio-float * (1 + $offset-ratio-percent / 100));
+    
+    @media only screen and (max-aspect-ratio: $aspect-ratio-float) {
         @content;
     }
 }
@@ -76,14 +85,33 @@
     color: list.nth($color-pair, 2);
 }
 
-@mixin spaceless-border($border-side: bottom, $border-thickness: 1px, $border-color: white, $current-margin-top: 0, $border-style: solid){
+@mixin spaceless-border($border-side: bottom, $border-thickness: 1px, $border-color: white, $current-margin-bottom: 0px, $border-style: solid){
     
+    @if($current-margin-bottom == null){
+        $current-margin-bottom: 0px;
+    }
+
     @if($border-side == null){
         border: $border-thickness $border-style $border-color;
-        margin-bottom: $current-margin-top - 2 * $border-thickness;
+        margin-bottom: calc($current-margin-bottom - 2 * $border-thickness);
     }
     @else {
         border-#{$border-side}: $border-thickness $border-style $border-color;
-        margin-bottom: $current-margin-top - $border-thickness;
+        margin-bottom: calc($current-margin-bottom - $border-thickness);
+    }
+}
+
+@mixin reset-spaceless-border($border-side: bottom, $orig-margin-bottom: 0px){
+    @if($orig-margin-bottom == null){
+        $orig-margin-bottom: 0px;
+    }
+
+    @if($border-side == null){
+        border: none;
+        margin-bottom: $orig-margin-bottom;
+    }
+    @else {
+        border-#{$border-side}: none;
+        margin-bottom: $orig-margin-bottom;
     }
 }

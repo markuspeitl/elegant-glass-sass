@@ -80,8 +80,8 @@ $menu-item-gap: 1em;
 // Can be on top, right, bottom or left of the screen
 // Can be fixed or have a page pos (within content flow)
 
-$nav-row-height: 4em;
-$nav-row-height-column: 3em;
+$nav-row-height: 5rem;
+//$nav-row-height-column: 3em;
 
 .navlist {
     //height: $nav-row-height;
@@ -148,6 +148,7 @@ nav {
     background-color: $table-bar-bg-color;
     top: $nav-row-height;
     position: fixed;
+    opacity: 0.0;
     left: 0;
     text-align: left;
     visibility: hidden;
@@ -178,6 +179,7 @@ nav {
     align-items: start;
 }
 
+$column-list-item-spacing: calc(($menu-item-gap * 3 / 4) / 2);
 .nav-column {
     //justify-self: center;
     //grid-column: -1 / 1;
@@ -196,21 +198,22 @@ nav {
         color: $nav-column-title-color;
     }
     ul > li {
-        
-        $item-side-spacing: ($menu-item-gap * 3 / 4) / 2;
 
-        padding-top: $item-side-spacing;
-        padding-bottom: $item-side-spacing;
+        padding-top: $column-list-item-spacing;
+        padding-bottom: $column-list-item-spacing;
         a {
             box-sizing: border-box;
-            padding-top: $item-side-spacing;
-            padding-bottom: $item-side-spacing;
+            padding-top: $column-list-item-spacing;
+            padding-bottom: $column-list-item-spacing;
         }
     }
     .linklist {
         flex-direction: column;
     }
 }
+
+$list-link-margin-bottom: 0em;
+
 .linklist {
     //@extend .centerflex-row;
     //all: unset;
@@ -236,10 +239,10 @@ nav {
         @extend %clean-link;
         color: $fg-color;
         //@include flex-center();
-
-        &:hover {
-            @include shared.underline_link_hover_fx();
-        }
+        margin-bottom: $list-link-margin-bottom;
+    }
+    a:hover {
+        @include shared.underline_link_hover_fx(white, 0.1em, $list-link-margin-bottom);
     }
 }
 
@@ -298,14 +301,21 @@ li:has(.nav-tb-ck:checked) /*+*/ > .table-bar {
 }
 
 //$break1: list.slash(15, 13);
-$break1: list.slash(5, 4);
+$break-land-ultra-wide: list.slash(3, 1); //3.000
+$break-land-wide: list.slash(2, 1); //2.000
+$break-land-fhd: list.slash(16, 9); // 1.7777
+$break-land-land-square: list.slash(13, 9); // 1.4444
+$break-land-square: list.slash(5, 4); // 1.2500
+//$break4: list.slash(1, 1);
+$break-square: list.slash(1, 1); // 1.000
+$break-square-portrait: list.slash(7, 9); // 0.7777
+$break-portrait: list.slash(2, 3); // 0.6666
+$break-portrait-high: list.slash(1, 2); // 0.5000
+$break-high: list.slash(1, 3); // 0.3333
 
-$break2: list.slash(7, 9);
-$break3: list.slash(2, 3);
-$break4: list.slash(1, 1);
 
-@include helpers.aspect-break($break1){
-    $nav-row-height: $nav-row-height * 2;
+@include helpers.aspect-break($break-land-square, 10){
+    $nav-height: $nav-row-height * 2;
     .navlist {
         /*& > * {
             height: $nav-row-height;
@@ -319,20 +329,20 @@ $break4: list.slash(1, 1);
         margin-right: auto;
     }
     .table-bar {
-        top: $nav-row-height;
+        top: $nav-height;
     }
     .navspacer {
-        height: $nav-row-height;
+        height: $nav-height;
     }
 }
 
-@include helpers.aspect-break($break4){
-    $nav-row-height: $nav-row-height * 3;
+@include helpers.aspect-break($break-square, 10){
+    $nav-height: $nav-row-height * 3;
     .table-bar {
-        top: $nav-row-height;
+        top: $nav-height;
     }
     .navspacer {
-        height: $nav-row-height;
+        height: $nav-height;
     }
     nav {
         margin-left: auto;
@@ -342,8 +352,13 @@ $break4: list.slash(1, 1);
     }
 }
 
-@include helpers.aspect-break($break2){
+@include helpers.aspect-break($break-square-portrait, 10){
     //$nav-item-horizontal-height: $nav-item-horizontal-height * 2;
+
+    $nav-visual-height: $nav-row-height * 1.2;
+    $nav-row-height: $nav-row-height * 0.8;
+    $nav-action-height: $nav-visual-height;
+
     header {
         position: relative;
         top: 0;
@@ -358,7 +373,7 @@ $break4: list.slash(1, 1);
         flex-direction: column;
     }
     .headvisual {
-        height: $nav-row-height * 1.2;
+        height: $nav-visual-height;
         width: 100%;
     }
     nav {
@@ -370,18 +385,24 @@ $break4: list.slash(1, 1);
             flex-direction: column;
             width: 100%;
             margin: 0;
+
+            //reset padding
             @include helpers.pad-between-children(0px, horizontal);
 
             & > li {
                 width: 100%;
-                height: $nav-row-height-column;
+                //height: $nav-row-height-column;
                 //line-height: $nav-row-height-column;
                 border: none !important;
                 //justify-content: center;
                 //align-items: center;
                 //display: flex;
                 .nav_url {
-                    //padding-bottom: 0;
+                    border: none !important;
+                    //height: $nav-row-height-column;
+                    line-height: $nav-row-height;
+                    height: $nav-row-height;
+                    padding-bottom: 0;
                     width: 100%;
                 }
             }
@@ -393,7 +414,8 @@ $break4: list.slash(1, 1);
     }
     .headaction {
         margin-right: auto;
-        margin-top: 1em;
+        //margin-top: 1em;
+        height: $nav-action-height;
     }
     
     .nav_url:hover, .nav-tb-ck:hover + .nav_url {
@@ -403,10 +425,13 @@ $break4: list.slash(1, 1);
 
     .table-bar {
         position: absolute;
-        top: $nav-row-height-column;
+        //top: $nav-row-height-column;
+        //0.20 * $nav-row-height offset necessary as the top position relative
+        //top: $nav-row-height + 0.20 * $nav-row-height;
+        top: $nav-row-height;
         z-index: 9999;
         padding-top: 1.4em;
-        padding-bottom: 1em;   
+        padding-bottom: 1em;
         
     }
 
@@ -419,7 +444,8 @@ $break4: list.slash(1, 1);
         margin-right: 0;
         h3 {
             margin-bottom: 0.0em;
-            padding-bottom: 0.1em;
+            padding-top: 0.4em;
+            padding-bottom: 0.6em;
             padding-left: $nav-table-padding-x;
         }
     }
@@ -430,15 +456,14 @@ $break4: list.slash(1, 1);
             & > li {
                 //height: $nav-row-height-column * 0.8;
                 //line-height: $nav-row-height-column * 0.8;
-
-                $item-side-spacing: ($menu-item-gap * 3 / 4) / 2;
-    
                 padding-top: 0;
                 padding-bottom: 0;
                 a {
+                    padding-top: 0;
+                    padding-bottom: 0;
                     //box-sizing: border-box;
-                    padding-top: $item-side-spacing / 2;
-                    padding-bottom: $item-side-spacing / 2;
+                    //padding-top: $column-list-item-spacing / 2;
+                    //padding-bottom: $column-list-item-spacing / 2;
                 }
 
             }
@@ -448,13 +473,24 @@ $break4: list.slash(1, 1);
             width: 100%;
             display: block;
             //padding: 0.0em;
-            padding-left: $nav-table-padding-x * 2 !important;
-
             &:hover {
                 @include shared.box_link_hover_fx()
             }
         }
     }
+
+    .nav-table .nav-column a{
+        padding-left: $nav-table-padding-x * 2 !important;
+    }
+
+    .linklist {
+        a:hover {
+            @include shared.reset_underline_link_hover_fx($list-link-margin-bottom);
+        }
+    }
+
+    
+    // ------------------- Other styles TODO move to own modules (+ define as mixins so they can be summarized into single breakpoint)
 
     #main-stack .stack-fg {
         top: 0.5rem !important;
@@ -488,16 +524,26 @@ $break4: list.slash(1, 1);
             width: 100% !important;
             flex-direction: column;
             align-items: center;
+
+            & > * {
+                width: 100% !important;
+
+                box-sizing: border-box;
+                padding-left: 1.5em;
+                padding-right: 1.5em;
+            }
+        }
+        .bottom-screen {
+            box-sizing: border-box;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
         }
         .left-screen {
             margin-right: unset !important;;
         }
-        .middle-screen {
-            padding-left: 0 !important;
-        }
         .right-screen {
             margin-left: unset !important;
-            width: 80%;
+            //width: 80%;
         }
         .copybar {
             flex-direction: column-reverse;
@@ -505,10 +551,13 @@ $break4: list.slash(1, 1);
                 //margin: 0;
                 margin-left: auto;
                 margin-right: auto;
+                display: inline;
+                padding: 0.3em;
+
                 line-height: 1 !important;
                 height: auto !important;
             }
-            @include helpers.gap-between-children($menu-item-gap, 'horizontal');
+            @include helpers.gap-between-children($menu-item-gap, 'vertical');
         }
         input[type=email] {
             margin-right: 0 !important;
@@ -519,7 +568,7 @@ $break4: list.slash(1, 1);
     }
 }
 
-@include helpers.aspect-break($break3){
+@include helpers.aspect-break($break-portrait){
     .preview-section-holder {
         padding: 0 !important;
         grid-template-columns: 1fr !important;
