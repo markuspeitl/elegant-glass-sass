@@ -46,14 +46,19 @@ $title-color: rgb(13, 128, 124) !default;
         }*/
     }
 
-    h1 {
+    h1, h2 {
         /*font-family: dom;*/
         font-family: vars.$content-section-title-font-family !important;
         font-weight: vars.$content-section-title-font-weight !important;
-        font-size: vars.$content-section-title-font-size;
         color: $title-color;
         letter-spacing: vars.$content-section-title-letter-space;
         text-shadow: $title-shadow;
+    }
+    h1 {
+        font-size: vars.$content-section-title-font-size;
+    }
+    h2 {
+        font-size: vars.$content-section-title-font-size * 0.8;
     }
     
     .quote {
@@ -61,6 +66,11 @@ $title-color: rgb(13, 128, 124) !default;
         font-weight: vars.$content-section-quote-font-weight;
         font-size: vars.$content-section-quote-font-size;
         color: vars.$content-section-quote-color;
+    }
+
+    li {
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
     }
 }
 
