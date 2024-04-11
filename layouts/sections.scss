@@ -53,6 +53,7 @@ $title-color: rgb(13, 128, 124) !default;
         color: $title-color;
         letter-spacing: vars.$content-section-title-letter-space;
         text-shadow: $title-shadow;
+        text-align: center;
     }
     h1 {
         font-size: vars.$content-section-title-font-size;

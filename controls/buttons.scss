@@ -4,7 +4,7 @@
 @use '../shared';
 
 $ovl-button-default-bg-opacity: 0.4;
-$ovl-button-hover-bg-opacity: 0.9;
+$ovl-button-hover-bg-opacity: 0.95;
 $ovl-button-border: 0.1rem solid vars.$ovl-button-fg-color;
 
 $ovl-button-height: 2.5em;
@@ -75,6 +75,9 @@ $button-default-transition-time: 2s;
             filter: invert(0%);
         }
     }
+}
+a.light-button {
+    opacity: 0.9 !important;
 }
 
 .navbutton {

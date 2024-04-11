@@ -69,6 +69,18 @@ footer {
     /*input, button {
         box-shadow: $input-shadow;
     }*/
+
+    .linklist {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        a {
+            padding-bottom: 0.1em !important;
+        }
+        li {
+            padding: 0.1em !important;
+        }
+    }
 }
 
 .panes {

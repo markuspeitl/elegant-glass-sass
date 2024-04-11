@@ -292,8 +292,22 @@ footer img {
     max-width: 80ch;
     margin-top: 0.7em;
     padding-bottom: 5em;
+    box-sizing: border-box;
 
     section {
         background: none;
+    }
+}
+
+/*@media only screen and (max-width : 800px) {
+    .page-content {
+        min-width: auto;
+    }
+}*/
+
+#intro {
+    text-align: left;
+    h1 {
+        text-align: left;
     }
 }
